@@ -3,17 +3,19 @@ from typing import Protocol
 
 import pandas as pd
 
+from .contracts import JSONValue
+
 
 class ResearchModel(Protocol):
     name: str
 
-    def analyze(self, prices: pd.DataFrame) -> dict:
+    def analyze(self, prices: pd.DataFrame) -> dict[str, JSONValue]:
         """Return JSON-safe results without modifying input prices."""
         ...
 
 
 class ModelRegistry:
-    def __init__(self):
+    def __init__(self) -> None:
         self._models: dict[str, ResearchModel] = {}
 
     def register(self, model: ResearchModel) -> None:

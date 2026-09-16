@@ -28,3 +28,7 @@ playwright-report/
 *.parquet
 LPPLS/lppls_dashboard.html
 test-results-*/
+
+# Supabase CLI local state
+supabase/.temp/
+supabase/.branches/

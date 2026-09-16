@@ -34,6 +34,7 @@ class CacheStore:
     """Cache metadata in SQLite; payloads live as independently replaceable files."""
 
     def __init__(self, cache_dir: Path) -> None:
+        self.is_remote = False
         self.cache_dir = Path(cache_dir)
         self.history_dir = self.cache_dir / "history"
         self.history_dir.mkdir(parents=True, exist_ok=True)
@@ -127,3 +128,9 @@ class CacheStore:
                 "ON CONFLICT(cache_key) DO UPDATE SET refreshed_at=excluded.refreshed_at, value_json=excluded.value_json",
                 (key, iso_now(), json.dumps(value, default=str)),
             )
+
+    @contextmanager
+    def refresh_lease(self, key: str):
+        """Local cache has no cross-process lease; the service lock is sufficient."""
+        del key
+        yield True

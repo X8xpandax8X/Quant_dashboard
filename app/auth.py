@@ -10,6 +10,8 @@ COOKIE = "qs_demo_session"
 
 
 def setup_secret(settings):
+    if settings.backend == "supabase":
+        return settings.csrf_secret
     if settings.mode != "demo":
         return settings.proxy_secret
     path = settings.storage_dir / ".session-key"
@@ -34,6 +36,16 @@ def csrf_token(request, user):
 
 def current_user(request: Request):
     settings = request.app.state.settings
+    if settings.backend == "supabase":
+        from app.supabase import UserDataClient
+        authorization = request.headers.get("authorization", "")
+        scheme, _, token = authorization.partition(" ")
+        if scheme.lower() != "bearer" or not token or len(token) > 16384 or any(c.isspace() for c in token):
+            raise HTTPException(401, "Sign in to continue")
+        client = UserDataClient(settings, token, getattr(request.app.state, "supabase_transport", None))
+        user = client.authenticate(settings.email_allowlist)
+        request.state.user_data_client = client
+        return user
     if settings.mode == "demo":
         try:
             user = serializer(request).loads(request.cookies.get(COOKIE, ""), max_age=settings.session_max_age)

@@ -7,6 +7,7 @@ import os
 import threading
 import time
 from dataclasses import dataclass
+from contextlib import contextmanager
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
@@ -17,6 +18,8 @@ import pandas as pd
 import numpy as np
 
 from .cache import CacheStore, iso_now, utc_now
+from .contracts import MarketCache
+from .freshness import FreshnessPolicy
 from .demo import DEMO_AS_OF, demo_fundamentals, demo_history
 from .fundamentals import income_flow, normalize_quarters, number
 from .instruments import MARKET_BY_SYMBOL, MARKETS, canonical_sector
@@ -47,13 +50,24 @@ class DataService:
     complete miss is returned as an empty unavailable result.
     """
 
-    def __init__(self, cache_dir: Path, mode: str) -> None:
+    def __init__(self, cache_dir: Path | None, mode: str, *, cache: MarketCache | None = None, freshness: FreshnessPolicy | None = None) -> None:
         if mode not in {"demo", "research", "production"}:
             raise ValueError("mode must be demo, research, or production")
         self.mode = mode
-        self.cache_dir = Path(cache_dir)
-        self.cache = CacheStore(self.cache_dir)
-        self._universe, self._universe_provenance = _load_snapshot(self.cache_dir)
+        self.cache_dir = Path(cache_dir) if cache_dir is not None else None
+        if cache is None and self.cache_dir is None:
+            raise ValueError("A cache adapter or local cache directory is required")
+        self.cache = cache if cache is not None else CacheStore(self.cache_dir)
+        self.freshness = freshness or FreshnessPolicy()
+        if self.cache.is_remote:
+            baseline = json.loads(SNAPSHOT.read_text())
+            _validate_snapshot(baseline)
+            self._adopt_universe(baseline)
+            saved = self._cache_value("universe:sp500")
+            if saved:
+                self._adopt_universe(saved[0])
+        else:
+            self._universe, self._universe_provenance = _load_snapshot(self.cache_dir)
         self.universe_as_of = self._universe_provenance["as_of"]
         self.universe_source = self._universe_provenance["source"]
         self._refresh_locks: dict[str, threading.Lock] = {}
@@ -83,7 +97,7 @@ class DataService:
             if time.monotonic() - self._last_universe_attempt < 86400:
                 return False
             self._last_universe_attempt = time.monotonic()
-            return self._refresh_universe_now()
+            return self._refresh_remote_universe() if self.cache.is_remote else self._refresh_universe_now()
 
     def _refresh_universe_now(self) -> bool:
         snapshot_path = self.cache_dir / "universe_snapshot.json"
@@ -134,20 +148,25 @@ class DataService:
         timeframe = timeframe.upper()
         if timeframe not in TIMEFRAMES:
             raise ValueError("timeframe must be one of 1D, 5D, 1M, 1Y")
-        interval, period, ttl = TIMEFRAMES[timeframe]
+        interval, period, _ = TIMEFRAMES[timeframe]
+        ttl = self.freshness.history_ttl(timeframe)
         if self.mode == "demo":
             frame = _slice_demo(demo_history(symbol, interval), timeframe)
             return HistoryResult(frame, self._history_metadata(symbol, "demo", "demo", timeframe, interval, frame, ["Deterministic synthetic data; not market data."]))
 
         key = f"history:{symbol}:{timeframe}:{interval}"
-        cached = self.cache.get_history(key)
-        if cached and utc_now() - cached.refreshed_at <= ttl:
+        cached = self._cache_history(key)
+        if cached and self.freshness.is_fresh(cached.refreshed_at, ttl):
             return HistoryResult(cached.frame, self._cached_history_metadata(symbol, cached.meta, timeframe, interval, cached.frame, "fresh"))
         lock = self._lock_for(key)
-        with lock:
-            cached = self.cache.get_history(key)
-            if cached and utc_now() - cached.refreshed_at <= ttl:
+        with self._refresh_scope(key) as acquired:
+            cached = self._cache_history(key)
+            if cached and self.freshness.is_fresh(cached.refreshed_at, ttl):
                 return HistoryResult(cached.frame, self._cached_history_metadata(symbol, cached.meta, timeframe, interval, cached.frame, "fresh"))
+            if not acquired:
+                if cached:
+                    return HistoryResult(cached.frame, self._cached_history_metadata(symbol, cached.meta, timeframe, interval, cached.frame, "stale"))
+                return HistoryResult(_empty_frame(), self._history_metadata(symbol, "yahoo_finance", "unavailable", timeframe, interval, _empty_frame(), ["Refresh pending or storage unavailable."]))
             failed = self._failures.get(key)
             if failed and time.monotonic() - failed[0] < FAILURE_TTL.total_seconds():
                 if cached:
@@ -181,13 +200,16 @@ class DataService:
             data["meta"] = _fundamental_meta("demo", "demo", ["Deterministic synthetic fundamentals; not issuer disclosures."], self.instrument(symbol).get("currency"),DEMO_AS_OF.isoformat())
             return data
         key = f"fundamentals:{symbol}"
-        cached = self.cache.get_value(key)
-        if cached and _within_value_ttl(cached, FUNDAMENTALS_TTL):
+        cached = self._cache_value(key)
+        if cached and self.freshness.value_is_fresh(cached[0], cached[1], self.freshness.fundamentals_ttl):
             return _cached_value(cached[0], "fresh")
-        with self._lock_for(key):
-            cached = self.cache.get_value(key)
-            if cached and _within_value_ttl(cached, FUNDAMENTALS_TTL):
+        with self._refresh_scope(key) as acquired:
+            cached = self._cache_value(key)
+            if cached and self.freshness.value_is_fresh(cached[0], cached[1], self.freshness.fundamentals_ttl):
                 return _cached_value(cached[0], "fresh")
+            if not acquired:
+                return (_cached_value(cached[0], "stale") if cached else
+                        _unavailable_fundamentals(symbol, "Refresh pending or storage unavailable.", self.instrument(symbol).get("currency")))
             try:
                 result = self._yahoo_fundamentals(symbol)
                 status = result.pop("_status", "fresh")
@@ -199,7 +221,7 @@ class DataService:
                     result = _cached_value(cached[0], "stale", f"Live provider failed; serving stale cache: {type(exc).__name__}.")
                     return result
                 result = _unavailable_fundamentals(symbol, f"Provider unavailable: {type(exc).__name__}.", self.instrument(symbol).get("currency"))
-                self.cache.put_value(key, result)
+                self._cache_failure(key, result)
                 return result
 
     def risk_free_rate(self) -> dict[str, Any]:
@@ -207,13 +229,16 @@ class DataService:
         if self.mode == "demo":
             return {"rate": 0.0425, "date": DEMO_AS_OF.date().isoformat(), "meta": _rate_meta("demo", "demo", ["Deterministic demo assumption."])}
         key = "fred:DGS10"
-        cached = self.cache.get_value(key)
-        if cached and _within_value_ttl(cached, timedelta(days=1)):
+        cached = self._cache_value(key)
+        if cached and self.freshness.value_is_fresh(cached[0], cached[1], self.freshness.risk_free_rate_ttl):
             return _cached_value(cached[0], "fresh")
-        with self._lock_for(key):
-            cached = self.cache.get_value(key)
-            if cached and _within_value_ttl(cached, timedelta(days=1)):
+        with self._refresh_scope(key) as acquired:
+            cached = self._cache_value(key)
+            if cached and self.freshness.value_is_fresh(cached[0], cached[1], self.freshness.risk_free_rate_ttl):
                 return _cached_value(cached[0], "fresh")
+            if not acquired:
+                return (_cached_value(cached[0], "stale") if cached else
+                        {"rate": None, "date": None, "meta": _rate_meta("fred", "unavailable", ["Refresh pending or storage unavailable."])})
             try:
                 answer = _fetch_dgs10()
                 answer["meta"] = _rate_meta("fred", "fresh", answer.pop("_notes", []))
@@ -224,8 +249,76 @@ class DataService:
                 if cached:
                     return _cached_value(cached[0], "stale", f"FRED unavailable; serving stale cache: {type(exc).__name__}.")
                 answer = {"rate": None, "date": None, "meta": _rate_meta("fred", "unavailable", [f"FRED unavailable: {type(exc).__name__}."])}
-                self.cache.put_value(key, answer)
+                self._cache_failure(key, answer)
                 return answer
+
+    def _cache_history(self, key):
+        try:
+            return self.cache.get_history(key)
+        except Exception:
+            return None
+
+    def _cache_value(self, key):
+        try:
+            return self.cache.get_value(key)
+        except Exception:
+            return None
+
+    def _cache_failure(self, key, payload):
+        try:
+            self.cache.put_value(key, payload)
+        except Exception:
+            pass  # Availability stays explicit; never fall back to a local store.
+
+    @contextmanager
+    def _refresh_scope(self, key):
+        with self._lock_for(key):
+            lease = self.cache.refresh_lease(key)
+            try:
+                acquired = lease.__enter__()
+            except Exception:
+                yield False
+                return
+            try:
+                yield acquired
+            finally:
+                lease.__exit__(None, None, None)
+
+    def _adopt_universe(self, payload):
+        try:
+            _validate_snapshot(payload)
+        except (KeyError, ValueError, TypeError):
+            return False
+        self._universe = [dict(item, symbol=_normalize_symbol(item["symbol"]),
+                               sector=canonical_sector(item.get("gics_sector") or item.get("sector")))
+                          for item in payload["items"]]
+        self._universe_provenance = payload["provenance"]
+        self.universe_as_of = self._universe_provenance["as_of"]
+        self.universe_source = self._universe_provenance["source"]
+        return True
+
+    def _refresh_remote_universe(self):
+        import httpx
+        from io import StringIO
+        key = "universe:sp500"
+        with self._refresh_scope(key) as acquired:
+            cached = self._cache_value(key)
+            if cached:
+                self._adopt_universe(cached[0])
+                if self.freshness.is_fresh(cached[1], self.freshness.universe_ttl):
+                    return False
+            if not acquired:
+                return False
+            try:
+                response = httpx.get("https://en.wikipedia.org/wiki/List_of_S%26P_500_companies", timeout=12, follow_redirects=True)
+                response.raise_for_status()
+                raw = pd.read_html(StringIO(response.text))[0].to_dict(orient="records")
+                payload = _snapshot_payload(raw, "Wikipedia List of S&P 500 companies")
+                _validate_snapshot(payload)
+                self.cache.put_value(key, payload)
+                return self._adopt_universe(payload)
+            except Exception:
+                return False
 
     def _lock_for(self, key: str) -> threading.Lock:
         with self._locks_guard:
@@ -395,7 +488,7 @@ def _history_meta(source: str, status: str, timeframe: str, interval: str, frame
 
 def _cached_meta(meta: dict[str, Any], timeframe: str, interval: str, frame: pd.DataFrame, status: str, notes: list[str] | None = None) -> dict[str, Any]:
     cached = dict(meta)
-    cached["status"] = "partial" if status == "fresh" and cached.get("status") == "partial" else status
+    cached["status"] = cached["status"] if status == "fresh" and cached.get("status") in {"partial", "stale"} else status
     cached["requested_window"] = timeframe
     cached["interval"] = cached.get("interval", interval)
     cached["sample_count"] = len(frame)
@@ -433,7 +526,7 @@ def _cached_value(value: dict[str, Any], status: str, extra_note: str | None = N
     meta = dict(result.get("meta", {}))
     # Do not reinterpret an unavailable cached failure as fresh data.
     previous=meta.get("status")
-    meta["status"] = previous if previous == "unavailable" or (previous == "partial" and status == "fresh") else status
+    meta["status"] = previous if previous == "unavailable" or (previous in {"partial", "stale"} and status == "fresh") else status
     if extra_note:
         meta["notes"] = list(meta.get("notes", [])) + [extra_note]
     result["meta"] = meta

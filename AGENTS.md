@@ -2,13 +2,13 @@
 
 ## Current authorization and canonical path
 
-The user requested documentation and plan review before framework implementation.
-The subsequent request authorizes uploading the existing project and revised docs
-to the verified private repository `X8xpandax8X/Quant_dashboard`. It does not approve
-Supabase/Next.js migration, new application features, CI setup, or deployment. The existing
-five-hour schedule is active for status checks; implementation remains gated on
-plan approval. Follow `docs/CONTINUATION.md` and the latest user instructions.
-After approval and available usage, resume authorized work without another prompt.
+The user approved the Supabase core implementation on 2026-09-16 by explicitly
+requesting “continue implementing” after the plan review. Proceed with phases A–F
+and local tests; Next.js follows core parity. The existing five-hour schedule resumes
+authorized work when usage is available. Hosted Supabase changes require the existing
+project reference the user is providing. No public deployment or automatic PR merge.
+The selected private GitHub upload remains authorized. Desktop remains the working
+source until Git transport and the Documents checkout are verified.
 
 `requirement.txt` at the repository root is the sole canonical specification;
 `docs/reference/requirement.original.txt` is an immutable provenance archive.

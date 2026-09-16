@@ -7,7 +7,7 @@ and owner-private portfolio state. The independent `LPPLS/` project is preserved
 ## Status and plan
 
 The Supabase architecture plan from [PR #2](https://github.com/X8xpandax8X/Quant_dashboard/pull/2)
-is now merged. **The Supabase migration itself has not been implemented.**
+is now merged. **An opt-in Supabase core foundation is implemented locally; cutover and end-to-end verification remain incomplete.**
 The current runnable application uses React/Vite, FastAPI and SQLite/local Parquet.
 Use [requirement.txt](requirement.txt) as the single canonical specification and
 [the plan report](docs/PLAN-REPORT.md) for implementation scope and acceptance gates.
@@ -22,9 +22,24 @@ Use [requirement.txt](requirement.txt) as the single canonical specification and
 | Quantitative calculations | Pure Python/Pandas/NumPy functions | Preserve formulas; strengthen typed contracts and deterministic tests |
 | Production AI | No required AI runtime | Future extension only; no agent framework in the current phase |
 
-The implementation gate remains recorded in [progress](docs/progress.yaml).
+Implementation was approved on 2026-09-16. Current progress and remaining gates are recorded in [progress](docs/progress.yaml).
 The existing five-hour [continuation schedule](docs/CONTINUATION.md) checks status
-and resumes authorized work after approval. Local checkout migration and CI remain pending.
+and resumes the approved unfinished work when usage is available. Local checkout migration and CI remain pending.
+
+## Supabase implementation checkpoint
+
+The new opt-in backend includes server-verified Supabase identity, current team
+admission checks, user-context portfolio RPCs with database RLS, normalized target
+positions, atomic revisions/retries, remote market artifacts, refresh leases and
+verified earlier-version recovery when the latest file is unavailable.
+The constituent registry also validates direct portfolio RPC writes. Market credentials
+cannot administer membership or access portfolios. Quant outputs have explicit types.
+
+See [Supabase development](docs/SUPABASE-DEVELOPMENT.md) for setup, test commands and
+remaining work and [draft PR #4](https://github.com/X8xpandax8X/Quant_dashboard/pull/4)
+for the private implementation checkpoint. The default demo remains runnable. Supabase browser login, real
+Auth/Data API/Storage integration, broader holdings/transactions, orphan cleanup and
+backup/cutover are still pending. No hosted project or public deployment was changed.
 
 ## Target architecture — planned
 
@@ -73,7 +88,7 @@ cost basis and transaction records. Saved drafts may have incomplete totals; sim
 requires exactly 10,000 basis points. Existing weights do not imply historical trades.
 
 See [architecture](docs/architecture.md), [data model](docs/data-model.md) and
-[security](docs/security.md) for the detailed proposed contracts.
+[security](docs/security.md) for the full target contracts.
 
 ## Implementation sequence
 
@@ -174,7 +189,7 @@ Existing LPPLS checks remain independent. From `LPPLS/`, run `../.venv/bin/pytho
 
 The commands above run the existing application. It uses SQLite WAL for portfolios
 and a separate SQLite/Parquet market cache, with in-process refresh deduplication and
-labeled stale/partial fallback. These adapters have not been replaced by Supabase.
+labeled stale/partial fallback. These baseline adapters remain the default; the opt-in Supabase backend uses remote adapters.
 
 Root `.env.example` documents the current demo/research configuration. The existing
 [deployment and recovery guide](docs/DEPLOYMENT.md) describes the legacy Google proxy,
