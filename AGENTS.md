@@ -5,7 +5,7 @@
 The user requested documentation and plan review before framework implementation.
 The subsequent request authorizes uploading the existing project and revised docs
 to the verified private repository `X8xpandax8X/Quant_dashboard`. It does not approve
-Next.js migration, new application features, CI setup, or deployment. The existing
+Supabase/Next.js migration, new application features, CI setup, or deployment. The existing
 five-hour schedule is active for status checks; implementation remains gated on
 plan approval. Follow `docs/CONTINUATION.md` and the latest user instructions.
 After approval and available usage, resume authorized work without another prompt.
@@ -49,7 +49,9 @@ Never fabricate live prices or missing fundamentals. Demo responses are explicit
 ## Approved-plan migration ownership (future)
 
 Lead: `apps/api/`, `database/`, root configuration, shared integration tests and docs.
-Data: `packages/data/`. Quant: `packages/quant/`. Frontend: `apps/web/`.
+Data: `packages/data_engine/`. Quant: `packages/quant_engine/`.
+Lead also owns `packages/portfolio_service/`, Supabase migrations/Auth/RLS and storage
+contracts; data owns market repositories/object storage only. Frontend: `apps/web/`.
 Until migration, the existing ownership paths above still apply. No downstream
 agents. At most the lead plus three workers concurrently; the auditor follows
 integration. Use the user-approved exact native model/effort routes: lead Astra
@@ -62,3 +64,17 @@ commands and paths atomically. Done means all requirement features are verified 
 explicitly source-unavailable, private portfolios remain isolated, required checks
 pass, and an independent audit has no open blocking findings. A GitHub upload is
 only a checkpoint. Future-agent placeholders do not count as implemented runtime.
+
+## Supabase target and priority
+
+Read docs/architecture.md, docs/data-model.md and docs/security.md. Immediate approved-
+implementation priority, once review is complete: Supabase foundation, Data Engine,
+pure Quant Engine, Portfolio Service and FastAPI integration/tests. Next.js follows
+core parity. Preserve working modules; no production AI runtime or new UI feature work.
+Supabase is canonical for production state/history; local disk is only a baseline,
+demo fixture or disposable buffer. User requests must exercise database RLS using the
+validated user context, never a service-role/BYPASSRLS portfolio client. Preserve the
+Google team allowlist, private drafts, basis-point targets and revision/idempotency rules.
+Test actual policies through direct Data API attempts, not just API WHERE predicates.
+Use Supabase skill and current documentation; create migrations through the CLI's
+verified commands. Keep a single migration history and never invent migration filenames.

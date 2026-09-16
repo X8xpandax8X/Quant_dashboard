@@ -1,0 +1,685 @@
+Update the Quant_stock project architecture and implementation plan to use the following target structure:
+
+```text
+                Browser
+                   │
+                   ▼
+            Gateway / Auth
+                   │
+                   ▼
+              FastAPI /api/v1
+                   │
+   ┌───────────────┼────────────────┐
+   │               │                │
+   ▼               ▼                ▼
+Data Engine     Quant Engine    Portfolio Service
+   │               │                │
+   ▼               │                ▼
+Supabase           │          Supabase Postgres
+Postgres           │          + RLS owner_id
++ Storage          │
++ external APIs    │
+   │               │
+   └───────┬───────┘
+           ▼
+     AI Analysis Layer
+           │
+   ┌───────┼───────────┐
+   ▼       ▼           ▼
+ News     Risk     Fundamental
+ Agent    Agent        Agent
+   └───────┼───────────┘
+           ▼
+       Supervisor
+           │
+           ▼
+        Response
+```
+
+## Current implementation priority
+
+For the current development phase, DO NOT prioritize or fully implement the AI Analysis Layer, specialist agents, supervisor orchestration, LangGraph, CrewAI, or a production multi-agent framework.
+
+The immediate implementation focus must be limited to:
+
+1. Data Engine
+2. Quant Engine
+3. Portfolio Service
+4. FastAPI integration between these three domains
+5. Supabase database/storage integration
+6. Authentication and owner-level data isolation required by the Portfolio Service
+7. Automated tests for the above
+
+The AI layer must remain an explicitly documented future extension point only.
+
+---
+
+# 1. DATA ENGINE
+
+Create a dedicated `data_engine` responsible for all external financial data ingestion, normalization, validation, refresh logic, caching metadata, and storage access.
+
+The Data Engine must be isolated from frontend logic and quantitative calculations.
+
+Target responsibilities:
+
+- Retrieve market data from external providers such as Yahoo Finance/yfinance.
+- Retrieve macroeconomic and risk-free-rate data from FRED.
+- Support historical OHLCV market data.
+- Support company metadata.
+- Support financial/fundamental data where the selected provider exposes it.
+- Normalize external provider responses into internal application schemas.
+- Detect missing, stale, malformed, duplicate, or incomplete data.
+- Manage refresh/freshness policies.
+- Avoid unnecessary repeated external API calls.
+- Never perform portfolio ownership logic.
+- Never perform UI rendering.
+- Never use an LLM for deterministic market-data ingestion.
+
+## Storage strategy
+
+Do not depend on local filesystem storage as the canonical data store.
+
+Use:
+
+- Supabase PostgreSQL for structured data, metadata, refresh state, company metadata, fundamental data, and other relational records.
+- Supabase Storage for Parquet files or other large historical time-series artifacts where appropriate.
+
+The application must be designed so that market history can be stored remotely rather than requiring files on the developer's local machine.
+
+Recommended conceptual separation:
+
+```text
+Supabase PostgreSQL
+├── instruments
+├── company_metadata
+├── fundamentals
+├── market_data_metadata
+├── data_refresh_status
+└── analytics_metadata
+
+Supabase Storage
+└── market-data/
+    ├── equities/
+    ├── indexes/
+    ├── benchmarks/
+    └── other-timeseries/
+```
+
+Do not hard-code storage paths directly into business logic. Introduce storage/repository abstractions so storage providers can be changed later if necessary.
+
+## Data freshness lifecycle
+
+Market and fundamental data must NOT be treated as one-time static imports.
+
+Implement a freshness model such as:
+
+```text
+Request data
+    ↓
+Check stored metadata
+    ↓
+Is the cached data fresh enough?
+    ├── Yes → return stored data
+    └── No
+          ↓
+      Fetch provider
+          ↓
+      Validate
+          ↓
+      Normalize
+          ↓
+      Persist updated data
+          ↓
+      Return data
+```
+
+Refresh cadence must be configurable by data category.
+
+Initial suggested policies:
+
+- Daily OHLCV: refresh after market close or when stale.
+- Major market indexes: refresh according to dashboard needs.
+- FRED/risk-free rate: daily.
+- Fundamentals: periodic refresh and/or refresh after new reporting periods.
+- Company metadata: slower refresh, e.g. weekly/monthly.
+- S&P 500 constituent list: periodic refresh.
+
+Do not embed these policies directly inside UI components.
+
+---
+
+# 2. QUANT ENGINE
+
+The Quant Engine must remain a deterministic, stateless, testable Python calculation layer.
+
+The Quant Engine must NOT:
+
+- Query Supabase directly.
+- Call Yahoo Finance, FRED, or external APIs.
+- Perform authentication.
+- Read user sessions.
+- Handle HTTP requests.
+- Perform database ownership filtering.
+- Use LLMs to calculate financial metrics.
+
+It should receive clean numeric/tabular input and return deterministic results.
+
+Conceptually:
+
+```text
+Clean input data
+      ↓
+ Quant Engine
+      ↓
+Numerical result
+```
+
+The same input must always produce the same output.
+
+Implement quantitative modules using Python, Pandas, NumPy, and SciPy where appropriate.
+
+Initial Quant Engine responsibilities include:
+
+- Price returns.
+- Cumulative return.
+- Expected/mean return.
+- Historical volatility.
+- Win-rate / positive-return probability.
+- Beta.
+- CAPM expected return.
+- Security Market Line inputs.
+- Sharpe ratio.
+- Covariance matrices.
+- Correlation matrices.
+- Portfolio expected return.
+- Portfolio volatility.
+- Portfolio beta.
+- Portfolio Sharpe ratio.
+- Position weights.
+- Sector allocation calculations.
+- Concentration metrics where needed.
+- Volume Profile calculations including POC, VAH, and VAL.
+- Historical rolling metrics where required.
+
+Each financial function must have:
+
+- Explicit input types.
+- Explicit output schema.
+- Mathematical validation.
+- Unit tests.
+- Edge-case tests.
+- Missing-data handling strategy.
+
+Financial formulas must remain independent from presentation code.
+
+---
+
+# 3. PORTFOLIO SERVICE
+
+Create a dedicated Portfolio Service responsible for user-owned investment data.
+
+Use Supabase PostgreSQL as the canonical database.
+
+Do not create a separate PostgreSQL database per user.
+
+Instead, use a shared schema with ownership columns such as:
+
+```text
+owner_id
+```
+
+and enforce ownership using Supabase Row Level Security (RLS).
+
+Example conceptual tables:
+
+```text
+profiles
+
+portfolios
+├── id
+├── owner_id
+├── name
+├── base_currency
+├── created_at
+└── updated_at
+
+holdings
+├── id
+├── portfolio_id
+├── owner_id
+├── symbol
+├── quantity
+├── cost_basis
+└── updated_at
+
+transactions
+├── id
+├── portfolio_id
+├── owner_id
+├── symbol
+├── transaction_type
+├── quantity
+├── price
+├── executed_at
+└── metadata
+
+watchlists
+
+portfolio_settings
+```
+
+Every user-owned table must be evaluated for Row Level Security.
+
+The security objective is:
+
+```text
+User A can access only User A data.
+User B can access only User B data.
+```
+
+Do not rely only on frontend filtering.
+
+Do not rely only on FastAPI WHERE clauses.
+
+Database-level RLS must be the final ownership boundary.
+
+Codex should generate:
+
+- SQL migrations.
+- Table definitions.
+- Foreign keys.
+- Indexes.
+- Constraints.
+- RLS policies.
+- Development seed data where useful.
+- Tests or validation procedures for ownership isolation.
+
+---
+
+# 4. AUTHENTICATION
+
+Prefer Supabase Auth for application identity management.
+
+The architecture should be compatible with Google authentication.
+
+Target direction:
+
+```text
+Browser
+   ↓
+Google OAuth / Supabase Auth
+   ↓
+JWT
+   ↓
+Gateway / FastAPI
+   ↓
+Authenticated application context
+```
+
+FastAPI must validate authenticated identity before accessing owner-scoped portfolio resources.
+
+Do not expose Supabase service-role credentials to the browser.
+
+All secrets must use environment variables and must never be committed to Git.
+
+---
+
+# 5. FASTAPI ROLE
+
+FastAPI is the application coordination layer.
+
+It should expose versioned routes under:
+
+```text
+/api/v1
+```
+
+FastAPI should orchestrate application services without absorbing their responsibilities.
+
+Example:
+
+```text
+GET /api/v1/stocks/{symbol}/analysis
+```
+
+Possible internal workflow:
+
+```text
+FastAPI
+   ↓
+Data Engine obtains/loads required market data
+   ↓
+Quant Engine calculates metrics
+   ↓
+FastAPI returns normalized response
+```
+
+For portfolio analytics:
+
+```text
+FastAPI
+   ↓
+Portfolio Service loads owner-scoped holdings
+   ↓
+Data Engine resolves market data
+   ↓
+Quant Engine calculates portfolio metrics
+   ↓
+FastAPI returns response
+```
+
+Keep API schemas separate from database models and quant implementation where practical.
+
+---
+
+# 6. DO NOT COUPLE THE THREE CORE DOMAINS
+
+Preserve these ownership boundaries:
+
+```text
+Data Engine
+= data acquisition and persistence
+
+Quant Engine
+= mathematics
+
+Portfolio Service
+= user-owned portfolio state
+```
+
+Do not allow these responsibilities to collapse into one large service.
+
+For example:
+
+Bad:
+
+```text
+quant_engine.calculate_beta()
+→ internally downloads Yahoo data
+→ reads Supabase
+→ calculates beta
+```
+
+Correct:
+
+```text
+Data Engine
+→ returns stock and benchmark returns
+
+Quant Engine
+→ calculate_beta(stock_returns, benchmark_returns)
+```
+
+Likewise:
+
+Bad:
+
+```text
+Data Engine
+→ decides whether the authenticated user owns a portfolio
+```
+
+Correct:
+
+```text
+Portfolio Service
+→ handles portfolio ownership
+
+Data Engine
+→ handles market data
+```
+
+---
+
+# 7. AI ANALYSIS LAYER — FUTURE ONLY
+
+Document but do not prioritize the following future architecture:
+
+```text
+Data Engine
+     +
+Quant Engine
+     +
+Portfolio Service
+        ↓
+Structured analytical context
+        ↓
+AI Analysis Layer
+        │
+   ┌────┼─────────────┐
+   ▼    ▼             ▼
+ News  Risk     Fundamental
+Agent  Agent        Agent
+   └────┼─────────────┘
+        ▼
+    Supervisor
+        ↓
+      Response
+```
+
+For the current MVP, no production multi-agent runtime is required.
+
+When AI is first introduced, prefer:
+
+```text
+Core application
+       ↓
+single AI Analyst
+```
+
+before introducing specialist agents.
+
+Only split the AI layer into specialist agents when production telemetry shows a clear benefit.
+
+Possible future triggers include:
+
+- News processing becomes a distinct workload.
+- Fundamental research requires different tools/model capabilities.
+- Requests require parallel execution.
+- Context windows become too large.
+- Different model cost/performance profiles are useful.
+- Independent validation is required.
+- Workflow branching and retries become common.
+- Human approval steps are required.
+
+Future orchestration may use OpenAI Agents SDK and/or LangGraph, but do not introduce them prematurely.
+
+---
+
+# 8. FUTURE MODEL-COST STRATEGY
+
+Document the intended future production model strategy.
+
+Do not route every request to the strongest model.
+
+Future design principle:
+
+```text
+Request
+   ↓
+Router / Orchestrator
+   │
+   ├── deterministic task → Python / SQL
+   ├── extraction task → low-cost model
+   ├── summarization task → low/medium-cost model
+   ├── analysis task → medium reasoning model
+   └── difficult synthesis/validation → strong model
+```
+
+Financial calculations must remain Python-first.
+
+LLMs must consume validated numerical outputs rather than reproduce calculations through natural-language reasoning.
+
+---
+
+# 9. PROJECT STRUCTURE
+
+Refactor or evolve the project toward a structure similar to:
+
+```text
+Quant_stock/
+│
+├── apps/
+│   ├── web/
+│   └── api/
+│
+├── packages/
+│   ├── data_engine/
+│   │   ├── providers/
+│   │   ├── repositories/
+│   │   ├── storage/
+│   │   ├── schemas/
+│   │   └── services/
+│   │
+│   ├── quant_engine/
+│   │   ├── returns/
+│   │   ├── risk/
+│   │   ├── portfolio/
+│   │   ├── capm/
+│   │   ├── volume_profile/
+│   │   └── statistics/
+│   │
+│   ├── portfolio_service/
+│   │   ├── repositories/
+│   │   ├── services/
+│   │   ├── schemas/
+│   │   └── permissions/
+│   │
+│   └── agents/
+│       └── README.md
+│
+├── database/
+│   ├── migrations/
+│   ├── policies/
+│   └── seeds/
+│
+├── tests/
+│   ├── data_engine/
+│   ├── quant_engine/
+│   ├── portfolio_service/
+│   └── api/
+│
+├── docs/
+│   ├── architecture.md
+│   ├── data-model.md
+│   ├── security.md
+│   ├── roadmap.md
+│   └── progress.yaml
+│
+├── .github/
+│   └── workflows/
+│
+├── .env.example
+├── AGENTS.md
+├── README.md
+└── docker-compose.yml
+```
+
+The exact structure may be adjusted if the existing repository already has a strong modular structure. Do not refactor purely for cosmetic reasons.
+
+---
+
+# 10. IMPLEMENTATION ORDER
+
+Work in the following order unless the existing codebase creates a justified dependency:
+
+## Phase A — Architecture audit
+
+1. Inspect the entire current repository.
+2. Identify the current implementation of:
+   - data ingestion
+   - financial calculations
+   - portfolio persistence
+   - authentication
+   - API routes
+3. Compare the existing system against this architecture.
+4. Do not rewrite working modules unnecessarily.
+5. Produce a concise migration plan.
+
+## Phase B — Supabase foundation
+
+1. Configure Supabase development integration.
+2. Create database migrations.
+3. Create user/portfolio schemas.
+4. Add RLS policies.
+5. Configure Storage buckets required for remote time-series artifacts.
+6. Create environment variable templates.
+7. Validate authentication flow.
+
+## Phase C — Data Engine
+
+1. Refactor external data provider code behind interfaces.
+2. Add normalized schemas.
+3. Add freshness metadata.
+4. Add Supabase persistence.
+5. Add remote Parquet storage support.
+6. Add validation and fallback behavior.
+7. Add tests.
+
+## Phase D — Quant Engine
+
+1. Isolate all financial mathematics from API/data code.
+2. Create deterministic functions.
+3. Add unit tests against known expected values.
+4. Add numerical edge-case coverage.
+5. Ensure no database/API dependency exists inside core quant functions.
+
+## Phase E — Portfolio Service
+
+1. Implement owner-scoped CRUD.
+2. Validate RLS.
+3. Add transactions/holdings/portfolio service boundaries.
+4. Connect portfolio data to market-data and quant pipelines through FastAPI.
+5. Add isolation/security tests.
+
+## Phase F — API integration
+
+Implement clean `/api/v1` endpoints that coordinate the three services.
+
+## Phase G — AI placeholder only
+
+Create architecture documentation and interfaces for future AI analysis.
+
+Do not implement the full agent runtime yet.
+
+---
+
+# 11. CURRENT DEFINITION OF DONE
+
+This architecture update is complete only when:
+
+- Data Engine is separated from Quant Engine.
+- Portfolio Service is separated from Data Engine.
+- Supabase is the canonical persistent backend rather than local-only SQLite.
+- Market-data storage no longer depends on local developer disk.
+- RLS protects owner-scoped portfolio data.
+- Quant calculations are deterministic and unit-tested.
+- FastAPI coordinates the services through clear interfaces.
+- Secrets are environment-managed.
+- Existing dashboard requirements continue to function.
+- The AI agent layer is documented but not required for current application operation.
+- Core dashboards continue to work even if no LLM/API agent service is available.
+
+---
+
+# 12. CODEX EXECUTION RULES
+
+While performing this migration:
+
+- Inspect before editing.
+- Preserve working functionality.
+- Do not delete existing code simply because a new architecture is preferred.
+- Migrate incrementally.
+- Run tests after meaningful changes.
+- Add tests before or together with high-risk refactors.
+- Keep commits logically scoped.
+- Record architectural changes in `docs/architecture.md`.
+- Update `docs/progress.yaml` as work is completed.
+- Keep `AGENTS.md` aligned with actual development responsibilities.
+- Do not introduce production AI-agent complexity during this phase.
+- Stop and report clearly if existing implementation conflicts materially with this specification.
+- Prefer correctness, testability, and data-security boundaries over rapid feature expansion.
+
+The primary objective for this development phase is:
+
+**Build a reliable Data Engine, deterministic Quant Engine, and secure owner-scoped Portfolio Service on Supabase first. Treat AI analysis and production multi-agent orchestration as later extensions, not current infrastructure dependencies.**

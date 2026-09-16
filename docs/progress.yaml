@@ -1,14 +1,14 @@
 {
   "version": 1,
   "updated": "2026-09-16",
-  "implementation_gate": "awaiting_plan_review",
+  "implementation_gate": "awaiting_supabase_plan_review",
   "continuation_automation": "active_status_checks_implementation_gated",
   "canonical_requirement": "requirement.txt",
   "remote": "https://github.com/X8xpandax8X/Quant_dashboard",
   "source_workspace": "/Users/pandamac/Desktop/Quant_stock",
   "planned_checkout": "/Users/pandamac/Documents/GitHub/Quant_stock",
   "local_migration_complete": false,
-  "evidence_note": "Prior verification is historical; no fresh application tests in documentation/upload checkpoint.",
+  "evidence_note": "Supabase update is documentation only. No cloud project, migrations, RLS policies, Storage buckets or runtime changes applied. Historical baseline tests do not validate Supabase.",
   "tasks": [
     {
       "requirement_id": "REQ-DOC-01",
@@ -51,8 +51,8 @@
       "validation_evidence": [
         "Documents destination absent; source retained"
       ],
-      "blockers": "Plan review; Git transport authentication",
-      "next_action": "Verify canonical checkout after approval"
+      "blockers": "Supabase implementation plan review; existing baseline evidence does not validate migration",
+      "next_action": "Follow phased Supabase plan in docs/PLAN-REPORT.md after approval"
     },
     {
       "requirement_id": "REQ-WEB-01",
@@ -60,18 +60,18 @@
       "status": "planned",
       "owner": "frontend",
       "dependencies": [
-        "REQ-MIG-01"
+        "REQ-SUPA-F"
       ],
       "validation_evidence": [
         "Current UI uses Vite/React, proposed Next.js preserves components"
       ],
-      "blockers": "Plan review",
-      "next_action": "Migrate framework and preserve UI contracts"
+      "blockers": "Supabase implementation plan review; existing baseline evidence does not validate migration",
+      "next_action": "Follow phased Supabase plan in docs/PLAN-REPORT.md after approval"
     },
     {
       "requirement_id": "REQ-DATA-01",
       "phase": 1,
-      "status": "in_progress",
+      "status": "planned",
       "owner": "data",
       "dependencies": [
         "REQ-MIG-01"
@@ -79,13 +79,13 @@
       "validation_evidence": [
         "Existing Yahoo/FRED providers and cache; prior backend suite 59 passed/1 skipped"
       ],
-      "blockers": "Package migration pending",
-      "next_action": "Preserve tests and move reviewed modules"
+      "blockers": "Supabase implementation plan review; existing baseline evidence does not validate migration",
+      "next_action": "Follow phased Supabase plan in docs/PLAN-REPORT.md after approval"
     },
     {
       "requirement_id": "REQ-QUANT-01",
       "phase": 1,
-      "status": "in_progress",
+      "status": "planned",
       "owner": "quant",
       "dependencies": [
         "REQ-MIG-01"
@@ -93,8 +93,8 @@
       "validation_evidence": [
         "Pure engine and 25 deterministic quant tests in prior suite"
       ],
-      "blockers": "Package migration pending",
-      "next_action": "Run numerical parity after moves"
+      "blockers": "Supabase implementation plan review; existing baseline evidence does not validate migration",
+      "next_action": "Follow phased Supabase plan in docs/PLAN-REPORT.md after approval"
     },
     {
       "requirement_id": "REQ-CI-01",
@@ -107,8 +107,8 @@
         "REQ-QUANT-01"
       ],
       "validation_evidence": [],
-      "blockers": "No CI established",
-      "next_action": "Add real locked lint/type/test/build/config checks"
+      "blockers": "Supabase implementation plan review; existing baseline evidence does not validate migration",
+      "next_action": "Follow phased Supabase plan in docs/PLAN-REPORT.md after approval"
     },
     {
       "requirement_id": "REQ-UI-01",
@@ -127,7 +127,7 @@
     {
       "requirement_id": "REQ-PORT-01",
       "phase": 2,
-      "status": "in_progress",
+      "status": "planned",
       "owner": "lead",
       "dependencies": [
         "REQ-MIG-01"
@@ -135,8 +135,8 @@
       "validation_evidence": [
         "Backend owner/CSRF/revision coverage; portfolio browser repairs exist"
       ],
-      "blockers": "Final browser recovery suite unconfirmed",
-      "next_action": "Verify persistence, conflicts, retry, expiry"
+      "blockers": "Supabase implementation plan review; existing baseline evidence does not validate migration",
+      "next_action": "Follow phased Supabase plan in docs/PLAN-REPORT.md after approval"
     },
     {
       "requirement_id": "REQ-AUDIT-01",
@@ -191,6 +191,96 @@
       "validation_evidence": [],
       "blockers": "Measured orchestration need and accepted ADR required",
       "next_action": "Do not confuse this with Next.js framework adoption"
+    },
+    {
+      "requirement_id": "REQ-SUPA-A",
+      "phase": "A",
+      "status": "in_progress",
+      "owner": "lead",
+      "dependencies": [],
+      "validation_evidence": [
+        "Targeted current code audit; new architecture/data-model/security and requirement reconciliation"
+      ],
+      "blockers": "Targeted architecture audit documented; canonical checkout and full migration inventory await implementation approval",
+      "next_action": "Review Supabase plan, then complete checkout and migration inventory"
+    },
+    {
+      "requirement_id": "REQ-SUPA-B",
+      "phase": "B",
+      "status": "planned",
+      "owner": "lead",
+      "dependencies": [
+        "REQ-SUPA-A"
+      ],
+      "validation_evidence": [],
+      "blockers": "Implementation approval and development project configuration",
+      "next_action": "Auth/admission, schema/grants/RLS, Storage, real isolation tests"
+    },
+    {
+      "requirement_id": "REQ-SUPA-C",
+      "phase": "C",
+      "status": "planned",
+      "owner": "data",
+      "dependencies": [
+        "REQ-SUPA-B"
+      ],
+      "validation_evidence": [],
+      "blockers": "Foundation and approved repository contracts",
+      "next_action": "Remote metadata/object persistence, leases and freshness fixtures"
+    },
+    {
+      "requirement_id": "REQ-SUPA-D",
+      "phase": "D",
+      "status": "planned",
+      "owner": "quant",
+      "dependencies": [
+        "REQ-SUPA-A"
+      ],
+      "validation_evidence": [
+        "Existing pure analytics/fixtures retained"
+      ],
+      "blockers": "Implementation review",
+      "next_action": "Typed contracts and deterministic boundary/edge tests"
+    },
+    {
+      "requirement_id": "REQ-SUPA-E",
+      "phase": "E",
+      "status": "planned",
+      "owner": "lead",
+      "dependencies": [
+        "REQ-SUPA-B"
+      ],
+      "validation_evidence": [],
+      "blockers": "Auth/RLS foundation",
+      "next_action": "Extract Portfolio Service and validate atomic user-context persistence"
+    },
+    {
+      "requirement_id": "REQ-SUPA-F",
+      "phase": "F",
+      "status": "planned",
+      "owner": "lead",
+      "dependencies": [
+        "REQ-SUPA-C",
+        "REQ-SUPA-D",
+        "REQ-SUPA-E"
+      ],
+      "validation_evidence": [],
+      "blockers": "Core domains",
+      "next_action": "FastAPI parity, minimal auth integration and CI"
+    },
+    {
+      "requirement_id": "REQ-SUPA-G",
+      "phase": "G",
+      "status": "done",
+      "owner": "lead",
+      "dependencies": [
+        "REQ-SUPA-A"
+      ],
+      "validation_evidence": [
+        "future-agent-runtime.md names requested future roles; no runtime created"
+      ],
+      "blockers": "",
+      "next_action": "Keep implementation deferred"
     }
   ],
   "upload": {
@@ -207,10 +297,33 @@
     "kind": "heartbeat",
     "interval_hours": 5,
     "status": "ACTIVE",
-    "implementation_gate": "awaiting_plan_review",
+    "implementation_gate": "awaiting_supabase_plan_review",
     "current_local_folder": "/Users/pandamac/Desktop/Quant_stock",
     "repository": "X8xpandax8X/Quant_dashboard",
     "migration_pending": true,
     "instructions": "docs/CONTINUATION.md"
+  },
+  "architecture_version": "3.0-supabase",
+  "architecture_target": {
+    "database": "Supabase Postgres",
+    "history": "Supabase private Storage",
+    "identity": "Supabase Auth with Google and team admission",
+    "ownership": "user JWT context + database RLS",
+    "core_domains": [
+      "data_engine",
+      "quant_engine",
+      "portfolio_service"
+    ],
+    "immediate_phases": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F"
+    ],
+    "ai": "future documentation only",
+    "frontend": "retain React/Vite until core parity, then Next.js",
+    "supabase_project_verified": false
   }
 }

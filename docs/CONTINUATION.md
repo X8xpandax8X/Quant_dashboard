@@ -17,7 +17,7 @@ install a GitHub Actions schedule or a second scheduler.
 ## Each scheduled check
 
 1. Read the latest user instructions, `requirement.txt`, `AGENTS.md`, the plan report,
-   `docs/progress.yaml`, migration notes and this document. Check current Codex limits.
+   `docs/progress.yaml`, migration notes, docs/security.md, docs/data-model.md and this document. Check current Codex limits.
 2. If the plan still awaits approval, do not implement, migrate, add CI, merge or
    deploy. A quota reset or elapsed time does not constitute approval.
 3. Once approval is recorded and usage is available, immediately resume authorized
@@ -42,3 +42,12 @@ repeated unchanged status reports. Public deployment is a separate authorized ac
 The existing automation was updated through Codex's automation tool. GitHub connector
 access works; local Git transport/checkout migration remains pending. This change
 updates scheduling and project guidance only; no application behavior or CI was changed.
+
+## Current architecture priority
+
+The Supabase architecture revision supersedes the SQLite/proxy-only target. After
+approval prioritize phases A–F (data, deterministic quant, owner-private Portfolio
+Service, Supabase Postgres/Storage/Auth/RLS, API and tests). Defer the Next.js migration
+until core parity and keep phase G as future AI documentation only. Do not interpret
+this plan update or pasted implementation checklist as permission to provision cloud
+resources, apply migrations, access secrets, or launch production agents.

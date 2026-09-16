@@ -1,5 +1,10 @@
 # V1 integration contract
 
+> Baseline implementation reference. The proposed Supabase migration is documented in
+> [architecture](architecture.md) and [security](security.md); it is not implemented.
+> Existing API/calculation conventions remain unless explicitly superseded in root
+> `requirement.txt`. Local SQLite/proxy setup here describes the current baseline only.
+
 All routes use `/api/v1`. Frontend requests use same-origin cookies. Protected responses are `Cache-Control: no-store`. Returns/rates use fractions (0.1 = 10%); chart/UI formatting converts them to percent.
 
 ## Metadata

@@ -1,5 +1,10 @@
 # Private team deployment
 
+> Baseline implementation reference. The proposed Supabase migration is documented in
+> [architecture](architecture.md) and [security](security.md); it is not implemented.
+> Existing API/calculation conventions remain unless explicitly superseded in root
+> `requirement.txt`. Local SQLite/proxy setup here describes the current baseline only.
+
 The repository contains deployment configuration; no account, domain, OAuth client, or public deployment was created by this implementation.
 
 ## Single-host setup
