@@ -35,17 +35,25 @@ def clean_json(value):
     return value
 
 
-def create_app(settings: Settings | None = None, data_service=None):
+def create_app(settings: Settings | None = None, data_service=None, *, supabase_transport=None):
     settings = settings or Settings()
     settings.check()
-    settings.storage_dir.mkdir(parents=True, exist_ok=True)
+    if settings.backend == "legacy":
+        settings.storage_dir.mkdir(parents=True, exist_ok=True)
     application = FastAPI(title="Quant Stock API", version="1.0.0", docs_url="/api/docs", openapi_url="/api/openapi.json")
     application.state.settings = settings
     application.state.auth_secret = setup_secret(settings)
-    application.state.store = PortfolioStore(settings.storage_dir / "portfolios.sqlite3")
+    application.state.supabase_transport = supabase_transport
+    application.state.store = (PortfolioStore(settings.storage_dir / "portfolios.sqlite3")
+                               if settings.backend == "legacy" else None)
     if data_service is None:
         from data_engine.service import DataService
-        data_service = DataService(settings.storage_dir / "cache", settings.mode)
+        if settings.backend == "supabase":
+            from data_engine.supabase_cache import SupabaseMarketCache
+            cache = SupabaseMarketCache(settings.supabase_url, settings.supabase_market_key, transport=supabase_transport)
+            data_service = DataService(None, settings.mode, cache=cache)
+        else:
+            data_service = DataService(settings.storage_dir / "cache", settings.mode)
     application.state.data = data_service
 
     @application.middleware("http")
@@ -88,7 +96,9 @@ def create_app(settings: Settings | None = None, data_service=None):
         return auth_payload(request, user)
 
     @application.post("/api/v1/auth/logout", status_code=204)
-    def logout(response: Response, user: WritingUser):
+    def logout(request: Request, response: Response, user: WritingUser):
+        if settings.backend == "supabase":
+            request.state.user_data_client.logout()
         response.delete_cookie(COOKIE, httponly=True, secure=settings.public_origin.startswith("https://"), samesite="lax")
 
     def validate_symbol(symbol):
@@ -198,27 +208,33 @@ def create_app(settings: Settings | None = None, data_service=None):
             meta["notes"].append("Some price or risk-free inputs are stale, partial or unavailable; derived metrics may be unavailable.")
         return clean_json({**result, "sectors": sorted(sectors.values(), key=lambda s:-s["weight_bps"]), "meta":meta})
 
+    def portfolio_call(request, user, action, *args):
+        if settings.backend == "supabase":
+            from packages.portfolio_service import SupabasePortfolioStore
+            return getattr(SupabasePortfolioStore(request.state.user_data_client), action)(*args)
+        return getattr(application.state.store, action)(user["id"], *args)
+
     @application.get("/api/v1/portfolios", response_model=PortfolioList)
-    def list_portfolios(user: Authenticated):
-        return {"items": application.state.store.list(user["id"])}
+    def list_portfolios(request: Request, user: Authenticated):
+        return {"items": portfolio_call(request, user, "list")}
 
     @application.post("/api/v1/portfolios", response_model=PortfolioRecord, status_code=201)
-    def create_portfolio(payload: PortfolioCreate, user: WritingUser, idempotency_key: str | None = Header(None, max_length=128)):
+    def create_portfolio(request: Request, payload: PortfolioCreate, user: WritingUser, idempotency_key: str | None = Header(None, max_length=128)):
         validate_positions(payload)
-        return application.state.store.create(user["id"], payload.name, [p.model_dump() for p in payload.positions], idempotency_key)
+        return portfolio_call(request, user, "create", payload.name, [p.model_dump() for p in payload.positions], idempotency_key)
 
     @application.get("/api/v1/portfolios/{portfolio_id}", response_model=PortfolioRecord)
-    def get_portfolio(portfolio_id: str, user: Authenticated):
-        return application.state.store.get(user["id"], portfolio_id)
+    def get_portfolio(request: Request, portfolio_id: str, user: Authenticated):
+        return portfolio_call(request, user, "get", portfolio_id)
 
     @application.patch("/api/v1/portfolios/{portfolio_id}", response_model=PortfolioRecord)
-    def update_portfolio(portfolio_id: str, payload: PortfolioUpdate, user: WritingUser):
+    def update_portfolio(request: Request, portfolio_id: str, payload: PortfolioUpdate, user: WritingUser):
         validate_positions(payload)
-        return application.state.store.update(user["id"], portfolio_id, payload.name, [p.model_dump() for p in payload.positions], payload.revision)
+        return portfolio_call(request, user, "update", portfolio_id, payload.name, [p.model_dump() for p in payload.positions], payload.revision)
 
     @application.delete("/api/v1/portfolios/{portfolio_id}", status_code=204)
-    def delete_portfolio(portfolio_id: str, user: WritingUser, revision: int = Query(ge=1)):
-        application.state.store.delete(user["id"], portfolio_id, revision)
+    def delete_portfolio(request: Request, portfolio_id: str, user: WritingUser, revision: int = Query(ge=1)):
+        portfolio_call(request, user, "delete", portfolio_id, revision)
 
     dist = Path(__file__).resolve().parents[1] / "frontend" / "dist"
     if (dist / "assets").exists():

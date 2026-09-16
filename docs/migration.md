@@ -101,3 +101,12 @@ No database, Storage, authentication or source-code migration occurred in this u
 implementation updates them; they are not Supabase recovery procedures. Future CLI
 configuration lives under supabase/ with generated migration filenames; database/
 holds model/policy documentation and seeds rather than a competing migration history.
+
+## Approved core checkpoint — 2026-09-16
+
+PRs #1, #2 and #3 are merged; latest verified main is
+`d0d3378a2f4042e22294db6c4ae0fa672d552232`. Implementation approved by the user's
+“continue implementing” request. New opt-in adapters and one CLI-generated migration
+were added in Desktop. The Documents checkout is still absent and command-line Git
+authentication remains unavailable. Connector upload is a private review checkpoint,
+not a verified local clone. No legacy private records were migrated.

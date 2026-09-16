@@ -1,8 +1,8 @@
 # Target architecture — Supabase core services
 
-Status: **proposed, awaiting implementation approval**, 2026-09-16. The running
+Status: **approved; opt-in core foundation implemented locally**, 2026-09-16. The running
 baseline remains React/Vite + FastAPI with SQLite/local Parquet and proxy authentication.
-This document describes the target, not completed infrastructure.
+This document describes the full target. See SUPABASE-DEVELOPMENT.md for the implemented subset and outstanding integration gates.
 
 ## Immediate priority and boundaries
 

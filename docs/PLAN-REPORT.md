@@ -1,6 +1,6 @@
 # Supabase architecture and implementation plan
 
-Date: 2026-09-16. **Planning update only; implementation awaits approval.**
+Date: 2026-09-16. **Implementation approved 2026-09-16; core work in progress.**
 
 ## Main decision
 
@@ -11,9 +11,8 @@ Database row-level security is the final ownership boundary. Production AI remai
 future-only. Next.js is still the frontend target, but core backend parity comes first.
 
 This replaces the earlier SQLite/local-Parquet production storage and OAuth2 Proxy
-identity design. Existing source continues to run unchanged until a tested cutover.
-The pasted document's implementation checklist is future scope, not authorization to
-provision a Supabase project, run migrations or implement agents during this task.
+identity design. The default demo/legacy adapters continue to run; the new opt-in core foundation awaits actual Supabase integration and cutover.
+The subsequent “continue implementing” request authorizes core implementation. No hosted project is provisioned or migrated by this local checkpoint.
 
 ## Current code audit and preservation
 
@@ -94,6 +93,6 @@ success is claimed. These inputs do not block this architecture report.
 - [Roadmap](roadmap.md), [migration](migration.md), [progress](progress.yaml)
 - [Canonical requirements](../requirement.txt), [future AI scope](future-agent-runtime.md)
 
-The existing five-hour schedule reads the latest plan and remains limited to status
-checks until implementation approval. GitHub remains X8xpandax8X/Quant_dashboard;
+The existing five-hour schedule reads the latest plan and resumes authorized core work
+when usage is available. GitHub remains X8xpandax8X/Quant_dashboard;
 current folder is /Users/pandamac/Desktop/Quant_stock, with Documents migration pending.

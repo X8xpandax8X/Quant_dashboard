@@ -38,3 +38,40 @@ Initial independent audit of the integrated backend, data engine, quantitative e
 ## Remaining external verification
 
 Real Google OAuth credentials, an excluded Google account, the full Docker Compose deployment, TLS/domain routing, and production volume recovery have not been exercised. No public deployment was performed. A later integrated UI/browser pass is still required after the frontend lane finishes.
+
+## Supabase core checkpoint — 2026-09-17
+
+Scope: opt-in backend Auth, private target-portfolio repository/RPC, migration RLS,
+constituent eligibility, market publication leases and remote cache; typed pure quant
+contracts. This does not close the broader dashboard or production acceptance gates.
+
+Independent reviewer: observed `gpt-5.6-sol`, High, workspace-write,
+`/root/core_audit`. Verdict: **ship the private checkpoint** after repairs. Lead
+inspected the changes and fixed the remaining sector-normalization note. No blocking
+finding remains within this reviewed path. Actual Supabase end-to-end verification
+remains an explicit open acceptance condition.
+
+Repairs: use current secret keys as API keys (not bearer JWTs); keep admission outside
+market `service_role`; reject direct portfolio/registry writes; enforce active S&P
+eligibility in the RPC; reject extra payload keys and nullable metadata fields; verify
+Auth-admin cascading deletion; publish registry and metadata atomically under a fence.
+
+Evidence this session:
+
+- Python suite: 95 passed / 2 skipped before the final sector regression; final data
+  suite including that regression: 15 passed. Skips are optional gateway and live
+  Supabase; gateway separately passed with local listener permission.
+- Embedded PostgreSQL: 38 migration/ownership/revision/idempotency/universe/fencing
+  checks passed. Minimal Auth/Storage test schemas; not a real Supabase deployment.
+- Frontend: typecheck, 9 unit tests, build; 4 portfolio browser flows passed against
+  isolated local demo. API OpenAPI contract unchanged; 12 design tokens and fonts match.
+- Independent LPPLS suite: 34 passed, no LPPLS files changed.
+- Real Supabase start failed: Docker Desktop engine unable to start. No hosted project
+  reference is available. Direct Data API/Auth/Storage verification remains unrun.
+
+Astral evidence: lead Astra High; Data Terra High and Quant Astra Medium started on
+verified routes, then hit usage limits. Lead completed and tested their partial edits.
+Auditor Sol High route verified. No model substitution or downstream agents.
+
+Outstanding: see SUPABASE-DEVELOPMENT.md for browser authentication, broader owned
+records, retention/backoff, backups/cutover, framework migration and full UI acceptance.

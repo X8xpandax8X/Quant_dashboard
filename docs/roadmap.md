@@ -1,7 +1,7 @@
 # Roadmap — Supabase core first
 
 Architecture revision 3.0. All original dashboard requirements remain in scope.
-Current task updates plans only; the phases below await implementation approval.
+Implementation approved 2026-09-16. Core foundation is in progress; see SUPABASE-DEVELOPMENT.md for evidence and incomplete scope.
 
 | Phase | Scope | Acceptance |
 |---|---|---|

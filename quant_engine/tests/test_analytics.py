@@ -239,3 +239,116 @@ def test_registry_is_opt_in():
     assert registry.get(model.name) is model
     with pytest.raises(ValueError):
         registry.register(model)
+
+
+@pytest.mark.parametrize("invalid", [np.nan, np.inf, -np.inf, 0, -100, "missing"])
+def test_invalid_close_removes_both_adjacent_returns(invalid, market):
+    frame = market.astype({"close": object})
+    frame.loc[frame.index[20], "close"] = invalid
+    result = distribution(frame)
+    assert result["sample_count"] == 58
+    timestamps = {point["time"] for point in result["returns"]}
+    assert market.index[20].isoformat().replace("+00:00", "Z") not in timestamps
+    assert market.index[21].isoformat().replace("+00:00", "Z") not in timestamps
+    json.dumps(result, allow_nan=False)
+
+
+def test_split_adjusted_prices_are_used_without_reapplying_actions(market):
+    # Upstream has already adjusted a 2-for-1 split. Raw and dividend-adjusted
+    # vendor fields must not accidentally replace the canonical price basis.
+    frame = market.copy()
+    frame["raw_close"] = frame.close * np.where(np.arange(len(frame)) < 30, 2, 1)
+    frame["adj_close"] = frame.close * np.linspace(.95, 1, len(frame))
+    frame["stock_splits"] = 0.0
+    frame.loc[frame.index[30], "stock_splits"] = 2
+    assert distribution(frame) == distribution(market)
+    assert capm(frame, market, 0)["beta"] == pytest.approx(1)
+
+
+def test_mixed_calendars_exclude_each_market_closure_and_following_return(market):
+    market_a = market.drop(market.index[20])
+    market_b = market.drop(market.index[40])
+    result = portfolio_analysis({"A": market_a, "B": market_b},
+                                {"A": 5000, "B": 5000}, market, 0)
+    assert result["metrics"]["sample_count"] == 56
+    observed = {point["time"] for point in result["performance"]}
+    for index in [20, 21, 40, 41]:
+        assert market.index[index].isoformat().replace("+00:00", "Z") not in observed
+
+
+def test_empty_comparison_and_disjoint_calendars(market):
+    assert comparison({})["series"] == []
+    later = market.copy()
+    later.index = later.index + pd.DateOffset(years=1)
+    result = comparison({"A": market, "B": later})
+    assert all(series["points"] == [] for series in result["series"])
+    assert result["correlations"][1]["sample_count"] == 0
+    assert result["correlations"][1]["value"] is None
+    assert capm(market, later, 0)["beta"] is None
+
+
+@pytest.mark.parametrize("bad", [0, -1, True, 1.5, 1001])
+def test_volume_bin_bounds(bad, market):
+    with pytest.raises(ValueError, match="bins"):
+        volume_profile(market, bad)
+
+
+@pytest.mark.parametrize("bad", [0, -1, True, 1.5])
+def test_sharpe_window_bounds(bad, market):
+    with pytest.raises(ValueError, match="window"):
+        sharpe_ratio(market, 0, bad)
+
+
+def test_thirty_position_boundary_and_reserved_symbol(market):
+    frames = {str(i): market for i in range(30)}
+    weights = {str(i): 300 for i in range(30)}
+    weights["0"] = 1300
+    assert portfolio_analysis(frames, weights, market, 0)["metrics"]["beta"] == pytest.approx(1)
+    frames["30"] = market
+    weights["0"] -= 100
+    weights["30"] = 100
+    with pytest.raises(ValueError, match="between 1 and 30"):
+        portfolio_analysis(frames, weights, market, 0)
+    result = portfolio_analysis({"benchmark": market}, {"benchmark": 10000}, market, 0)
+    assert result["metrics"]["beta"] == pytest.approx(1)
+
+
+def test_zero_volume_outlier_does_not_change_traded_range():
+    frame = history([.01, .02])
+    expected = volume_profile(frame)
+    outlier = frame.iloc[:1].copy()
+    outlier.index = outlier.index - pd.Timedelta(days=1)
+    outlier[["high", "low", "close"]] = 1_000_000
+    outlier["volume"] = 0
+    assert volume_profile(pd.concat([outlier, frame])) == expected
+
+
+@pytest.mark.parametrize("rate", [float("nan"), float("inf"), -1, -2])
+def test_invalid_risk_free_suppresses_dependent_metrics_only(rate, market):
+    result = capm(market, market, rate)
+    assert result["beta"] == pytest.approx(1)
+    assert result["risk_free_rate"] is None
+    assert result["expected_return"] is None
+    assert sharpe_ratio(market, rate) is None
+
+
+def test_unsorted_input_and_all_entry_points_preserve_inputs(market):
+    frame = market.iloc[::-1].copy()
+    original = frame.copy(deep=True)
+    assert distribution(frame) == distribution(market)
+    volume_profile(frame)
+    comparison({"A": frame, "B": market})
+    capm(frame, market, 0)
+    sharpe_ratio(frame, 0)
+    portfolio_analysis({"A": frame}, {"A": 10000}, market, 0)
+    pd.testing.assert_frame_equal(frame, original)
+
+
+def test_invalid_time_index_rejected(market):
+    frame = market.reset_index(drop=True)
+    with pytest.raises(ValueError, match="DatetimeIndex"):
+        distribution(frame)
+    frame = market.copy()
+    frame.index = pd.DatetimeIndex([pd.NaT, *market.index[1:]])
+    with pytest.raises(ValueError, match="unique and present"):
+        distribution(frame)

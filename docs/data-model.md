@@ -1,6 +1,6 @@
 # Proposed Supabase data model
 
-Design only. No SQL migrations have been applied. Use a shared database with owner
+Target model. A CLI-generated foundation migration has passed embedded PostgreSQL checks; no hosted migration has been applied. Broader tables below remain planned. Use a shared database with owner
 columns, never one database per user. Supabase Auth user UUIDs are canonical identities.
 
 ## Portfolio and membership tables

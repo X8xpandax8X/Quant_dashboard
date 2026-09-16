@@ -1,14 +1,14 @@
 {
   "version": 1,
-  "updated": "2026-09-16",
-  "implementation_gate": "awaiting_supabase_plan_review",
-  "continuation_automation": "active_status_checks_implementation_gated",
+  "updated": "2026-09-17",
+  "implementation_gate": "approved_by_user_continue_implementing",
+  "continuation_automation": "active_resume_authorized_work",
   "canonical_requirement": "requirement.txt",
   "remote": "https://github.com/X8xpandax8X/Quant_dashboard",
   "source_workspace": "/Users/pandamac/Desktop/Quant_stock",
   "planned_checkout": "/Users/pandamac/Documents/GitHub/Quant_stock",
   "local_migration_complete": false,
-  "evidence_note": "Supabase update is documentation only. No cloud project, migrations, RLS policies, Storage buckets or runtime changes applied. Historical baseline tests do not validate Supabase.",
+  "evidence_note": "Supabase foundation implemented locally and checked with mocked HTTP plus embedded PostgreSQL. Real Supabase integration, browser auth, broader domains and cutover remain incomplete. Docker engine unavailable; hosted project reference pending.",
   "tasks": [
     {
       "requirement_id": "REQ-DOC-01",
@@ -51,7 +51,7 @@
       "validation_evidence": [
         "Documents destination absent; source retained"
       ],
-      "blockers": "Supabase implementation plan review; existing baseline evidence does not validate migration",
+      "blockers": "Hosted Supabase project reference and local Git transport pending where required",
       "next_action": "Follow phased Supabase plan in docs/PLAN-REPORT.md after approval"
     },
     {
@@ -65,7 +65,7 @@
       "validation_evidence": [
         "Current UI uses Vite/React, proposed Next.js preserves components"
       ],
-      "blockers": "Supabase implementation plan review; existing baseline evidence does not validate migration",
+      "blockers": "Hosted Supabase project reference and local Git transport pending where required",
       "next_action": "Follow phased Supabase plan in docs/PLAN-REPORT.md after approval"
     },
     {
@@ -79,7 +79,7 @@
       "validation_evidence": [
         "Existing Yahoo/FRED providers and cache; prior backend suite 59 passed/1 skipped"
       ],
-      "blockers": "Supabase implementation plan review; existing baseline evidence does not validate migration",
+      "blockers": "Hosted Supabase project reference and local Git transport pending where required",
       "next_action": "Follow phased Supabase plan in docs/PLAN-REPORT.md after approval"
     },
     {
@@ -93,7 +93,7 @@
       "validation_evidence": [
         "Pure engine and 25 deterministic quant tests in prior suite"
       ],
-      "blockers": "Supabase implementation plan review; existing baseline evidence does not validate migration",
+      "blockers": "Hosted Supabase project reference and local Git transport pending where required",
       "next_action": "Follow phased Supabase plan in docs/PLAN-REPORT.md after approval"
     },
     {
@@ -107,7 +107,7 @@
         "REQ-QUANT-01"
       ],
       "validation_evidence": [],
-      "blockers": "Supabase implementation plan review; existing baseline evidence does not validate migration",
+      "blockers": "Hosted Supabase project reference and local Git transport pending where required",
       "next_action": "Follow phased Supabase plan in docs/PLAN-REPORT.md after approval"
     },
     {
@@ -135,7 +135,7 @@
       "validation_evidence": [
         "Backend owner/CSRF/revision coverage; portfolio browser repairs exist"
       ],
-      "blockers": "Supabase implementation plan review; existing baseline evidence does not validate migration",
+      "blockers": "Hosted Supabase project reference and local Git transport pending where required",
       "next_action": "Follow phased Supabase plan in docs/PLAN-REPORT.md after approval"
     },
     {
@@ -199,74 +199,84 @@
       "owner": "lead",
       "dependencies": [],
       "validation_evidence": [
-        "Targeted current code audit; new architecture/data-model/security and requirement reconciliation"
+        "Implementation approved; interfaces integrated incrementally; no cosmetic package moves"
       ],
-      "blockers": "Targeted architecture audit documented; canonical checkout and full migration inventory await implementation approval",
-      "next_action": "Review Supabase plan, then complete checkout and migration inventory"
+      "blockers": "Canonical Git checkout pending",
+      "next_action": "Establish authenticated Documents checkout without overwriting Desktop changes"
     },
     {
       "requirement_id": "REQ-SUPA-B",
       "phase": "B",
-      "status": "planned",
+      "status": "in_progress",
       "owner": "lead",
       "dependencies": [
         "REQ-SUPA-A"
       ],
-      "validation_evidence": [],
-      "blockers": "Implementation approval and development project configuration",
-      "next_action": "Auth/admission, schema/grants/RLS, Storage, real isolation tests"
+      "validation_evidence": [
+        "Supabase CLI2.117.0 generated config and foundation migration",
+        "Embedded PostgreSQL role/policy tests pass; actual Data API test prepared",
+        "38 embedded PostgreSQL checks pass; independent Sol High checkpoint review accepted after repairs"
+      ],
+      "blockers": "Local Docker engine cannot start; hosted project reference pending",
+      "next_action": "Run real Supabase migration/Auth/Data API/Storage checks"
     },
     {
       "requirement_id": "REQ-SUPA-C",
       "phase": "C",
-      "status": "planned",
+      "status": "in_progress",
       "owner": "data",
       "dependencies": [
         "REQ-SUPA-B"
       ],
-      "validation_evidence": [],
-      "blockers": "Foundation and approved repository contracts",
-      "next_action": "Remote metadata/object persistence, leases and freshness fixtures"
+      "validation_evidence": [
+        "Remote adapters, checksum publication, lease fencing, canonical sectors; 15 data tests pass"
+      ],
+      "blockers": "Live Storage integration, previous-version/orphan cleanup and calendar policies pending",
+      "next_action": "Complete retention/backoff and live integration"
     },
     {
       "requirement_id": "REQ-SUPA-D",
       "phase": "D",
-      "status": "planned",
+      "status": "in_progress",
       "owner": "quant",
       "dependencies": [
         "REQ-SUPA-A"
       ],
       "validation_evidence": [
-        "Existing pure analytics/fixtures retained"
+        "Typed pure contracts; expanded quant tests pass"
       ],
-      "blockers": "Implementation review",
-      "next_action": "Typed contracts and deterministic boundary/edge tests"
+      "blockers": "Final integrated review after remaining domains",
+      "next_action": "Preserve numerical contracts during integration"
     },
     {
       "requirement_id": "REQ-SUPA-E",
       "phase": "E",
-      "status": "planned",
+      "status": "in_progress",
       "owner": "lead",
       "dependencies": [
         "REQ-SUPA-B"
       ],
-      "validation_evidence": [],
-      "blockers": "Auth/RLS foundation",
-      "next_action": "Extract Portfolio Service and validate atomic user-context persistence"
+      "validation_evidence": [
+        "Request-scoped user-token repository; atomic invoker RPC and normalized targets; embedded isolation checks pass"
+      ],
+      "blockers": "Actual Data API proof; holdings/transactions and migration/cutover pending",
+      "next_action": "Complete broader owned-state boundaries and real API tests"
     },
     {
       "requirement_id": "REQ-SUPA-F",
       "phase": "F",
-      "status": "planned",
+      "status": "in_progress",
       "owner": "lead",
       "dependencies": [
         "REQ-SUPA-C",
         "REQ-SUPA-D",
         "REQ-SUPA-E"
       ],
-      "validation_evidence": [],
-      "blockers": "Core domains",
-      "next_action": "FastAPI parity, minimal auth integration and CI"
+      "validation_evidence": [
+        "93 Python tests pass; API contract unchanged; frontend9 tests/typecheck/build pass; portfolio4 browser flows pass; LPPLS34 pass; gateway1 pass"
+      ],
+      "blockers": "Supabase browser login and real integration pending",
+      "next_action": "Connect verified project and adapt browser authentication"
     },
     {
       "requirement_id": "REQ-SUPA-G",
@@ -297,7 +307,7 @@
     "kind": "heartbeat",
     "interval_hours": 5,
     "status": "ACTIVE",
-    "implementation_gate": "awaiting_supabase_plan_review",
+    "implementation_gate": "approved_by_user_continue_implementing",
     "current_local_folder": "/Users/pandamac/Desktop/Quant_stock",
     "repository": "X8xpandax8X/Quant_dashboard",
     "migration_pending": true,
@@ -325,5 +335,12 @@
     "ai": "future documentation only",
     "frontend": "retain React/Vite until core parity, then Next.js",
     "supabase_project_verified": false
+  },
+  "core_checkpoint": {
+    "state": "reviewed_local_implementation",
+    "independent_review": "Sol High: ship private checkpoint; real Supabase acceptance remains open",
+    "migration": "supabase/migrations/20260916144520_core_foundation.sql",
+    "next_work": "Browser auth and remote integration; broader owned-state boundaries, retention and backoff",
+    "hosted_changes": false
   }
 }

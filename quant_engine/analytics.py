@@ -7,10 +7,20 @@ Annualization uses 252 trading days and sample covariance/standard deviation.
 from __future__ import annotations
 
 import math
+from collections.abc import Hashable, Mapping
 from numbers import Integral
+from typing import TypeVar
 
 import numpy as np
 import pandas as pd
+
+from .contracts import (
+    CAPMResult, ComparisonResult, ComparisonSeries, CorrelationCell,
+    DistributionResult, HistogramBin, HistoryFrames, OptionalNumber,
+    PerformancePoint, PortfolioResult, VolumeProfileResult, WeightsBps,
+)
+
+FrameKey = TypeVar("FrameKey", bound=Hashable)
 
 ANNUAL_DAYS = 252
 MIN_RISK_OBSERVATIONS = 60
@@ -19,18 +29,18 @@ RF_NOTE = "Latest annual risk-free yield proxy is held constant over the histori
 GAP_NOTE = "Missing prices are not filled; only adjacent observed returns are used."
 
 
-def _number(value):
+def _number(value: float | int | None) -> OptionalNumber:
     if value is None:
         return None
     value = float(value)
     return value if math.isfinite(value) else None
 
 
-def _time(value):
+def _time(value: pd.Timestamp) -> str:
     return pd.Timestamp(value).isoformat().replace("+00:00", "Z")
 
 
-def _clean(frame):
+def _clean(frame: pd.DataFrame) -> pd.DataFrame:
     if not isinstance(frame.index, pd.DatetimeIndex):
         raise ValueError("History must have a DatetimeIndex")
     if frame.index.has_duplicates or frame.index.hasnans:
@@ -41,17 +51,17 @@ def _clean(frame):
     return frame
 
 
-def _close(frame):
+def _close(frame: pd.DataFrame) -> pd.Series:
     frame = _clean(frame)
     values = pd.to_numeric(frame["close"], errors="coerce").astype(float)
     return values.where(np.isfinite(values) & (values > 0))
 
 
-def _returns(frame):
+def _returns(frame: pd.DataFrame) -> pd.Series:
     return _close(frame).pct_change(fill_method=None).replace([np.inf, -np.inf], np.nan).dropna()
 
 
-def _aligned(frames):
+def _aligned(frames: Mapping[FrameKey, pd.DataFrame]) -> tuple[pd.DataFrame, pd.DataFrame]:
     if not frames:
         return pd.DataFrame(), pd.DataFrame()
     prices = pd.concat({key: _close(frame) for key, frame in frames.items()}, axis=1, sort=True).sort_index()
@@ -59,16 +69,16 @@ def _aligned(frames):
     return prices, returns
 
 
-def _std(values):
+def _std(values: pd.Series) -> OptionalNumber:
     return _number(values.std(ddof=1)) if len(values) >= 2 else None
 
 
-def _risk_free(rate):
+def _risk_free(rate: OptionalNumber) -> OptionalNumber:
     value = _number(rate)
     return value if value is not None and value > -1 else None
 
 
-def _sharpe(returns, risk_free):
+def _sharpe(returns: pd.Series, risk_free: OptionalNumber) -> OptionalNumber:
     risk_free = _risk_free(risk_free)
     sigma = _std(returns)
     if len(returns) < MIN_RISK_OBSERVATIONS or risk_free is None or sigma is None or sigma <= 1e-12:
@@ -77,11 +87,11 @@ def _sharpe(returns, risk_free):
     return _number((returns.mean() - daily_rf) / sigma * math.sqrt(ANNUAL_DAYS))
 
 
-def distribution(frame):
+def distribution(frame: pd.DataFrame) -> DistributionResult:
     returns = _returns(frame)
     sigma = _std(returns)
     mean = _number(returns.mean()) if len(returns) else None
-    histogram = []
+    histogram: list[HistogramBin] = []
     if len(returns):
         counts, edges = np.histogram(returns.to_numpy(), bins=30)
         histogram = [{"low": _number(edges[i]), "high": _number(edges[i + 1]), "count": int(count)}
@@ -98,7 +108,7 @@ def distribution(frame):
             "histogram": histogram, "notes": notes}
 
 
-def volume_profile(frame, bins=50):
+def volume_profile(frame: pd.DataFrame, bins: int = 50) -> VolumeProfileResult:
     if not isinstance(bins, Integral) or isinstance(bins, bool) or not 1 <= bins <= 1000:
         raise ValueError("bins must be an integer between 1 and 1000")
     frame = _clean(frame)
@@ -110,7 +120,7 @@ def volume_profile(frame, bins=50):
     typical, volume = typical[valid], volume[valid]
     notes = ["Estimated bar-based volume profile: each bar's volume is assigned to (high + low + close) / 3.",
              "Value area expands contiguously from POC to cover at least 70%; ties select the lower-price bin."]
-    empty = {"poc": None, "vah": None, "val": None, "coverage": None,
+    empty: VolumeProfileResult = {"poc": None, "vah": None, "val": None, "coverage": None,
              "total_volume": None, "bins": [], "notes": notes}
     if not len(volume):
         notes.append("No bars have both valid prices and nonnegative observed volume.")
@@ -145,10 +155,10 @@ def volume_profile(frame, bins=50):
                      for i, v in enumerate(counts)], "notes": notes}
 
 
-def comparison(frames):
+def comparison(frames: HistoryFrames) -> ComparisonResult:
     prices, _ = _aligned(frames)
     common = prices.dropna(how="any")
-    series = []
+    series: list[ComparisonSeries] = []
     # All curves begin at the same observed date. Missing later values stay gaps.
     if len(common):
         start = common.index[0]
@@ -158,7 +168,7 @@ def comparison(frames):
                                                          for t, v in normalized.items()]})
     else:
         series = [{"symbol": symbol, "points": []} for symbol in frames]
-    correlations = []
+    correlations: list[CorrelationCell] = []
     for x in frames:
         for y in frames:
             pair = prices[[x]] if x == y else prices[[x, y]]
@@ -173,7 +183,7 @@ def comparison(frames):
     return {"symbols": list(frames), "series": series, "correlations": correlations, "notes": notes}
 
 
-def capm(frame, benchmark, risk_free):
+def capm(frame: pd.DataFrame, benchmark: pd.DataFrame, risk_free: OptionalNumber) -> CAPMResult:
     _, aligned = _aligned({"asset": frame, "benchmark": benchmark})
     closes = _close(frame).dropna()
     rf = _risk_free(risk_free)
@@ -202,13 +212,16 @@ def capm(frame, benchmark, risk_free):
             "current_price": current, "scenario_price": scenario, "sample_count": n, "notes": notes}
 
 
-def sharpe_ratio(frame, risk_free, window=126):
+def sharpe_ratio(frame: pd.DataFrame, risk_free: OptionalNumber, window: int = 126) -> OptionalNumber:
     if not isinstance(window, Integral) or isinstance(window, bool) or window < 1:
         raise ValueError("window must be a positive integer")
     return _sharpe(_returns(frame).tail(window), risk_free)
 
 
-def portfolio_analysis(frames, weights_bps, benchmark, risk_free):
+def portfolio_analysis(
+    frames: HistoryFrames, weights_bps: WeightsBps,
+    benchmark: pd.DataFrame, risk_free: OptionalNumber,
+) -> PortfolioResult:
     if not weights_bps or len(weights_bps) > 30:
         raise ValueError("Portfolio must contain between 1 and 30 unique positions")
     if any(isinstance(w, bool) or not isinstance(w, Integral) or w <= 0 for w in weights_bps.values()):
@@ -236,7 +249,7 @@ def portfolio_analysis(frames, weights_bps, benchmark, risk_free):
         if market.std(ddof=1) > 1e-12:
             beta = _number(sum(weights[i] * asset.iloc[:, i].cov(market) / market.var(ddof=1)
                                for i in range(len(symbols))))
-    performance = []
+    performance: list[PerformancePoint] = []
     if n:
         p = (1 + daily).cumprod() - 1
         b = (1 + market).cumprod() - 1
