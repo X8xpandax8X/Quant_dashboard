@@ -1,0 +1,11 @@
+import type { Position } from './api/types';
+export const finite=(value:number|null|undefined,fallback='—')=>value==null||!Number.isFinite(value)?fallback:value;
+export const percent=(v:number|null|undefined,digits=1)=>{const n=finite(v);return typeof n==='number'?`${n>=0?'+':''}${(n*100).toFixed(digits)}%`:'—'};
+export const money=(v:number|null|undefined,currency='USD')=>{const n=finite(v);if(typeof n!=='number')return '—';return currency==='points'||currency==='unknown'?`${number(n)} ${currency}`:new Intl.NumberFormat('en-US',{style:'currency',currency,maximumFractionDigits:2}).format(n)};
+export const number=(v:number|null|undefined,digits=2)=>{const n=finite(v);return typeof n==='number'?new Intl.NumberFormat('en-US',{maximumFractionDigits:digits}).format(n):'—'};
+export const compact=(v:number|null|undefined,currency?:string)=>{const n=finite(v);return typeof n==='number'?new Intl.NumberFormat('en-US',{notation:'compact',maximumFractionDigits:2,style:currency?'currency':'decimal',currency}).format(n):'—'};
+export const date=(v:string|null|undefined)=>v?new Intl.DateTimeFormat('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'}).format(new Date(v)):'—';
+export const statusLabel=(s:string)=>s==='demo'?'Demo data':s==='stale'?'Data delayed':s==='partial'?'Partial data':s==='unavailable'?'Unavailable':'Fresh';
+export const vixZone=(v:number|null)=>v==null?'Unavailable':v<15?'Low':v<20?'Normal':v<30?'Elevated':'Extreme';
+export const totalBps=(positions:Position[])=>positions.reduce((sum,p)=>sum+(Number.isInteger(p.weight_bps)?p.weight_bps:0),0);
+export const validatePositions=(positions:Position[])=>{const total=totalBps(positions);if(!positions.length)return 'Add at least one position.';if(positions.length>30)return 'A portfolio can hold at most 30 positions.';if(new Set(positions.map(p=>p.symbol)).size!==positions.length)return 'Each symbol may appear once.';if(positions.some(p=>!p.symbol||p.weight_bps<0||p.weight_bps>10000||!Number.isInteger(p.weight_bps)))return 'Weights must be whole basis points from 0 to 10,000.';return total!==10000?`Weights total ${(total/100).toFixed(2)}%; set them to 100.00% before running.`:null};

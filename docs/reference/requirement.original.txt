@@ -1,0 +1,205 @@
+# INVESTMENT DASHBOARD SYSTEM REQUIREMENT SPECIFICATION
+# Target Execution Engine: OpenAI ChatGPT / Codex (Multi-Agent Setup)
+# Project Version: 1.0 (Architecture ready for V2/V3 Extensions)
+
+================================================================================
+SECTION 1: SYSTEM OVERVIEW & WORKFLOW SPECIFICATION FOR CODEX
+================================================================================
+
+1.1 AGENT ORCHESTRATION PROTOCOL & BOOTSTRAP STAGES
+Before generating production application code, Codex must operate under a multi-agent modular workflow by executing the following initialization steps in order:
+
+  STAGE 1: REQUIREMENT parsing
+  - Read and analyze this file (`requirements.txt`) to establish full context on UI layout, financial models, data pipelines, and architectural constraints.
+
+  STAGE 2: BOOTSTRAP `README.md`
+  - Generate a detailed `README.md` containing:
+    * System architectural diagram & project layout structure.
+    * Tech stack specifications (Python 3.10+, Streamlit / Dash / React + FastAPI, Plotly / Recharts, Pandas, NumPy, SciPy, yfinance).
+    * Data caching strategy (Hybrid live web-fetching via yfinance with SQLite / Parquet local cache fallback).
+    * Installation, setup scripts, and module dependencies.
+
+  STAGE 3: BOOTSTRAP `AGENTS.md`
+  - Generate an `AGENTS.md` file establishing role-based sub-agents for Codex self-collaboration:
+    * Lead Architect Agent: Manages code modularity, state management, and file structure.
+    * Data & Quant Pipeline Agent: Implements data ingestion, financial calculations, CAPM, histograms, and mathematical logic.
+    * UI/UX Frontend Agent: Builds intuitive layout grid, interactive charts, sidebars, tooltips, and responsive widgets.
+    * Master Auditor & Debugger Agent: Performs static code analysis, validates math logic, re-checks edge cases, and generates execution summary reports.
+
+  STAGE 4: MODULAR CODE GENERATION
+  - Code implementation must follow clean separation of concerns:
+    * `app.py` or `main.py` (Application Entrypoint)
+    * `data_engine/` (Data fetching, SQLite caching, API interfaces)
+    * `quant_engine/` (CAPM, Volume Profile, Histogram stats, Portfolio analytics, future LPPLS/Graph theory hooks)
+    * `components/` (UI widgets, visual cards, charts, sidebars)
+
+  STAGE 5: MASTER RE-CHECK AND REPORTING
+  - Master Auditor Agent reviews all generated code files, runs syntax and logical consistency checks, fixes bugs, and produces a final summary audit report for the user.
+
+================================================================================
+SECTION 2: GENERAL UI/UX & NAVIGATION ARCHITECTURE
+================================================================================
+
+2.1 NAVIGATION & LAYOUT
+- Left Sidebar Navigation: Persistent collapsible sidebar allowing seamless switching between main dashboards.
+- Sub-Tab Segmentation: To prevent cognitive overload and dense clutter, individual dashboards may be split into 2 visual sub-tabs when necessary.
+- Color Palette & Theme: Dark mode financial terminal theme (deep slate background, high contrast greens for positive returns, vibrant reds/oranges for negative returns, crisp typography).
+
+2.2 SYSTEM EXTENSIBILITY HOOKS (FUTURE PROOFING)
+- The core data model and routing must support:
+  * LPPLS (Log-Periodic Power Law Singularity) bubble detection model integration slot.
+  * Graph Theory Sector Correlation Network visualization module slot.
+  * Expansion of historical data window from 1 Year (V1 default) to 3 Years (V2).
+
+================================================================================
+SECTION 3: DASHBOARD FUNCTIONAL REQUIREMENTS
+================================================================================
+
+--------------------------------------------------------------------------------
+DASHBOARD 1: GLOBAL EQUITIES & MARKET OVERVIEW
+--------------------------------------------------------------------------------
+Goal: Provide real-time high-level tracking of global benchmarks and key asset classes.
+
+Assets Tracked:
+- S&P 500 Index (`^GSPC`)
+- NASDAQ 100 Index (`^NDX`)
+- VIX Volatility Gauge (`^VIX`)
+- Nikkei 225 (`^N235`)
+- KOSPI 200 (`^KS200`)
+- SET100 / SET Index (`^SET100` / `^SET.BK`)
+- Bitcoin (`BTC-USD`)
+
+Features & Visualizations:
+1. Candlestick Index Cards:
+   - Interactive Candlestick chart showing latest price movements.
+   - Real-time intraday percentage change indicator (% shift with green/red status light).
+2. Timeframe Selector Widget:
+   - Toggle buttons: 1D (Default), 5D, 1M, 1Y.
+3. Dedicated VIX Volatility Gauge:
+   - Semi-circular radial gauge dial showing current implied volatility level with zone risk indicators (Low, Normal, Elevated, Extreme).
+
+--------------------------------------------------------------------------------
+DASHBOARD 2: INDIVIDUAL STOCK QUANTITATIVE & TECHNICAL ANALYSIS
+--------------------------------------------------------------------------------
+Goal: Deep-dive quantitative evaluation of individual S&P 500 stocks.
+
+Inputs & Controls:
+- Stock Search Bar / Dynamic Dropdown: Search & select any constituent of S&P 500.
+- Timeframe Selector: 1D, 5D, 1M, 1Y (Default 1Y).
+
+Visual Components:
+1. Price & Return Performance Chart:
+   - Candlestick or line chart displaying price action over selected timeframe along with cumulative Return percentage:
+     $$\text{Return (\%)} = \left( \frac{P_{\text{current}} - P_{\text{start}}}{P_{\text{start}}} \right) \times 100$$
+
+2. Return Frequency Histogram & Quantitative Metrics:
+   - X-axis: Daily Return Percentage buckets ($+$ and $-$ returns).
+   - Y-axis: Frequency count of trading days.
+   - Statistical Summary Cards:
+     * Expected Mean Daily Return: $\mu = \frac{1}{N} \sum_{t=1}^{N} R_t$
+     * Historical Volatility ($\sigma$): Standard Deviation $\sigma = \sqrt{\frac{1}{N-1} \sum_{t=1}^{N} (R_t - \mu)^2}$
+     * Win Rate / Positive Return Probability (%): 
+       $$P(R > 0) = \left( \frac{\text{Count}(R_t > 0)}{N} \right) \times 100$$
+
+3. Volume Profile & Dynamic Key Levels Side-Panel:
+   - Real-time display of current price.
+   - Volume Profile calculation metrics:
+     * Point of Control (POC): Price level with highest traded volume.
+     * Value Area High (VAH): Upper boundary of 70% value volume range.
+     * Value Area Low (VAL): Lower boundary of 70% value volume range.
+
+4. GitHub-Style Daily Return Calendar Heatmap:
+   - Grid matrix (Months vs Days of Week) modeling daily return intensity.
+   - Color grading: Dark green (High positive return) to dark red (High negative return), neutral dark grey for flat days. Placed adjacent to return histogram.
+
+5. Multi-Stock Return Comparison & Correlation Matrix:
+   - Multi-select input to add peer comparison stocks.
+   - Comparative return overlay chart.
+   - Pairwise Pearson Correlation Coefficient matrix table:
+     $$\rho_{X,Y} = \frac{\sum (X_i - \bar{X})(Y_i - \bar{Y})}{\sqrt{\sum (X_i - \bar{X})^2 \sum (Y_i - \bar{Y})^2}}$$
+
+6. CAPM & Security Market Line (SML) Valuation Zone Chart:
+   - Plot Security Market Line (SML) using formula:
+     $$E(R_i) = R_f + \beta_i \left( E(R_m) - R_f \right)$$
+     (where $R_f$ is US 10Y Treasury yield and $E(R_m)$ is benchmark expected return).
+   - Position target stock on graph ($X = \beta_i$, $Y = \text{Actual/Expected Return}$).
+   - Dynamic expected target price output based on CAPM expected rate of return.
+   - Visual Zone Annotations: Explicitly label plot regions as "Underpriced / Alpha > 0" (above SML) and "Overpriced / Alpha < 0" (below SML).
+
+--------------------------------------------------------------------------------
+DASHBOARD 3: FINANCIAL FUNDAMENTALS & MARKET VALUATION
+--------------------------------------------------------------------------------
+Goal: Fundamental statement analysis and institutional analyst sentiment.
+
+Key Metric Header Cards:
+- Current Stock Price, Market Capitalization, P/E Ratio, P/BV Ratio, Trailing EPS, Beta ($\beta$), 6-Month Sharpe Ratio:
+  $$SR = \frac{R_p - R_f}{\sigma_p}$$
+- CAPM Derived Target Price.
+
+Visual Components:
+1. Revenue & Earnings Trend + Estimates:
+   - Quarterly Bar/Line chart displaying historical Revenue & Earnings per Share (EPS).
+   - Dynamic 1-Quarter Forward Consensus Estimate overlay.
+   - Growth indicators badge: QoQ (Quarter-over-Quarter) % and YoY (Year-over-Year) % growth.
+
+2. Interactive Income Statement Sankey Diagram:
+   - Flow diagram mapping: Total Revenue $\rightarrow$ Gross Profit & Cost of Goods Sold (COGS) $\rightarrow$ Operating Income & Opex $\rightarrow$ Net Income & Taxes.
+
+3. Profitability & Margin Trend Lines:
+   - Multi-line trend chart showing Gross Margin %, Operating Margin %, and Net Profit Margin % across quarterly periods, with QoQ & YoY delta metrics.
+
+4. Comprehensive Financial Statements Data Tables:
+   - Tabbed financial views:
+     Tab A: Valuation Ratios
+     Tab B: Profitability & Income Statement
+     Tab C: Balance Sheet & Cash Flow Summary
+
+5. Institutional Analyst Consensus Breakdown:
+   - Recommendation breakdown pie/bar graphic (Buy %, Hold %, Sell % proportions).
+   - Target price consensus distribution metrics (Lowest target, Mean target, Highest target price across research institutions).
+
+--------------------------------------------------------------------------------
+DASHBOARD 4: ASSET ALLOCATION & PORTFOLIO SIMULATOR
+--------------------------------------------------------------------------------
+Goal: Interactive portfolio construction and benchmark comparison.
+
+Interactive Inputs:
+- Stock picker: Select any stocks from the dataset.
+- Weight allocation (%): Interactive sliders/inputs to set target portfolio weights ($\sum w_i = 100\%$).
+
+Visual Components:
+1. Sector Allocation Donut Chart (Left Side):
+   - Aggregated portfolio exposure grouped into the 11 Standard S&P 500 GICS Sectors:
+     1. Technology
+     2. Financial Services
+     3. Industrials
+     4. Communication Services
+     5. Healthcare
+     6. Consumer Cyclical
+     7. Energy
+     8. Consumer Defensive
+     9. Basic Materials
+     10. Real Estate
+     11. Utilities
+   - Hover behavior: Hovering mouse over a sector arc segment expands a dynamic tooltip revealing the individual stock breakdown and weighting inside that specific sector.
+
+2. Portfolio Analytics Performance Card (Right Side):
+   - Calculated over a 1-Year historical lookback window:
+     * Expected Portfolio Return: $E(R_p) = \sum w_i E(R_i)$
+     * Portfolio Volatility ($\sigma_p$): 
+       $$\sigma_p = \sqrt{\mathbf{w}^T \mathbf{\Sigma} \mathbf{w}}$$
+     * Portfolio Sharpe Ratio ($SR_p$)
+     * Portfolio Beta relative to S&P 500 Benchmark ($\beta_p$):
+       $$\beta_p = \sum w_i \beta_i$$
+
+================================================================================
+SECTION 4: TECHNICAL DATA ENGINE & INFRASTRUCTURE
+================================================================================
+
+4.1 DATA INGESTION & CACHING
+- Primary Data Source: Open-source Yahoo Finance API (`yfinance`) and FRED (Federal Reserve Economic Data for risk-free rate $R_f$).
+- Cache Persistence: Implement dynamic local SQLite database / Parquet storage layer to store historical price series and fundamental ratios, avoiding repetitive API throttling while ensuring snappy application rendering.
+
+4.2 ERROR HANDLING & DEBUG PROTOCOL
+- Missing data fallback strategies (e.g., zero-fill missing volume bars, handle non-trading holidays gracefully).
+- Master Auditor Agent must execute validation checks on math functions prior to final deployment report output.

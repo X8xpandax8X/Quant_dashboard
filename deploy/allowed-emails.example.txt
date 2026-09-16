@@ -1,0 +1,2 @@
+# Replace with one allowed Google account email per line; no wildcard domains.
+researcher@example.com

@@ -1,0 +1,8 @@
+{
+  "profile":"product-admin", "sourceRoots":["frontend/src"], "locale":"en-US", "canonicalMap":"UX-CONTRACT.md",
+  "requiredCapabilities":["Select/Listbox","Form","Scrollbar","Toast","CRUD"],
+  "ownership":{"Select/Listbox":"native","Form":"shared field components","Scrollbar":"frontend/src/styles/tokens.css","Toast":"ToastProvider","CRUD":"PortfolioPage + api client"},
+  "requiredCommands":["unit","e2e","accessibility"],
+  "commands":{"unit":"npm run test","e2e":"npm run test:e2e","accessibility":"npm run test:a11y"},
+  "evidence":{"crudFullFlow":"frontend/src/lib.test.ts","failurePaths":"frontend/src/lib.test.ts"}
+}

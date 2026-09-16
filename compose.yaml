@@ -1,0 +1,77 @@
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    environment:
+      QS_MODE: production
+      QS_STORAGE_DIR: /state
+      QS_PUBLIC_ORIGIN: https://${APP_DOMAIN:?Set APP_DOMAIN}
+      QS_PROXY_SECRET: ${QS_PROXY_SECRET:?Set a random proxy secret}
+      QS_ALLOWED_EMAILS: ${QS_ALLOWED_EMAILS:?Set explicit allowed emails}
+      QS_DATA_RIGHTS_CONFIRMED: ${QS_DATA_RIGHTS_CONFIRMED:-false}
+      FRED_API_KEY: ${FRED_API_KEY:-}
+    volumes:
+      - app_state:/state
+    networks: [private]
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health',timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    security_opt: [no-new-privileges:true]
+  oauth:
+    image: quay.io/oauth2-proxy/oauth2-proxy:v7.15.4
+    restart: unless-stopped
+    environment:
+      OAUTH2_PROXY_PROVIDER: google
+      OAUTH2_PROXY_CLIENT_ID: ${GOOGLE_CLIENT_ID:?Set Google client ID}
+      OAUTH2_PROXY_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:?Set Google client secret}
+      OAUTH2_PROXY_COOKIE_SECRET: ${OAUTH_COOKIE_SECRET:?Set 32-byte base64 cookie secret}
+      OAUTH2_PROXY_REDIRECT_URL: https://${APP_DOMAIN}/oauth2/callback
+      OAUTH2_PROXY_HTTP_ADDRESS: 0.0.0.0:4180
+      OAUTH2_PROXY_UPSTREAMS: static://202
+      OAUTH2_PROXY_SET_XAUTHREQUEST: "true"
+      OAUTH2_PROXY_REVERSE_PROXY: "true"
+      OAUTH2_PROXY_TRUSTED_PROXY_IPS: 172.28.0.0/24
+      OAUTH2_PROXY_COOKIE_SECURE: "true"
+      OAUTH2_PROXY_COOKIE_HTTPONLY: "true"
+      OAUTH2_PROXY_COOKIE_SAMESITE: lax
+      OAUTH2_PROXY_COOKIE_NAME: __Host-quant_auth
+      OAUTH2_PROXY_COOKIE_EXPIRE: 8h
+      OAUTH2_PROXY_COOKIE_REFRESH: 0
+      OAUTH2_PROXY_SESSION_COOKIE_MINIMAL: "true"
+      OAUTH2_PROXY_AUTHENTICATED_EMAILS_FILE: /etc/oauth/allowed-emails.txt
+      OAUTH2_PROXY_REQUEST_LOGGING: "false"
+      OAUTH2_PROXY_AUTH_LOGGING: "false"
+      OAUTH2_PROXY_SKIP_PROVIDER_BUTTON: "false"
+    volumes:
+      - ./deploy/allowed-emails.txt:/etc/oauth/allowed-emails.txt:ro
+    networks: [private]
+    security_opt: [no-new-privileges:true]
+  gateway:
+    image: caddy:2.11.4
+    restart: unless-stopped
+    environment:
+      APP_DOMAIN: ${APP_DOMAIN}
+      QS_PROXY_SECRET: ${QS_PROXY_SECRET}
+    ports: ["80:80", "443:443"]
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      app:
+        condition: service_healthy
+      oauth:
+        condition: service_started
+    networks: [private]
+    security_opt: [no-new-privileges:true]
+networks:
+  private:
+    ipam:
+      config:
+        - subnet: 172.28.0.0/24
+volumes:
+  app_state:
+  caddy_data:
+  caddy_config:

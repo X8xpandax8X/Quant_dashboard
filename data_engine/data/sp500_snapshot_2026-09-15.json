@@ -1,0 +1,4038 @@
+{
+  "provenance": {
+    "source": "Wikipedia List of S&P 500 companies",
+    "url": "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies",
+    "retrieved_at": "2026-09-15T14:29:16.489493Z",
+    "as_of": "2026-09-15",
+    "count": 503,
+    "notes": [
+      "Snapshot is a dated fallback for offline operation. Live constituent changes require refreshing this asset."
+    ]
+  },
+  "items": [
+    {
+      "symbol": "MMM",
+      "name": "3M",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "AOS",
+      "name": "A. O. Smith",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ABT",
+      "name": "Abbott Laboratories",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ABBV",
+      "name": "AbbVie",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ACN",
+      "name": "Accenture",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ADBE",
+      "name": "Adobe Inc.",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "AMD",
+      "name": "Advanced Micro Devices",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "AES",
+      "name": "AES Corporation",
+      "gics_sector": "Utilities",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "AFL",
+      "name": "Aflac",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "A",
+      "name": "Agilent Technologies",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "APD",
+      "name": "Air Products",
+      "gics_sector": "Materials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ABNB",
+      "name": "Airbnb",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "AKAM",
+      "name": "Akamai Technologies",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ALB",
+      "name": "Albemarle Corporation",
+      "gics_sector": "Materials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ARE",
+      "name": "Alexandria Real Estate Equities",
+      "gics_sector": "Real Estate",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ALGN",
+      "name": "Align Technology",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ALLE",
+      "name": "Allegion",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "LNT",
+      "name": "Alliant Energy",
+      "gics_sector": "Utilities",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ALL",
+      "name": "Allstate",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "GOOGL",
+      "name": "Alphabet Inc. (Class A)",
+      "gics_sector": "Communication Services",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "GOOG",
+      "name": "Alphabet Inc. (Class C)",
+      "gics_sector": "Communication Services",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "MO",
+      "name": "Altria",
+      "gics_sector": "Consumer Staples",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "AMZN",
+      "name": "Amazon",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "AMCR",
+      "name": "Amcor",
+      "gics_sector": "Materials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "AEE",
+      "name": "Ameren",
+      "gics_sector": "Utilities",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "AEP",
+      "name": "American Electric Power",
+      "gics_sector": "Utilities",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "AXP",
+      "name": "American Express",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "AIG",
+      "name": "American International Group",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "AMT",
+      "name": "American Tower",
+      "gics_sector": "Real Estate",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "AWK",
+      "name": "American Water Works",
+      "gics_sector": "Utilities",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "AMP",
+      "name": "Ameriprise Financial",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "AME",
+      "name": "Ametek",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "AMGN",
+      "name": "Amgen",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "APH",
+      "name": "Amphenol",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ADI",
+      "name": "Analog Devices",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "AON",
+      "name": "Aon plc",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "APA",
+      "name": "APA Corporation",
+      "gics_sector": "Energy",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "APO",
+      "name": "Apollo Global Management",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "AAPL",
+      "name": "Apple Inc.",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "AMAT",
+      "name": "Applied Materials",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "APP",
+      "name": "AppLovin",
+      "gics_sector": "Communication Services",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "APTV",
+      "name": "Aptiv",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ACGL",
+      "name": "Arch Capital Group",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ADM",
+      "name": "Archer Daniels Midland",
+      "gics_sector": "Consumer Staples",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ARES",
+      "name": "Ares Management",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ANET",
+      "name": "Arista Networks",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "AJG",
+      "name": "Arthur J. Gallagher & Co.",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "AIZ",
+      "name": "Assurant",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "T",
+      "name": "AT&T",
+      "gics_sector": "Communication Services",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ATO",
+      "name": "Atmos Energy",
+      "gics_sector": "Utilities",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ADSK",
+      "name": "Autodesk",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ADP",
+      "name": "Automatic Data Processing",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "AZO",
+      "name": "AutoZone",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "AVY",
+      "name": "Avery Dennison",
+      "gics_sector": "Materials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "AXON",
+      "name": "Axon Enterprise",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "BKR",
+      "name": "Baker Hughes",
+      "gics_sector": "Energy",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "BALL",
+      "name": "Ball Corporation",
+      "gics_sector": "Materials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "BAC",
+      "name": "Bank of America",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "BAX",
+      "name": "Baxter International",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "BDX",
+      "name": "Becton Dickinson",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "BRK-B",
+      "name": "Berkshire Hathaway",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "BBY",
+      "name": "Best Buy",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "TECH",
+      "name": "Bio-Techne",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "BIIB",
+      "name": "Biogen",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "BLK",
+      "name": "BlackRock",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "BX",
+      "name": "Blackstone Inc.",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "XYZ",
+      "name": "Block, Inc.",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "BNY",
+      "name": "BNY Mellon",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "BA",
+      "name": "Boeing",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "BKNG",
+      "name": "Booking Holdings",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "BSX",
+      "name": "Boston Scientific",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "BMY",
+      "name": "Bristol Myers Squibb",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "AVGO",
+      "name": "Broadcom",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "BR",
+      "name": "Broadridge Financial Solutions",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "BRO",
+      "name": "Brown & Brown",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "BF-B",
+      "name": "Brown–Forman",
+      "gics_sector": "Consumer Staples",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "BLDR",
+      "name": "Builders FirstSource",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "BG",
+      "name": "Bunge Global",
+      "gics_sector": "Consumer Staples",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "BXP",
+      "name": "BXP, Inc.",
+      "gics_sector": "Real Estate",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CHRW",
+      "name": "C.H. Robinson",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CDNS",
+      "name": "Cadence Design Systems",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CPT",
+      "name": "Camden Property Trust",
+      "gics_sector": "Real Estate",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "COF",
+      "name": "Capital One",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CAH",
+      "name": "Cardinal Health",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CCL",
+      "name": "Carnival Corporation",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CARR",
+      "name": "Carrier Global",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CVNA",
+      "name": "Carvana",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CASY",
+      "name": "Casey's",
+      "gics_sector": "Consumer Staples",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CAT",
+      "name": "Caterpillar Inc.",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CBOE",
+      "name": "Cboe Global Markets",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CBRE",
+      "name": "CBRE Group",
+      "gics_sector": "Real Estate",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CDW",
+      "name": "CDW Corporation",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "COR",
+      "name": "Cencora",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CNC",
+      "name": "Centene Corporation",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CNP",
+      "name": "CenterPoint Energy",
+      "gics_sector": "Utilities",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CF",
+      "name": "CF Industries",
+      "gics_sector": "Materials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CRL",
+      "name": "Charles River Laboratories",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "SCHW",
+      "name": "Charles Schwab Corporation",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CHTR",
+      "name": "Charter Communications",
+      "gics_sector": "Communication Services",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CVX",
+      "name": "Chevron Corporation",
+      "gics_sector": "Energy",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CMG",
+      "name": "Chipotle Mexican Grill",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CB",
+      "name": "Chubb Limited",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CHD",
+      "name": "Church & Dwight",
+      "gics_sector": "Consumer Staples",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CIEN",
+      "name": "Ciena",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CI",
+      "name": "Cigna",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CINF",
+      "name": "Cincinnati Financial",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CTAS",
+      "name": "Cintas",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CSCO",
+      "name": "Cisco",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "C",
+      "name": "Citigroup",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CFG",
+      "name": "Citizens Financial Group",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CLX",
+      "name": "Clorox",
+      "gics_sector": "Consumer Staples",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CME",
+      "name": "CME Group",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CMS",
+      "name": "CMS Energy",
+      "gics_sector": "Utilities",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "KO",
+      "name": "Coca-Cola Company (The)",
+      "gics_sector": "Consumer Staples",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CTSH",
+      "name": "Cognizant",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "COHR",
+      "name": "Coherent Corp.",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "COIN",
+      "name": "Coinbase",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CL",
+      "name": "Colgate-Palmolive",
+      "gics_sector": "Consumer Staples",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CMCSA",
+      "name": "Comcast",
+      "gics_sector": "Communication Services",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "FIX",
+      "name": "Comfort Systems USA",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "COP",
+      "name": "ConocoPhillips",
+      "gics_sector": "Energy",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ED",
+      "name": "Consolidated Edison",
+      "gics_sector": "Utilities",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "STZ",
+      "name": "Constellation Brands",
+      "gics_sector": "Consumer Staples",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CEG",
+      "name": "Constellation Energy",
+      "gics_sector": "Utilities",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "COO",
+      "name": "Cooper Companies (The)",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CPRT",
+      "name": "Copart",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "GLW",
+      "name": "Corning Inc.",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CPAY",
+      "name": "Corpay",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CTVA",
+      "name": "Corteva",
+      "gics_sector": "Materials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CSGP",
+      "name": "CoStar Group",
+      "gics_sector": "Real Estate",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "COST",
+      "name": "Costco",
+      "gics_sector": "Consumer Staples",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CRH",
+      "name": "CRH plc",
+      "gics_sector": "Materials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CRWD",
+      "name": "CrowdStrike",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CCI",
+      "name": "Crown Castle",
+      "gics_sector": "Real Estate",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CSX",
+      "name": "CSX Corporation",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CMI",
+      "name": "Cummins",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CVS",
+      "name": "CVS Health",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "DHR",
+      "name": "Danaher Corporation",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "DRI",
+      "name": "Darden Restaurants",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "DDOG",
+      "name": "Datadog",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "DVA",
+      "name": "DaVita",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "DECK",
+      "name": "Deckers Brands",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "DE",
+      "name": "Deere & Company",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "DELL",
+      "name": "Dell Technologies",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "DAL",
+      "name": "Delta Air Lines",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "DVN",
+      "name": "Devon Energy",
+      "gics_sector": "Energy",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "DXCM",
+      "name": "Dexcom",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "FANG",
+      "name": "Diamondback Energy",
+      "gics_sector": "Energy",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "DLR",
+      "name": "Digital Realty",
+      "gics_sector": "Real Estate",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "DG",
+      "name": "Dollar General",
+      "gics_sector": "Consumer Staples",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "DLTR",
+      "name": "Dollar Tree",
+      "gics_sector": "Consumer Staples",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "D",
+      "name": "Dominion Energy",
+      "gics_sector": "Utilities",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "DPZ",
+      "name": "Domino's",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "DASH",
+      "name": "DoorDash",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "DOV",
+      "name": "Dover Corporation",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "DOW",
+      "name": "Dow Inc.",
+      "gics_sector": "Materials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "DHI",
+      "name": "D. R. Horton",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "DTE",
+      "name": "DTE Energy",
+      "gics_sector": "Utilities",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "DUK",
+      "name": "Duke Energy",
+      "gics_sector": "Utilities",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "DD",
+      "name": "DuPont",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ETN",
+      "name": "Eaton Corporation",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "EBAY",
+      "name": "eBay Inc.",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ECHO",
+      "name": "EchoStar",
+      "gics_sector": "Communication Services",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ECL",
+      "name": "Ecolab",
+      "gics_sector": "Materials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "EIX",
+      "name": "Edison International",
+      "gics_sector": "Utilities",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "EW",
+      "name": "Edwards Lifesciences",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ELV",
+      "name": "Elevance Health",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "EME",
+      "name": "Emcor",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "EMR",
+      "name": "Emerson Electric",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ETR",
+      "name": "Entergy",
+      "gics_sector": "Utilities",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "EOG",
+      "name": "EOG Resources",
+      "gics_sector": "Energy",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "EQT",
+      "name": "EQT Corporation",
+      "gics_sector": "Energy",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "EFX",
+      "name": "Equifax",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "EQIX",
+      "name": "Equinix",
+      "gics_sector": "Real Estate",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ERIE",
+      "name": "Erie Indemnity",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ESS",
+      "name": "Essex Property Trust",
+      "gics_sector": "Real Estate",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "EL",
+      "name": "Estée Lauder Companies (The)",
+      "gics_sector": "Consumer Staples",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "EG",
+      "name": "Everest Group",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "EVRG",
+      "name": "Evergy",
+      "gics_sector": "Utilities",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ES",
+      "name": "Eversource Energy",
+      "gics_sector": "Utilities",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "EXC",
+      "name": "Exelon",
+      "gics_sector": "Utilities",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "EXE",
+      "name": "Expand Energy",
+      "gics_sector": "Energy",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "EXPE",
+      "name": "Expedia Group",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "EXPD",
+      "name": "Expeditors International",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "EXR",
+      "name": "Extra Space Storage",
+      "gics_sector": "Real Estate",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "XOM",
+      "name": "ExxonMobil",
+      "gics_sector": "Energy",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "FFIV",
+      "name": "F5, Inc.",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "FDS",
+      "name": "FactSet",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "FICO",
+      "name": "Fair Isaac",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "FAST",
+      "name": "Fastenal",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "FRT",
+      "name": "Federal Realty Investment Trust",
+      "gics_sector": "Real Estate",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "FDX",
+      "name": "FedEx",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "FDXF",
+      "name": "FedEx Freight",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "FERG",
+      "name": "Ferguson Enterprises",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "FIS",
+      "name": "Fidelity National Information Services",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "FITB",
+      "name": "Fifth Third Bancorp",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "FSLR",
+      "name": "First Solar",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "FE",
+      "name": "FirstEnergy",
+      "gics_sector": "Utilities",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "FISV",
+      "name": "Fiserv",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "FLEX",
+      "name": "Flex Ltd.",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "F",
+      "name": "Ford Motor Company",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "FTNT",
+      "name": "Fortinet",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "FTV",
+      "name": "Fortive",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "FOXA",
+      "name": "Fox Corporation (Class A)",
+      "gics_sector": "Communication Services",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "FOX",
+      "name": "Fox Corporation (Class B)",
+      "gics_sector": "Communication Services",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "BEN",
+      "name": "Franklin Resources",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "FCX",
+      "name": "Freeport-McMoRan",
+      "gics_sector": "Materials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "GRMN",
+      "name": "Garmin",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "IT",
+      "name": "Gartner",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "GE",
+      "name": "GE Aerospace",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "GEHC",
+      "name": "GE HealthCare",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "GEV",
+      "name": "GE Vernova",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "GEN",
+      "name": "Gen Digital",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "GNRC",
+      "name": "Generac",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "GD",
+      "name": "General Dynamics",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "GIS",
+      "name": "General Mills",
+      "gics_sector": "Consumer Staples",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "GM",
+      "name": "General Motors",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "GPC",
+      "name": "Genuine Parts Company",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "GILD",
+      "name": "Gilead Sciences",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "GPN",
+      "name": "Global Payments",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "GL",
+      "name": "Globe Life",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "GDDY",
+      "name": "GoDaddy",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "GS",
+      "name": "Goldman Sachs",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "HAL",
+      "name": "Halliburton",
+      "gics_sector": "Energy",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "HIG",
+      "name": "Hartford (The)",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "HAS",
+      "name": "Hasbro",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "HCA",
+      "name": "HCA Healthcare",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "DOC",
+      "name": "Healthpeak Properties",
+      "gics_sector": "Real Estate",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "HSIC",
+      "name": "Henry Schein",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "HSY",
+      "name": "Hershey Company (The)",
+      "gics_sector": "Consumer Staples",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "HPE",
+      "name": "Hewlett Packard Enterprise",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "HLT",
+      "name": "Hilton Worldwide",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "HD",
+      "name": "Home Depot (The)",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "HONA",
+      "name": "Honeywell Aerospace",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "HON",
+      "name": "Honeywell Technologies",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "HRL",
+      "name": "Hormel Foods",
+      "gics_sector": "Consumer Staples",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "HST",
+      "name": "Host Hotels & Resorts",
+      "gics_sector": "Real Estate",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "HWM",
+      "name": "Howmet Aerospace",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "HPQ",
+      "name": "HP Inc.",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "HUBB",
+      "name": "Hubbell Incorporated",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "HUM",
+      "name": "Humana",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "HBAN",
+      "name": "Huntington Bancshares",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "HII",
+      "name": "Huntington Ingalls Industries",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "IBM",
+      "name": "IBM",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "IEX",
+      "name": "IDEX Corporation",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "IDXX",
+      "name": "Idexx Laboratories",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ITW",
+      "name": "Illinois Tool Works",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "INCY",
+      "name": "Incyte",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "IR",
+      "name": "Ingersoll Rand",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "PODD",
+      "name": "Insulet Corporation",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "INTC",
+      "name": "Intel",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "IBKR",
+      "name": "Interactive Brokers",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ICE",
+      "name": "Intercontinental Exchange",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "IFF",
+      "name": "International Flavors & Fragrances",
+      "gics_sector": "Materials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "IP",
+      "name": "International Paper",
+      "gics_sector": "Materials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "INTU",
+      "name": "Intuit",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ISRG",
+      "name": "Intuitive Surgical",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "IVZ",
+      "name": "Invesco",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "INVH",
+      "name": "Invitation Homes",
+      "gics_sector": "Real Estate",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "IQV",
+      "name": "IQVIA",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "IRM",
+      "name": "Iron Mountain",
+      "gics_sector": "Real Estate",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "JBHT",
+      "name": "J.B. Hunt",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "JBL",
+      "name": "Jabil",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "JKHY",
+      "name": "Jack Henry & Associates",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "J",
+      "name": "Jacobs Solutions",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "JNJ",
+      "name": "Johnson & Johnson",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "JCI",
+      "name": "Johnson Controls",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "JPM",
+      "name": "JPMorgan Chase",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "KVUE",
+      "name": "Kenvue",
+      "gics_sector": "Consumer Staples",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "KDP",
+      "name": "Keurig Dr Pepper",
+      "gics_sector": "Consumer Staples",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "KEY",
+      "name": "KeyCorp",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "KEYS",
+      "name": "Keysight Technologies",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "KMB",
+      "name": "Kimberly-Clark",
+      "gics_sector": "Consumer Staples",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "KIM",
+      "name": "Kimco Realty",
+      "gics_sector": "Real Estate",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "KMI",
+      "name": "Kinder Morgan",
+      "gics_sector": "Energy",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "KKR",
+      "name": "KKR & Co.",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "KLAC",
+      "name": "KLA Corporation",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "KHC",
+      "name": "Kraft Heinz",
+      "gics_sector": "Consumer Staples",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "KR",
+      "name": "Kroger",
+      "gics_sector": "Consumer Staples",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "LHX",
+      "name": "L3Harris",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "LH",
+      "name": "Labcorp",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "LRCX",
+      "name": "Lam Research",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "LVS",
+      "name": "Las Vegas Sands",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "LDOS",
+      "name": "Leidos",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "LEN",
+      "name": "Lennar",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "LII",
+      "name": "Lennox International",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "LLY",
+      "name": "Lilly (Eli)",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "LIN",
+      "name": "Linde plc",
+      "gics_sector": "Materials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "LYV",
+      "name": "Live Nation Entertainment",
+      "gics_sector": "Communication Services",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "LMT",
+      "name": "Lockheed Martin",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "L",
+      "name": "Loews Corporation",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "LOW",
+      "name": "Lowe's",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "LULU",
+      "name": "Lululemon Athletica",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "LITE",
+      "name": "Lumentum",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "LYB",
+      "name": "LyondellBasell",
+      "gics_sector": "Materials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "MTB",
+      "name": "M&T Bank",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "MPC",
+      "name": "Marathon Petroleum",
+      "gics_sector": "Energy",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "MAR",
+      "name": "Marriott International",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "MRSH",
+      "name": "Marsh McLennan",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "MLM",
+      "name": "Martin Marietta Materials",
+      "gics_sector": "Materials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "MRVL",
+      "name": "Marvell Technology",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "MAS",
+      "name": "Masco",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "MA",
+      "name": "Mastercard",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "MKC",
+      "name": "McCormick & Company",
+      "gics_sector": "Consumer Staples",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "MCD",
+      "name": "McDonald's",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "MCK",
+      "name": "McKesson Corporation",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "MDT",
+      "name": "Medtronic",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "MRK",
+      "name": "Merck & Co.",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "META",
+      "name": "Meta Platforms",
+      "gics_sector": "Communication Services",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "MET",
+      "name": "MetLife",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "MTD",
+      "name": "Mettler Toledo",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "MGM",
+      "name": "MGM Resorts",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "MCHP",
+      "name": "Microchip Technology",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "MU",
+      "name": "Micron Technology",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "MSFT",
+      "name": "Microsoft",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "MAA",
+      "name": "Mid-America Apartment Communities",
+      "gics_sector": "Real Estate",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "MRNA",
+      "name": "Moderna",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "TAP",
+      "name": "Molson Coors Beverage Company",
+      "gics_sector": "Consumer Staples",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "MDLZ",
+      "name": "Mondelez International",
+      "gics_sector": "Consumer Staples",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "MPWR",
+      "name": "Monolithic Power Systems",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "MNST",
+      "name": "Monster Beverage",
+      "gics_sector": "Consumer Staples",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "MCO",
+      "name": "Moody's Corporation",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "MS",
+      "name": "Morgan Stanley",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "MOS",
+      "name": "Mosaic Company (The)",
+      "gics_sector": "Materials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "MSI",
+      "name": "Motorola Solutions",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "MSCI",
+      "name": "MSCI",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "NDAQ",
+      "name": "Nasdaq, Inc.",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "NTAP",
+      "name": "NetApp",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "NFLX",
+      "name": "Netflix",
+      "gics_sector": "Communication Services",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "NEM",
+      "name": "Newmont",
+      "gics_sector": "Materials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "NWSA",
+      "name": "News Corp (Class A)",
+      "gics_sector": "Communication Services",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "NWS",
+      "name": "News Corp (Class B)",
+      "gics_sector": "Communication Services",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "NEE",
+      "name": "NextEra Energy",
+      "gics_sector": "Utilities",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "NKE",
+      "name": "Nike, Inc.",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "NI",
+      "name": "NiSource",
+      "gics_sector": "Utilities",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "NDSN",
+      "name": "Nordson Corporation",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "NSC",
+      "name": "Norfolk Southern",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "NTRS",
+      "name": "Northern Trust",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "NOC",
+      "name": "Northrop Grumman",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "NCLH",
+      "name": "Norwegian Cruise Line Holdings",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "NRG",
+      "name": "NRG Energy",
+      "gics_sector": "Utilities",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "NUE",
+      "name": "Nucor",
+      "gics_sector": "Materials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "NVDA",
+      "name": "Nvidia",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "NVR",
+      "name": "NVR, Inc.",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "NXPI",
+      "name": "NXP Semiconductors",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ORLY",
+      "name": "O'Reilly Automotive",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "OXY",
+      "name": "Occidental Petroleum",
+      "gics_sector": "Energy",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ODFL",
+      "name": "Old Dominion",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "OMC",
+      "name": "Omnicom Group",
+      "gics_sector": "Communication Services",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ON",
+      "name": "ON Semiconductor",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "OKE",
+      "name": "Oneok",
+      "gics_sector": "Energy",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ORCL",
+      "name": "Oracle Corporation",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "OTIS",
+      "name": "Otis Worldwide",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "PCAR",
+      "name": "Paccar",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "PKG",
+      "name": "Packaging Corporation of America",
+      "gics_sector": "Materials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "PLTR",
+      "name": "Palantir Technologies",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "PANW",
+      "name": "Palo Alto Networks",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "PSKY",
+      "name": "Paramount Skydance Corporation",
+      "gics_sector": "Communication Services",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "PH",
+      "name": "Parker Hannifin",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "PAYX",
+      "name": "Paychex",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "PYPL",
+      "name": "PayPal",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "PNR",
+      "name": "Pentair",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "PEP",
+      "name": "PepsiCo",
+      "gics_sector": "Consumer Staples",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "PFE",
+      "name": "Pfizer",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "PCG",
+      "name": "PG&E Corporation",
+      "gics_sector": "Utilities",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "PM",
+      "name": "Philip Morris International",
+      "gics_sector": "Consumer Staples",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "PSX",
+      "name": "Phillips 66",
+      "gics_sector": "Energy",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "PNW",
+      "name": "Pinnacle West Capital",
+      "gics_sector": "Utilities",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "PNC",
+      "name": "PNC Financial Services",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "PPG",
+      "name": "PPG Industries",
+      "gics_sector": "Materials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "PPL",
+      "name": "PPL Corporation",
+      "gics_sector": "Utilities",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "PFG",
+      "name": "Principal Financial Group",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "PG",
+      "name": "Procter & Gamble",
+      "gics_sector": "Consumer Staples",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "PGR",
+      "name": "Progressive Corporation",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "PLD",
+      "name": "Prologis",
+      "gics_sector": "Real Estate",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "PRU",
+      "name": "Prudential Financial",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "PEG",
+      "name": "Public Service Enterprise Group",
+      "gics_sector": "Utilities",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "PTC",
+      "name": "PTC Inc.",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "PSA",
+      "name": "Public Storage",
+      "gics_sector": "Real Estate",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "PHM",
+      "name": "PulteGroup",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "PWR",
+      "name": "Quanta Services",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "QCOM",
+      "name": "Qualcomm",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "DGX",
+      "name": "Quest Diagnostics",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "Q",
+      "name": "Qnity Electronics",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "RL",
+      "name": "Ralph Lauren Corporation",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "RJF",
+      "name": "Raymond James Financial",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "RDDT",
+      "name": "Reddit",
+      "gics_sector": "Communication Services",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "RTX",
+      "name": "RTX Corporation",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "O",
+      "name": "Realty Income",
+      "gics_sector": "Real Estate",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "REG",
+      "name": "Regency Centers",
+      "gics_sector": "Real Estate",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "REGN",
+      "name": "Regeneron Pharmaceuticals",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "RF",
+      "name": "Regions Financial Corporation",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "RSG",
+      "name": "Republic Services",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "RMD",
+      "name": "ResMed|",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "RVTY",
+      "name": "Revvity",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "HOOD",
+      "name": "Robinhood Markets",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ROK",
+      "name": "Rockwell Automation",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ROL",
+      "name": "Rollins, Inc.",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ROP",
+      "name": "Roper Technologies",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ROST",
+      "name": "Ross Stores",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "RCL",
+      "name": "Royal Caribbean Group",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "SPGI",
+      "name": "S&P Global",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "CRM",
+      "name": "Salesforce",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "SNDK",
+      "name": "Sandisk",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "SBAC",
+      "name": "SBA Communications",
+      "gics_sector": "Real Estate",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "SLB",
+      "name": "Schlumberger",
+      "gics_sector": "Energy",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "STX",
+      "name": "Seagate Technology",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "SRE",
+      "name": "Sempra",
+      "gics_sector": "Utilities",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "NOW",
+      "name": "ServiceNow",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "SHW",
+      "name": "Sherwin-Williams",
+      "gics_sector": "Materials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "SPG",
+      "name": "Simon Property Group",
+      "gics_sector": "Real Estate",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "SWKS",
+      "name": "Skyworks Solutions",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "SJM",
+      "name": "J.M. Smucker Company (The)",
+      "gics_sector": "Consumer Staples",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "SW",
+      "name": "Smurfit Westrock",
+      "gics_sector": "Materials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "SNA",
+      "name": "Snap-on",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "SOLV",
+      "name": "Solventum",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "SO",
+      "name": "Southern Company",
+      "gics_sector": "Utilities",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "LUV",
+      "name": "Southwest Airlines",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "SWK",
+      "name": "Stanley Black & Decker",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "SBUX",
+      "name": "Starbucks",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "STT",
+      "name": "State Street Corporation",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "STLD",
+      "name": "Steel Dynamics",
+      "gics_sector": "Materials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "STE",
+      "name": "Steris",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "SYK",
+      "name": "Stryker Corporation",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "SMCI",
+      "name": "Supermicro",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "SYF",
+      "name": "Synchrony Financial",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "SNPS",
+      "name": "Synopsys",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "SYY",
+      "name": "Sysco",
+      "gics_sector": "Consumer Staples",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "TMUS",
+      "name": "T-Mobile US",
+      "gics_sector": "Communication Services",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "TROW",
+      "name": "T. Rowe Price",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "TTWO",
+      "name": "Take-Two Interactive",
+      "gics_sector": "Communication Services",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "TPR",
+      "name": "Tapestry, Inc.",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "TRGP",
+      "name": "Targa Resources",
+      "gics_sector": "Energy",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "TGT",
+      "name": "Target Corporation",
+      "gics_sector": "Consumer Staples",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "TEL",
+      "name": "TE Connectivity",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "TDY",
+      "name": "Teledyne Technologies",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "TER",
+      "name": "Teradyne",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "TSLA",
+      "name": "Tesla, Inc.",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "TXN",
+      "name": "Texas Instruments",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "TPL",
+      "name": "Texas Pacific Land Corporation",
+      "gics_sector": "Energy",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "TXT",
+      "name": "Textron",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "TMO",
+      "name": "Thermo Fisher Scientific",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "TJX",
+      "name": "TJX Companies",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "TKO",
+      "name": "TKO Group Holdings",
+      "gics_sector": "Communication Services",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "TTD",
+      "name": "Trade Desk (The)",
+      "gics_sector": "Communication Services",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "TSCO",
+      "name": "Tractor Supply",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "TT",
+      "name": "Trane Technologies",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "TDG",
+      "name": "TransDigm Group",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "TRV",
+      "name": "Travelers Companies (The)",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "TRMB",
+      "name": "Trimble Inc.",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "TFC",
+      "name": "Truist Financial",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "TYL",
+      "name": "Tyler Technologies",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "TSN",
+      "name": "Tyson Foods",
+      "gics_sector": "Consumer Staples",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "USB",
+      "name": "U.S. Bancorp",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "UBER",
+      "name": "Uber",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "UDR",
+      "name": "UDR, Inc.",
+      "gics_sector": "Real Estate",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ULTA",
+      "name": "Ulta Beauty",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "UNP",
+      "name": "Union Pacific Corporation",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "UAL",
+      "name": "United Airlines Holdings",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "UPS",
+      "name": "United Parcel Service",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "URI",
+      "name": "United Rentals",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "UNH",
+      "name": "UnitedHealth Group",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "UHS",
+      "name": "Universal Health Services",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "VLO",
+      "name": "Valero Energy",
+      "gics_sector": "Energy",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "VEEV",
+      "name": "Veeva Systems",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "VTR",
+      "name": "Ventas",
+      "gics_sector": "Real Estate",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "VLTO",
+      "name": "Veralto",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "VRSN",
+      "name": "Verisign",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "VRSK",
+      "name": "Verisk Analytics",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "VZ",
+      "name": "Verizon",
+      "gics_sector": "Communication Services",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "VRTX",
+      "name": "Vertex Pharmaceuticals",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "VRT",
+      "name": "Vertiv",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "VTRS",
+      "name": "Viatris",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "VICI",
+      "name": "Vici Properties",
+      "gics_sector": "Real Estate",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "V",
+      "name": "Visa Inc.",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "VST",
+      "name": "Vistra Corp.",
+      "gics_sector": "Utilities",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "VMRK",
+      "name": "Vivmark Residential",
+      "gics_sector": "Real Estate",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "VMC",
+      "name": "Vulcan Materials Company",
+      "gics_sector": "Materials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "WRB",
+      "name": "W. R. Berkley Corporation",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "GWW",
+      "name": "W. W. Grainger",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "WAB",
+      "name": "Wabtec",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "WMT",
+      "name": "Walmart",
+      "gics_sector": "Consumer Staples",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "DIS",
+      "name": "Walt Disney Company (The)",
+      "gics_sector": "Communication Services",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "WBD",
+      "name": "Warner Bros. Discovery",
+      "gics_sector": "Communication Services",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "WM",
+      "name": "Waste Management",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "WAT",
+      "name": "Waters Corporation",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "WEC",
+      "name": "WEC Energy Group",
+      "gics_sector": "Utilities",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "WFC",
+      "name": "Wells Fargo",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "WELL",
+      "name": "Welltower",
+      "gics_sector": "Real Estate",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "WST",
+      "name": "West Pharmaceutical Services",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "WDC",
+      "name": "Western Digital",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "WY",
+      "name": "Weyerhaeuser",
+      "gics_sector": "Real Estate",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "WSM",
+      "name": "Williams-Sonoma, Inc.",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "WMB",
+      "name": "Williams Companies",
+      "gics_sector": "Energy",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "WTW",
+      "name": "Willis Towers Watson",
+      "gics_sector": "Financials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "WDAY",
+      "name": "Workday, Inc.",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "WYNN",
+      "name": "Wynn Resorts",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "XEL",
+      "name": "Xcel Energy",
+      "gics_sector": "Utilities",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "XYL",
+      "name": "Xylem Inc.",
+      "gics_sector": "Industrials",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "YUM",
+      "name": "Yum! Brands",
+      "gics_sector": "Consumer Discretionary",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ZBRA",
+      "name": "Zebra Technologies",
+      "gics_sector": "Information Technology",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ZBH",
+      "name": "Zimmer Biomet",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    },
+    {
+      "symbol": "ZTS",
+      "name": "Zoetis",
+      "gics_sector": "Health Care",
+      "currency": "USD",
+      "exchange": "NYSE/Nasdaq",
+      "timezone": "America/New_York"
+    }
+  ]
+}

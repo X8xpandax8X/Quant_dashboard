@@ -1,0 +1,1 @@
+"""Quant Stock application services."""
