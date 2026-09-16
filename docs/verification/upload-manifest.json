@@ -1,0 +1,783 @@
+{
+  "description": "Reviewed 111-file baseline at 99c91ba5834680909f6f02e35210d9be971634eb, before subsequent upload-evidence documentation.",
+  "tree_sha": "0b4852606dd24627460b03abe73378ff75400d59",
+  "files": [
+    {
+      "path": ".dockerignore",
+      "size": 155,
+      "binary": false,
+      "sha256": "1af8c4e04dd4b0dfc38120db0e36a5c66166894004707d2da30492465ff19380",
+      "git_blob_sha": "8bef35ccc4ad1dc3a529cac4ad97cedc792a6030"
+    },
+    {
+      "path": ".env.example",
+      "size": 434,
+      "binary": false,
+      "sha256": "0d4881028f37348319cfe91592a30634e838eb91e157a19a86d21afad4073ab4",
+      "git_blob_sha": "daea9bffdd1baeaac288abb9b59e9c1b31915dc8"
+    },
+    {
+      "path": ".gitignore",
+      "size": 436,
+      "binary": false,
+      "sha256": "2ae5bb260e31730605557de588cdbe7c6ff3aa0145c22352bdac1def93bffa4e",
+      "git_blob_sha": "abde291cb0815e417bc418c9a1bd45935b7c5341"
+    },
+    {
+      "path": "AGENTS.md",
+      "size": 4372,
+      "binary": false,
+      "sha256": "6e11625e52de323bb2b2b8c60d82ccf2b678f9f4c1e67f99a740779c33fcb02c",
+      "git_blob_sha": "24fbfb6ef750b585331b726262ac8d1120088783"
+    },
+    {
+      "path": "DESIGN.md",
+      "size": 4663,
+      "binary": false,
+      "sha256": "7fe2e90bae9f1d3b03697b29a6fba105d9d40a452042e7ff4bac3996a71106f8",
+      "git_blob_sha": "0647896197f5f6a4d2ed49f0d721d1ab17d20aef"
+    },
+    {
+      "path": "Dockerfile",
+      "size": 704,
+      "binary": false,
+      "sha256": "28e5bcebe159c5427689fb565afd413d18292189c9bd9fcfafe19c62e8c97547",
+      "git_blob_sha": "f09c0a97ee0a3d74dd3d90fff8c155fd8740a4e2"
+    },
+    {
+      "path": "LPPLS/.gitignore",
+      "size": 93,
+      "binary": false,
+      "sha256": "eb0a5f3527a7b57f7b755cb09eeb5050d4967634016a02f6aefe209cfbe2a8ed",
+      "git_blob_sha": "be57c18de4359bcdd740d12fa39943aac5ed5604"
+    },
+    {
+      "path": "LPPLS/README.md",
+      "size": 8831,
+      "binary": false,
+      "sha256": "fbde0c0555cc96253a9f8af2e8d6820852ce921b1a65ae0f5674cc31b02e0cc1",
+      "git_blob_sha": "b5f21d5ce91407dae568ff051aa58fcafd873be3"
+    },
+    {
+      "path": "LPPLS/lppls/__init__.py",
+      "size": 472,
+      "binary": false,
+      "sha256": "2e06351a38355e017dc75b57da707a516ca492ed07e40e72586ffbdf7c0bb66b",
+      "git_blob_sha": "ce04816f50f1ef2419338f3694b09e1f9c9ff8b4"
+    },
+    {
+      "path": "LPPLS/lppls/analysis.py",
+      "size": 1057,
+      "binary": false,
+      "sha256": "2ec6fc6f3189625cea3a28a25916658997901a73d9305354b8bc249f4ab82d79",
+      "git_blob_sha": "876a5bc137e93f5e27befdb343161e1432b4afc6"
+    },
+    {
+      "path": "LPPLS/lppls/cli.py",
+      "size": 8002,
+      "binary": false,
+      "sha256": "7fee5284e97de3086930ed3172238b09d47c77e6f04ecab780de11e77bcff2d4",
+      "git_blob_sha": "901faa5599e4fdc61a2c42b59234b963abf3d723"
+    },
+    {
+      "path": "LPPLS/lppls/config.py",
+      "size": 4670,
+      "binary": false,
+      "sha256": "6aca0bf6ee87c0c3560d301b5017b93d198a0f29a864c68fb058c5ff44069ebf",
+      "git_blob_sha": "03af6dcf1c71c673a8713f3c9443259180dfb697"
+    },
+    {
+      "path": "LPPLS/lppls/dashboard.py",
+      "size": 62585,
+      "binary": false,
+      "sha256": "1705dc2d05543186585ab5d76bec213007d41bce0d0379bd0b85af503204e0d5",
+      "git_blob_sha": "28478735e44bcd9f4f28e9922a2bba6e596c1711"
+    },
+    {
+      "path": "LPPLS/lppls/data.py",
+      "size": 3370,
+      "binary": false,
+      "sha256": "5d919b8886195deec4dbe2ae4bfefed8ba2cd08749f2aeacf0efcd80be7f4e00",
+      "git_blob_sha": "c5b4294e65ba81779f8373baaad0ed24cb9b6b1d"
+    },
+    {
+      "path": "LPPLS/lppls/models/__init__.py",
+      "size": 149,
+      "binary": false,
+      "sha256": "60a46b4503c80816f60aef330986fe1e4cbb54ee3686428bd5ffa62edcda0eca",
+      "git_blob_sha": "78d6ad3905efe052c8ac9b61eb2b306f2a4052ad"
+    },
+    {
+      "path": "LPPLS/lppls/models/base.py",
+      "size": 380,
+      "binary": false,
+      "sha256": "a6bca2a7004843a1e94978adfb1032c17fba625416777dd83ef2970ee88f92c2",
+      "git_blob_sha": "f2cc28dcadc8822e4edd1e08216091cb63b6430a"
+    },
+    {
+      "path": "LPPLS/lppls/models/lppls.py",
+      "size": 31846,
+      "binary": false,
+      "sha256": "1a4498bf65f18804339a2f3ced3a9f946c937017cf08f8521039b5ba0b7757d2",
+      "git_blob_sha": "65d43dbf7afc3c2315d0996dbbd7d02220ea25d3"
+    },
+    {
+      "path": "LPPLS/lppls/models/registry.py",
+      "size": 1275,
+      "binary": false,
+      "sha256": "cd7b71a56f6dae0fa52c5313da0c7b65898fef673dd2f0f4669519dc839bcb24",
+      "git_blob_sha": "78fb5d5750a8ffe79fcf386d34a13d0df15c969e"
+    },
+    {
+      "path": "LPPLS/lppls/types.py",
+      "size": 1595,
+      "binary": false,
+      "sha256": "01de333efdf238ebede6ce460e9a2e8c96b9d38551d5ba80f43460d669ae3301",
+      "git_blob_sha": "cd8f9101b0dd191c21f9ecedfdff979900374ba9"
+    },
+    {
+      "path": "LPPLS/lppls_test.py",
+      "size": 171,
+      "binary": false,
+      "sha256": "ad2e4edcbe233e4be29bcf34462f3c399555635eea573b2adbed99e2aa2a6a8a",
+      "git_blob_sha": "88c0b9a97fcc8cbbf2950ab4e2155fa013084203"
+    },
+    {
+      "path": "LPPLS/requirements.txt",
+      "size": 66,
+      "binary": false,
+      "sha256": "2b5980bba93ea98b3ba54907ee1f80c7a7b14a93819bea6270ae378dce35eaba",
+      "git_blob_sha": "924a7b477870962983fd469b7c9ae27b802c3410"
+    },
+    {
+      "path": "LPPLS/tests/test_analysis.py",
+      "size": 1509,
+      "binary": false,
+      "sha256": "9d3ff9507a171c93a99113f935c1e3efeadf2350ed3d33db361583ee04baea62",
+      "git_blob_sha": "6641026b3bd305a4846cdd1c3326a7406157555b"
+    },
+    {
+      "path": "LPPLS/tests/test_cli.py",
+      "size": 3893,
+      "binary": false,
+      "sha256": "72f04065852015fafc5bd856352c3f75ca9508deadd9170f869798b2e3c43644",
+      "git_blob_sha": "807ed6a42c5cf2c6faa436df50b108eff3eea921"
+    },
+    {
+      "path": "LPPLS/tests/test_config.py",
+      "size": 1309,
+      "binary": false,
+      "sha256": "434f4b12788ea83db756f55942e20e8703573993f464ca842c33e3e0052745b3",
+      "git_blob_sha": "b8fc17922a287f12106ae0b00d9dd9f0d8898f0a"
+    },
+    {
+      "path": "LPPLS/tests/test_dashboard.py",
+      "size": 13112,
+      "binary": false,
+      "sha256": "e560e85a4a2ce29dc62097abf49f03a469b2f069358d05e5d618a28ae2b496aa",
+      "git_blob_sha": "87b788a4333d0ea93f05b7e9e6813b296ad0a0aa"
+    },
+    {
+      "path": "LPPLS/tests/test_data.py",
+      "size": 3350,
+      "binary": false,
+      "sha256": "c15608bd318c4bf1b8212e3ffc9914e31bbebc6c355a7d8d3d1f9ca04ce9903e",
+      "git_blob_sha": "35685161d6c3c4a8d8f7e27fa43bd94fabf321a4"
+    },
+    {
+      "path": "LPPLS/tests/test_lppls_model.py",
+      "size": 2888,
+      "binary": false,
+      "sha256": "d11eb047cb4d0462ebbefa32d17f3d3802955445c6e7090aba6ede7b89196a02",
+      "git_blob_sha": "f8de9dcf1a8b84f031cb252ea19e7cae65fceaf5"
+    },
+    {
+      "path": "LPPLS/tests/test_registry.py",
+      "size": 1242,
+      "binary": false,
+      "sha256": "9949e86a0df926b21c8ef483eca71ed5037c73e5b59d76c7437e416d0641b8ff",
+      "git_blob_sha": "b68c47e220dc0b0034d0b90590ed4e40e3e25621"
+    },
+    {
+      "path": "LPPLS/tests/test_types.py",
+      "size": 1436,
+      "binary": false,
+      "sha256": "a72eda892af9e72ae5647fb39515cd44ee15c1b6956cdf6ac916f2e80cbae477",
+      "git_blob_sha": "dc26a766be7ad5c6e87864e1f1a42038feb265a0"
+    },
+    {
+      "path": "README.md",
+      "size": 6331,
+      "binary": false,
+      "sha256": "bf5f2996a2258348ecd2bf71ab7eb8b01c561cf990969dc0b21b3b4a3d4bf340",
+      "git_blob_sha": "982ed5a6b2df001b8643c6673cdffe9d89a5796e"
+    },
+    {
+      "path": "UX-CONTRACT.md",
+      "size": 5259,
+      "binary": false,
+      "sha256": "cae2925a24f8b40a8c59ced7716c03bc100c9efb541c5b246f67ee731aeaf138",
+      "git_blob_sha": "8086295e53a938a4cb040c04ca5dfd9b4e3a539d"
+    },
+    {
+      "path": "app/__init__.py",
+      "size": 40,
+      "binary": false,
+      "sha256": "16108dc0ef89724f64ceadcfb3bf868f1c24d321cfefcf4ed9448959cf428cd3",
+      "git_blob_sha": "a37141471013c6831295eb4500d27f7f0dcbedf0"
+    },
+    {
+      "path": "app/api.py",
+      "size": 14123,
+      "binary": false,
+      "sha256": "24d3c96a37fb34b09c82a3a563b14f5285a86f9408bb82191796109c011107e0",
+      "git_blob_sha": "456788a54362a6dac5140ebca13f02c9494ba225"
+    },
+    {
+      "path": "app/auth.py",
+      "size": 2542,
+      "binary": false,
+      "sha256": "062dea6378c9c5f85275986fe85e84e55a576690de5a2c47b1af6415b815bb8c",
+      "git_blob_sha": "08db8ab424cb1eff2b4ebd1ebe9152a1436a6018"
+    },
+    {
+      "path": "app/config.py",
+      "size": 1213,
+      "binary": false,
+      "sha256": "cc19805eb1e566eaa6433a4b604f88e98ebc59e7d0dadfa7f9d249c83db806b0",
+      "git_blob_sha": "888f0034cccce075768289abff94d9acbccfbd1b"
+    },
+    {
+      "path": "app/db.py",
+      "size": 5775,
+      "binary": false,
+      "sha256": "5fb6a7b1ea4a70b02ac414950bbcc10b09af504b15b886d5de2f607c5d03658e",
+      "git_blob_sha": "d11ff9fceb810ccf2628a2ed541d85715cf32e32"
+    },
+    {
+      "path": "app/main.py",
+      "size": 51,
+      "binary": false,
+      "sha256": "951ac076b5bf8af1903f4173d46aab6d78a72d4dbd70f237bad0cf457c3aed83",
+      "git_blob_sha": "3f30a21e789c291f635b0d677ca7d2aa9434b12f"
+    },
+    {
+      "path": "app/schemas.py",
+      "size": 6729,
+      "binary": false,
+      "sha256": "3bdee9534231aa4bf04fabd6f4a3172f0a5692b9931ede97801d338283eeac9c",
+      "git_blob_sha": "16d9dfec0c9260dcca6c2c02f2cb5906a5c08c9c"
+    },
+    {
+      "path": "compose.yaml",
+      "size": 2693,
+      "binary": false,
+      "sha256": "ef69f974bc0e6d3059e8fe7b6d8dc368751f38ad8e265d542527304b6a77c6db",
+      "git_blob_sha": "2938339e476d399679a7ba5325eec287194dd197"
+    },
+    {
+      "path": "data_engine/__init__.py",
+      "size": 331,
+      "binary": false,
+      "sha256": "9dc7134998e2b732a5f37b258a45facc3837b4ab72acb48eb5aca8b864374afa",
+      "git_blob_sha": "b86b7e77e20221b45043d5f9e2b8c0694b379801"
+    },
+    {
+      "path": "data_engine/cache.py",
+      "size": 5312,
+      "binary": false,
+      "sha256": "9a7a044e7638faf8072352e39f523db3199a30456aa65dd88c5d87c012fd3ee5",
+      "git_blob_sha": "f296d6b39ddd8ffdf1a2b26333d604e141c1dc82"
+    },
+    {
+      "path": "data_engine/data/sp500_snapshot_2026-09-15.json",
+      "size": 102167,
+      "binary": false,
+      "sha256": "ef4808abe54b6be4f02fb75d1e524b3fc9a03df9f1ae06197b11e547986a45f5",
+      "git_blob_sha": "99c5e2237d793ff89afb448500983bfc82e974ea"
+    },
+    {
+      "path": "data_engine/demo.py",
+      "size": 7523,
+      "binary": false,
+      "sha256": "827ff8bd07a99f1ac09fa9e06429bfa019e1409df7b32504d3e89ae1d4372d4b",
+      "git_blob_sha": "83393d4d5c255ba08f6963795d2a39bad48ad8ed"
+    },
+    {
+      "path": "data_engine/fundamentals.py",
+      "size": 6016,
+      "binary": false,
+      "sha256": "786912cf0ad40482775cec01648ad8c2b15d072a0ae1f8df9010e80de46c042d",
+      "git_blob_sha": "f8990d5a896d21046901304d4d7bb53cda3c0401"
+    },
+    {
+      "path": "data_engine/instruments.py",
+      "size": 2945,
+      "binary": false,
+      "sha256": "9c49bee6ba8b3b0ecae9030e723c37e429151b2e20b52d95393a48a467ede8fc",
+      "git_blob_sha": "52bc692e62d66bd276712069c08ee33156dbd297"
+    },
+    {
+      "path": "data_engine/service.py",
+      "size": 29644,
+      "binary": false,
+      "sha256": "b37d3e7617e173796dacc35ad356b8bf2fcb3c1edc831880e8873fb9369fbf18",
+      "git_blob_sha": "90ebf6ab45eddf734fa4f30119b75ba0dbb7620c"
+    },
+    {
+      "path": "data_engine/tests/test_data_engine.py",
+      "size": 4987,
+      "binary": false,
+      "sha256": "74e8b5d80937d09f97b5b496ba87999c65ab496f0018084e315b3a5ada6ae10a",
+      "git_blob_sha": "d48b226db1a9c0b468187d42320d429c16276efa"
+    },
+    {
+      "path": "deploy/.env.example",
+      "size": 320,
+      "binary": false,
+      "sha256": "f1e337cdb2fe3c5507e434ac1ae82fcca6ccf1d95f438f9d2a3dd4cf7c3a57c1",
+      "git_blob_sha": "06060a67e87e3a8e8fc10eecbded3c7a5d6dd064"
+    },
+    {
+      "path": "deploy/Caddyfile",
+      "size": 944,
+      "binary": false,
+      "sha256": "e40687f2b368417c31350ebfd2d7fcfc3c6e7f2ee14eb964bf2062a670254b8d",
+      "git_blob_sha": "faa5386af9be10bc59a7ab1925155494914179ea"
+    },
+    {
+      "path": "deploy/allowed-emails.example.txt",
+      "size": 102,
+      "binary": false,
+      "sha256": "3e623c6bf70f6c8effa70510a269dcd6185588579e9ac4016cfd075bc16f5b5b",
+      "git_blob_sha": "ddcdc57e7ff37a1eba6dcfa760c32a6d7eb7bfd1"
+    },
+    {
+      "path": "docs/API-CONTRACT.md",
+      "size": 5883,
+      "binary": false,
+      "sha256": "e805d712cc190e635e868c0cef03f48b87f15f1deb72cf6b486002b401568611",
+      "git_blob_sha": "b1ca57ccdd7d2637cf07845af8deed7aa52c3eeb"
+    },
+    {
+      "path": "docs/AUDIT.md",
+      "size": 5188,
+      "binary": false,
+      "sha256": "0d6b7d0f5a9b42eead1abb7d74961a5984e7677e8459ebf551589f16319cbda3",
+      "git_blob_sha": "da2569536667062f7ff1f6cea2a7f86f66d75f67"
+    },
+    {
+      "path": "docs/DATA-METHODS.md",
+      "size": 7008,
+      "binary": false,
+      "sha256": "01eba5444b8cdc16f70a04956faffe5d2e0505e9dffc2655b9b09d500295b855",
+      "git_blob_sha": "b53af89a162607c19b9115986764535e332f8902"
+    },
+    {
+      "path": "docs/DEPLOYMENT.md",
+      "size": 3953,
+      "binary": false,
+      "sha256": "16a00aaef8e4ee043d7ba9348903c674526add24c5ce4a0ce3abefbab11742a3",
+      "git_blob_sha": "efccff0272463b5714ca3f096d5d03f24a56006c"
+    },
+    {
+      "path": "docs/PLAN-REPORT.md",
+      "size": 6356,
+      "binary": false,
+      "sha256": "91ae4a20a5b8bc3ee68930cceee9a779844971deb246cdb62c4a6f9461a3bc6c",
+      "git_blob_sha": "c8409117a7152d5505d09de2ea7b94fc55c69b8d"
+    },
+    {
+      "path": "docs/architecture.md",
+      "size": 3404,
+      "binary": false,
+      "sha256": "bcb29fb32dfcb330ceef477dd9c63d8013d5ab538c74f4cc585952409ee8097a",
+      "git_blob_sha": "b35e2017196ddb15931ab725295427dbc24ff665"
+    },
+    {
+      "path": "docs/concepts/README.md",
+      "size": 2153,
+      "binary": false,
+      "sha256": "edc19a00fb8352c7757faad6100b16e3d31fdaf25931e79971c8d0bc389ed8f1",
+      "git_blob_sha": "4a1f52448df77a8ce18b800b18efd6c1bea48c1c"
+    },
+    {
+      "path": "docs/concepts/desktop-v1.png",
+      "size": 1788641,
+      "binary": true,
+      "sha256": "ad9f360e2dfe3dcef3885902965e462a6a10b4e7967d41f193257d12b513d038",
+      "git_blob_sha": "e8083d6c7475606a51bf54161dbd2db16a4dc99c"
+    },
+    {
+      "path": "docs/concepts/mobile-v1.png",
+      "size": 1833290,
+      "binary": true,
+      "sha256": "b1225bd67b29d17e1cc9a3b5f1de2e4ba51af53040a8881dab906172d5779d54",
+      "git_blob_sha": "6c26df8b7b4bd480ccc3599dae172043668612e1"
+    },
+    {
+      "path": "docs/future-agent-runtime.md",
+      "size": 1610,
+      "binary": false,
+      "sha256": "bf4145f66e60ff68b3980a9c4acb0f3b8d2660b39fd9c4dde7b20e947800a4d9",
+      "git_blob_sha": "b3f7f8b2eda651a402444067944c5f1b5d79a507"
+    },
+    {
+      "path": "docs/migration.md",
+      "size": 3253,
+      "binary": false,
+      "sha256": "02366df02863517aa696ec7f5eb6c011719fb6a91c33fba2676416d1a4312458",
+      "git_blob_sha": "c7987c0b8a791599188c7fc78c3ef4cef3dc7628"
+    },
+    {
+      "path": "docs/openapi.json",
+      "size": 56280,
+      "binary": false,
+      "sha256": "0bcf77580d1050b1af61e5dcf6f26204167ee6d823bfd6ac86785467c3ed284a",
+      "git_blob_sha": "621100906b225d48923f77a911f8608f83d64398"
+    },
+    {
+      "path": "docs/progress.yaml",
+      "size": 5671,
+      "binary": false,
+      "sha256": "b2c1122b9988ce1a501f64a5770f728c43fe19ce1afa0f3d3ba21c22ad1ead12",
+      "git_blob_sha": "1e14f2d4ff565fa39438152926e2a828e1e08020"
+    },
+    {
+      "path": "docs/reference/requirement.original.txt",
+      "size": 11536,
+      "binary": false,
+      "sha256": "631716b67f9e52b4b44df7d5e31d10a514f5a86b04853132038b3534371bced3",
+      "git_blob_sha": "e639f6bee065daaa410e43eb303f7bb11adbfba0"
+    },
+    {
+      "path": "docs/roadmap.md",
+      "size": 3051,
+      "binary": false,
+      "sha256": "025ccd51aee84c9f7d771f417d84c6579d5b261bf8da6fcf7648f80a946de61b",
+      "git_blob_sha": "981016094ddca9cd234efd6d02465a7c2c39f8f7"
+    },
+    {
+      "path": "frontend/index.html",
+      "size": 301,
+      "binary": false,
+      "sha256": "ffd943b76713defa17df5427408f19f293a4aeab744fb1db8946f62106c9828a",
+      "git_blob_sha": "64b31f01461866acfa2d6c221d615c6c0a7e4479"
+    },
+    {
+      "path": "frontend/package-lock.json",
+      "size": 244315,
+      "binary": false,
+      "sha256": "3599a5b107b16a14ee00af6728829a7980457c21be8a6301ad8741151cefb0df",
+      "git_blob_sha": "91e80f4930cbc78509716e0bb9adf2c133dc8c7c"
+    },
+    {
+      "path": "frontend/package.json",
+      "size": 1485,
+      "binary": false,
+      "sha256": "119967a3ff73b668c9c5da7f32cc1057f86aaa33adb4f4fda429238d0ef78a15",
+      "git_blob_sha": "6ed815505edb008a7ecbd9487c8469dd2f11abbd"
+    },
+    {
+      "path": "frontend/playwright.config.ts",
+      "size": 250,
+      "binary": false,
+      "sha256": "39d57e3dd5fa7a83cd1fd8e239dc7e08abbc91f4d3fdc228a63859ffb9d2e8e8",
+      "git_blob_sha": "f9414993a071149f07d8bcaf4ace8dcb93ba72ee"
+    },
+    {
+      "path": "frontend/premium-ui.json",
+      "size": 627,
+      "binary": false,
+      "sha256": "41d8f90cb17f8967bdcf2e2407ac988a9adcc1ffe688c22802d1218bd36ca148",
+      "git_blob_sha": "800a64f6cd5a90a7b5a2d94abb73f7d58a4d95f6"
+    },
+    {
+      "path": "frontend/src/api/client.ts",
+      "size": 3060,
+      "binary": false,
+      "sha256": "b59a19491ddb6f8fc0ab870caac470e7a3f35d8343f96270d37b391527a99048",
+      "git_blob_sha": "dd5e7de6b15bcde645455a286f0f78a0984acc0c"
+    },
+    {
+      "path": "frontend/src/api/schema.ts",
+      "size": 32833,
+      "binary": false,
+      "sha256": "604b036f7f31cfb1be4d1d894d21056a8194250f1080a628b07715bf33b93076",
+      "git_blob_sha": "bfbb2ff82af84d78326f5de2a4ec033b1c49a045"
+    },
+    {
+      "path": "frontend/src/api/types.ts",
+      "size": 1084,
+      "binary": false,
+      "sha256": "9ef0fe17cc90acab2a60e62a4ca1a7279381caf6d3535bb4e993b6e643532070",
+      "git_blob_sha": "e85ac62bda07daa62d1388bdf2ee62b5253265b9"
+    },
+    {
+      "path": "frontend/src/auth.tsx",
+      "size": 365,
+      "binary": false,
+      "sha256": "f27a2bacc890365592518dfb0adddca2719cedfe388e1f9c2cb51deed377ac0c",
+      "git_blob_sha": "307366f5a136d20ab3e0c377da988c67e5f4447a"
+    },
+    {
+      "path": "frontend/src/components/Chart.test.ts",
+      "size": 1906,
+      "binary": false,
+      "sha256": "c0acbc606dffc324c9181494836bb3188891b2de9e7cefb19314d52cb3593353",
+      "git_blob_sha": "720224d26e6f6ccc921a4c76989d2adb2d024bb2"
+    },
+    {
+      "path": "frontend/src/components/Chart.tsx",
+      "size": 13391,
+      "binary": false,
+      "sha256": "c177f8ed8f90f15b35fb521603469859570f038711d7999a664ccfc80ce35ba8",
+      "git_blob_sha": "c8464e3072823441cd369fac0faa0fd5eeb7d2be"
+    },
+    {
+      "path": "frontend/src/components/Shell.tsx",
+      "size": 5122,
+      "binary": false,
+      "sha256": "a565ccbb366b56799e4f775e19ac4061f451ac41f8e5c59bea5c3e93fcabafbb",
+      "git_blob_sha": "afa59646ea6b962d43364232252c9ae685c4f60c"
+    },
+    {
+      "path": "frontend/src/components/SymbolSearch.tsx",
+      "size": 3982,
+      "binary": false,
+      "sha256": "dd48cb8c3672aef25766388b550f42030efca99d853e6b53ff24463730668521",
+      "git_blob_sha": "72ea65db7e588d6b9df3f1cc3d2496da78507c8a"
+    },
+    {
+      "path": "frontend/src/components/ui.tsx",
+      "size": 4202,
+      "binary": false,
+      "sha256": "c4b46ecd5d9797fd8b716cdbcc0766a75438341eae02ae1eb1de5ce3ade5b193",
+      "git_blob_sha": "292de205260e4f5da83961cd881f6dd4c64a1bfb"
+    },
+    {
+      "path": "frontend/src/lib.test.ts",
+      "size": 1500,
+      "binary": false,
+      "sha256": "d75df7c6569ed423bd7a697be526db45473abe9edbf97d3d8e768550262c0813",
+      "git_blob_sha": "c114ffe0e860b8c55e49c762b7645e32022733d8"
+    },
+    {
+      "path": "frontend/src/lib.ts",
+      "size": 2194,
+      "binary": false,
+      "sha256": "29fb8723266c5845d2d084ecb81f5eadcb271d915b270a32e9ea6e6262680354",
+      "git_blob_sha": "6eb2201123cb3afdf1c3533c8823e1950e64c70a"
+    },
+    {
+      "path": "frontend/src/main.tsx",
+      "size": 3385,
+      "binary": false,
+      "sha256": "2bd9903e6ec04b07d46058e3ae1757ab697dfa8fbe901acdb37385464ea7bc99",
+      "git_blob_sha": "38feecdd69093c869a6bd4c580c963f50cabce14"
+    },
+    {
+      "path": "frontend/src/pages/Fundamentals.tsx",
+      "size": 11426,
+      "binary": false,
+      "sha256": "b05dc2688db4dc0d59890369ffd482e6ed8ecc260df4983f1a20e92b778de5f6",
+      "git_blob_sha": "d6fb265c95d8fe2a5165ccef5b926e6ee19a93ee"
+    },
+    {
+      "path": "frontend/src/pages/Markets.tsx",
+      "size": 5818,
+      "binary": false,
+      "sha256": "0b44ff9eb0011675759bba2bdf483d0334852a931bed1518548581639be8f99a",
+      "git_blob_sha": "4ec24b2334f69b1aecb5a45c1eef535135fd410a"
+    },
+    {
+      "path": "frontend/src/pages/Portfolio.tsx",
+      "size": 19810,
+      "binary": false,
+      "sha256": "075c65ab1ee10ec3a26a8b5995f0d7c2b35ccc62648828e627991a09708ace29",
+      "git_blob_sha": "8780dd03e656a325654be4402c43ff1b39dee60e"
+    },
+    {
+      "path": "frontend/src/pages/Stock.tsx",
+      "size": 14649,
+      "binary": false,
+      "sha256": "46b088117a03ef8ba3a6c512d36c1fcbc1c76c8d0a474aa2c822f0df1519cb7e",
+      "git_blob_sha": "356c808de2413217fe416b1ad6bdda3e8695e756"
+    },
+    {
+      "path": "frontend/src/styles/tokens.css",
+      "size": 15051,
+      "binary": false,
+      "sha256": "315f8b13d3de039798e59035d82dc2016cde19570bb43f74bb83855ecebca0c7",
+      "git_blob_sha": "3c43aab37ce3b579e6469d42eb139d6536807416"
+    },
+    {
+      "path": "frontend/tests/e2e/a11y.spec.ts",
+      "size": 495,
+      "binary": false,
+      "sha256": "a401b81a190436ab25942e347be02288c5f38c46fc2f2b5e12f281c7b3bed642",
+      "git_blob_sha": "8e6aed5eda9406fd4c8e4a51773861f1cb40bd0b"
+    },
+    {
+      "path": "frontend/tests/e2e/app.spec.ts",
+      "size": 1796,
+      "binary": false,
+      "sha256": "8ceace9db3332ec2a6e4084a7d3b20727f77ea31c25c35d6ce0fa085e654e825",
+      "git_blob_sha": "82a4b1c4dc73ed2dbf9542db3901141652f1343d"
+    },
+    {
+      "path": "frontend/tests/e2e/portfolio.spec.ts",
+      "size": 7928,
+      "binary": false,
+      "sha256": "33e7df2a2e6ba128936e8f75de30ad88190b787b5ed51a617519ab1fa873f9af",
+      "git_blob_sha": "dfe15a84a7b0dfc24337d5285b94335b313f7da1"
+    },
+    {
+      "path": "frontend/tests/e2e/research.spec.ts",
+      "size": 6149,
+      "binary": false,
+      "sha256": "03950c8b87938fe117681eadae98b323af4c36956378b5892862fbed7a7e4668",
+      "git_blob_sha": "a41aa41756b9f2da59e6ad071378cbcaa10d01e6"
+    },
+    {
+      "path": "frontend/tsconfig.app.json",
+      "size": 48,
+      "binary": false,
+      "sha256": "e8f166e973078fb0688c2031eef0cb308e18b359e7d4888eaa7e052234c385a1",
+      "git_blob_sha": "ad30748f7e5aac5ec03aa26eaad6890572ece0bd"
+    },
+    {
+      "path": "frontend/tsconfig.json",
+      "size": 437,
+      "binary": false,
+      "sha256": "8ddd6efe285fc35c1d9b6a44226566f260d676ff3afe76611075695f2239020b",
+      "git_blob_sha": "d0be4a19fc04b8bed05597e286c21000cd59c7c1"
+    },
+    {
+      "path": "frontend/tsconfig.node.json",
+      "size": 59,
+      "binary": false,
+      "sha256": "c2ac3e20b46ae8b3245e54dc9e0cd2f8555d7de7999918ba2e046bde127c4b63",
+      "git_blob_sha": "db89832e2a007be3e9125bf0bffca2bcd41f7797"
+    },
+    {
+      "path": "frontend/vite.config.ts",
+      "size": 365,
+      "binary": false,
+      "sha256": "9f376ecc08f06d560ded766569a922e3404c8bb797bdad105064e0b2fec4e8d2",
+      "git_blob_sha": "bfa904cc971dc6abf7e87df91a2e99463b5884f6"
+    },
+    {
+      "path": "pyproject.toml",
+      "size": 717,
+      "binary": false,
+      "sha256": "61f536b74635bde6d6ee081425926d1f4afb201e4c93de4f95b3b9314e409e40",
+      "git_blob_sha": "cd543e1b94cddf1f4335237636e515134382c6e6"
+    },
+    {
+      "path": "quant_engine/__init__.py",
+      "size": 82,
+      "binary": false,
+      "sha256": "1adc60920288d3cf33580f3c580885bdefa7cc5dbf2128148c28e5295f69666b",
+      "git_blob_sha": "f622cd9a053f2bba0174eb1dcb183e59dd3205d3"
+    },
+    {
+      "path": "quant_engine/analytics.py",
+      "size": 13103,
+      "binary": false,
+      "sha256": "ff20d69cfcb95f90deb94c1a1cf9ba229fbf18f3e055fd41f48449e27fdd9930",
+      "git_blob_sha": "9b8a6c553ceebde82590dbd69bf0a763708fc93a"
+    },
+    {
+      "path": "quant_engine/models.py",
+      "size": 797,
+      "binary": false,
+      "sha256": "7e8e6165cf32cb0c1bd78faf52b9d367d2d1de6ac27910d1a07a9db628eef4c0",
+      "git_blob_sha": "f74afd347b08f384e52c471f2d2df5f042bea896"
+    },
+    {
+      "path": "quant_engine/tests/test_analytics.py",
+      "size": 10219,
+      "binary": false,
+      "sha256": "889e736734aa71c7f2c140235357bc7d2e2a18b9e9787532b25c443dfa8dda49",
+      "git_blob_sha": "b1dddf09b6da0f41ada696d9972b9de1558583b0"
+    },
+    {
+      "path": "requirement.txt",
+      "size": 38659,
+      "binary": false,
+      "sha256": "3a5afb4d3e965ee01093f23ea397a81c9c8edbbfd1348f06306272a8c311fa8b",
+      "git_blob_sha": "d5971463f8b11c88a1c195954ace8864a1bbd203"
+    },
+    {
+      "path": "requirements.lock.txt",
+      "size": 1042,
+      "binary": false,
+      "sha256": "c33d5c0b7b9810a01859edbc4a1baa14f6603e55d7fad496389f18379198634f",
+      "git_blob_sha": "222a2604044bdd74d4fab66dce36860235251a61"
+    },
+    {
+      "path": "scripts/check_design_tokens.py",
+      "size": 1517,
+      "binary": false,
+      "sha256": "1f3999698e6cbb55dedba2475354c9d830039fbd4921bbb79eb0064f92dfaeec",
+      "git_blob_sha": "e2ea4ed408320f30d8891c57df40d55960699854"
+    },
+    {
+      "path": "scripts/database.py",
+      "size": 2525,
+      "binary": false,
+      "sha256": "7d7532cb02b7fffaffd25c24ebf57d256d1dab5c238a3ee64f5a31dd282b98e6",
+      "git_blob_sha": "92b78b277e0454e1bb8a248f9020db764694b037"
+    },
+    {
+      "path": "scripts/dev.py",
+      "size": 1786,
+      "binary": false,
+      "sha256": "3af65808821f4bcb14d933a977644cfd37ac425f7e6b8346f76e6c2100d90942",
+      "git_blob_sha": "bd18039fd0efa2657700894ea928a4c765b78282"
+    },
+    {
+      "path": "scripts/export_openapi.py",
+      "size": 710,
+      "binary": false,
+      "sha256": "d2b4b1824165eaceab71bc9aea3c41d736cd0b56edf82af9d29874748ee983a4",
+      "git_blob_sha": "aa7d95596b2a8e13ec32b1aeb6493460180e7416"
+    },
+    {
+      "path": "scripts/smoke_data.py",
+      "size": 1216,
+      "binary": false,
+      "sha256": "1d769cb73509424f1bfdbbbb1f865f08cdebcb26d690ebf792a27bbaf733d15b",
+      "git_blob_sha": "86eab681e22aabd43fed232ffc4ca4dbd23bdf5f"
+    },
+    {
+      "path": "tests/test_api.py",
+      "size": 9041,
+      "binary": false,
+      "sha256": "51ba29616af1e164fc88c1fc813a9d7f945b8af78e1663cc2e833b3aee0b0e88",
+      "git_blob_sha": "6cc0b0c0986769f512470d00f682da248d66e8f9"
+    },
+    {
+      "path": "tests/test_data_integration.py",
+      "size": 6369,
+      "binary": false,
+      "sha256": "a66c2a3d5a2255d10de421b66dcc624b98ed7522d292484d1eba463f3324e5a1",
+      "git_blob_sha": "7f5df643a9288906d99d5ff1c43e25056450417d"
+    },
+    {
+      "path": "tests/test_database_tools.py",
+      "size": 1165,
+      "binary": false,
+      "sha256": "99074d66f694ff272bfd35cf2696eefa56f5a8cd3f045989daf0bce838bb0f9b",
+      "git_blob_sha": "a71a830e49bb403efcd279039b204fa74a26bd7a"
+    },
+    {
+      "path": "tests/test_gateway.py",
+      "size": 3643,
+      "binary": false,
+      "sha256": "3314c6971409ae4815fb82c6e71341d1f80a098876af940f12d5ff5a42a73b69",
+      "git_blob_sha": "17c645b8c63728d49c9011b3b897288eb58d7748"
+    }
+  ]
+}

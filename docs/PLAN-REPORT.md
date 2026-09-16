@@ -14,6 +14,8 @@ The user selected **X8xpandax8X/Quant_dashboard** (private). GitHub connector ac
 push permission and an empty remote were verified. Uploading the existing application
 and revised requirements is authorized; migration and new application work remain
 paused. CLI authentication and the Documents checkout are not yet established.
+The uploaded checkpoint is available in [draft PR #1](https://github.com/X8xpandax8X/Quant_dashboard/pull/1);
+see [migration evidence](migration.md#verified-github-upload-checkpoint).
 
 ## Requirements reconciliation
 

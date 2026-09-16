@@ -10,7 +10,8 @@ The selected private repository is [X8xpandax8X/Quant_dashboard](https://github.
 The current React/Vite application below is an in-progress baseline. The proposed
 Next.js monorepo migration has **not** been implemented. New application changes
 and the five-hour implementation automation are paused for plan review.
-The current request authorizes uploading this baseline and the revised documents.
+The baseline and revised documents are uploaded in [draft PR #1](https://github.com/X8xpandax8X/Quant_dashboard/pull/1).
+The PR is unmerged; local migration and CI remain pending.
 
 - [Target architecture](docs/architecture.md)
 - [Roadmap and acceptance gates](docs/roadmap.md)
