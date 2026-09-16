@@ -33,9 +33,21 @@ try {
     create table storage.buckets(id text primary key,name text not null,public boolean not null);
   `);
   const root = new URL('../../supabase/migrations/',import.meta.url);
-  for (const file of (await readdir(root)).filter(f=>f.endsWith('.sql')).sort())
+  const migrations = (await readdir(root)).filter(f=>f.endsWith('.sql')).sort();
+  for (const file of migrations) {
     await db.exec(await readFile(new URL(file,root),'utf8'));
+    if (file === '20260916144520_core_foundation.sql') {
+      // Simulate a pointer written before the version-retention upgrade.
+      const old = {format_version:1,kind:'value',bucket:'market-data',object_key:'equities/preexisting/v1.json',
+        object_version:'preexisting-v1',checksum_sha256:'a'.repeat(64),content_type:'application/json',
+        source:'fixture',observed_at:'2026-09-16',retrieved_at:'2026-09-16T00:00:00Z',
+        coverage_start:null,coverage_end:null,row_count:null,quality_json:{status:'fresh'}};
+      await db.query('insert into public.market_data_metadata(dataset_key,record,lease_fence) values($1,$2,$3)',
+        ['preexisting',JSON.stringify(old),1]);
+    }
+  }
   checks++;
+  assert.equal((await db.query("select object_version from public.market_data_versions where dataset_key='preexisting'")).rows[0].object_version,'preexisting-v1'); checks++;
   await db.query('insert into auth.users values($1),($2),($3)',[A,B,C]);
   await db.query('insert into public.app_members(user_id,active) values($1,true),($2,true),($3,false)',[A,B,C]);
   await role('authenticated',A);
@@ -79,11 +91,19 @@ try {
   const claim = async key=> (await db.query('select public.claim_market_refresh_lease($1,60) v',[key])).rows[0].v;
   const lease = await claim('test'); assert.ok(lease.lease_token); checks++;
   assert.equal(await claim('test'),null); checks++;
-  const record = {format_version:1,bucket:'market-data',checksum_sha256:'a'.repeat(64)};
+  const record = {format_version:1,bucket:'market-data',object_version:'v1',checksum_sha256:'a'.repeat(64)};
   const publish = async (key,fence,token,value)=> (await db.query('select public.publish_market_dataset($1,$2,$3,$4) v',[key,fence,token,JSON.stringify(value)])).rows[0].v;
   assert.equal(await publish('test',lease.lease_fence+1,lease.lease_token,record),false); checks++;
   assert.equal(await publish('test',lease.lease_fence,lease.lease_token,record),true); checks++;
   assert.equal(await publish('test',lease.lease_fence,lease.lease_token,record),false); checks++;
+  await rejects(()=>db.query("update public.market_data_metadata set record='{}'"),'42501');
+  await rejects(()=>db.query("insert into public.market_data_versions(dataset_key,object_version,record,lease_fence) values('test','fake','{}',999)"),'42501');
+  const lease2 = await claim('test');
+  assert.equal(await publish('test',lease2.lease_fence,lease2.lease_token,{...record,object_version:'v2'}),true); checks++;
+  assert.equal((await db.query("select count(*)::int n from public.market_data_versions where dataset_key='test'")).rows[0].n,2); checks++;
+  const reuseLease = await claim('test');
+  await rejects(()=>publish('test',reuseLease.lease_fence,reuseLease.lease_token,{...record,object_version:'v2'}),'23505');
+  assert.equal((await db.query("select record->>'object_version' v from public.market_data_metadata where dataset_key='test'")).rows[0].v,'v2'); checks++;
   const malformedLease = await claim('malformed');
   await rejects(()=>publish('malformed',malformedLease.lease_fence,malformedLease.lease_token,{checksum_sha256:'a'.repeat(64)}),'22023');
   const constituents = (await db.query('select symbol,name,sector from public.instrument_universe order by symbol limit 400')).rows;

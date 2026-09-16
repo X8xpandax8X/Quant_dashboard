@@ -62,3 +62,8 @@ remain open. Do not repeat the old plan-approval question. The lead runtime obse
 in this session is Astra High; workers used the exact approved Terra High, Astra
 Medium and Sol High routes. Data/Quant workers hit usage limits; lead integrated
 and tested their partial changes. Resume those exact routes when available.
+
+The reviewed foundation is in draft PR #4 on `feat/supabase-core-foundation`,
+commit `66143b14c23c95007690084be0eb3e0ffb483fec`. Inspect current PR head before
+adding new commits; it is not merged. Published-version recovery has passed independent review and is included in the
+follow-up checkpoint. Never infer that draft PR creation completes the migration.

@@ -18,6 +18,7 @@ from uuid import uuid4
 
 import httpx
 import pandas as pd
+from pyarrow import ArrowException
 
 from .cache import CachedHistory, iso_now
 from .instruments import canonical_sector
@@ -62,18 +63,22 @@ class SupabaseMarketCache:
         self._client.close()
 
     def get_history(self, key: str) -> CachedHistory | None:
-        record = self._metadata(key)
-        if not record or record.get("kind") != "history":
-            return None
-        payload = self._download_verified(record)
-        if payload is None:
-            return None
-        try:
-            frame = pd.read_parquet(io.BytesIO(payload))
-            frame.index = pd.to_datetime(frame.index, utc=True)
-            return CachedHistory(frame, dict(record["quality_json"]), _record_time(record))
-        except (ValueError, OSError, TypeError):
-            return None
+        for record, recovered in self._candidate_records(key):
+            if record.get("kind") != "history":
+                continue
+            try:
+                payload = self._download_verified(record)
+                if payload is None:
+                    continue
+                frame = pd.read_parquet(io.BytesIO(payload))
+                frame.index = pd.to_datetime(frame.index, utc=True)
+                if "close" not in frame or frame.index.has_duplicates or frame.index.hasnans or len(frame) != record["row_count"]:
+                    continue
+                meta = _recovery_meta(record["quality_json"]) if recovered else dict(record["quality_json"])
+                return CachedHistory(frame, meta, _record_time(record))
+            except (RemoteCacheError, ArrowException, ValueError, OSError, TypeError):
+                continue
+        return None
 
     def put_history(self, key: str, frame: pd.DataFrame, meta: dict[str, Any]) -> None:
         buffer = io.BytesIO()
@@ -83,19 +88,22 @@ class SupabaseMarketCache:
                       row_count=len(frame))
 
     def get_value(self, key: str) -> tuple[dict[str, Any], datetime] | None:
-        record = self._metadata(key)
-        if not record or record.get("kind") not in {"value", "universe"}:
-            return None
-        payload = self._download_verified(record)
-        if payload is None:
-            return None
-        try:
-            value = json.loads(payload.decode("utf-8"))
-            if not isinstance(value, dict):
-                return None
-            return value, _record_time(record)
-        except (UnicodeDecodeError, json.JSONDecodeError, ValueError):
-            return None
+        for record, recovered in self._candidate_records(key):
+            if record.get("kind") not in {"value", "universe"}:
+                continue
+            try:
+                payload = self._download_verified(record)
+                if payload is None:
+                    continue
+                value = json.loads(payload.decode("utf-8"))
+                if not isinstance(value, dict) or not isinstance(value.get("meta", {}), dict):
+                    continue
+                if recovered:
+                    value["meta"] = _recovery_meta(value.get("meta", {}))
+                return value, _record_time(record)
+            except (RemoteCacheError, UnicodeDecodeError, json.JSONDecodeError, ValueError, TypeError):
+                continue
+        return None
 
     def put_value(self, key: str, value: dict[str, Any]) -> None:
         kind = "universe" if key.startswith("universe:") else "value"
@@ -129,23 +137,57 @@ class SupabaseMarketCache:
             rows = response.json()
             if not isinstance(rows, list) or not rows:
                 return None
-            record = rows[0].get("record")
-            if not isinstance(record, dict) or not self._REQUIRED_RECORD_FIELDS <= record.keys():
-                return None
-            if record.get("format_version") != 1 or record.get("bucket") != self.bucket:
-                return None
-            object_key = record.get("object_key")
-            if (not isinstance(object_key, str) or not object_key.startswith(self.prefix + "/")
-                    or any(part in {"", ".", ".."} for part in object_key.split("/"))
-                    or "\\" in object_key or "%" in object_key
-                    or not isinstance(record["quality_json"], dict)
-                    or not isinstance(record["checksum_sha256"], str)
-                    or len(record["checksum_sha256"]) != 64):
-                return None
-            _record_time(record)
-            return record
+            return self._validate_record(rows[0].get("record"))
         except (ValueError, TypeError, AttributeError):
             return None
+
+    def _candidate_records(self, key):
+        try:
+            current = self._metadata(key)
+        except RemoteCacheError:
+            current = None
+        if current:
+            yield current, False
+        # Lookup older immutable versions only if the current pointer failed.
+        try:
+            response = self._request("GET", "/rest/v1/market_data_versions", operation="version recovery",
+                                     params={"dataset_key": f"eq.{key}", "select": "record",
+                                             "order": "published_at.desc", "limit": "4"})
+            rows = response.json()
+            if not isinstance(rows, list):
+                return
+            seen = {current["object_version"]} if current else set()
+            recovered_count = 0
+            for row in rows:
+                record = self._validate_record(row.get("record")) if isinstance(row, dict) else None
+                if record and record["object_version"] not in seen:
+                    seen.add(record["object_version"])
+                    yield record, True
+                    recovered_count += 1
+                    if recovered_count >= 3:
+                        return
+        except (RemoteCacheError, ValueError, TypeError):
+            return
+
+    def _validate_record(self, record):
+        if not isinstance(record, dict) or not self._REQUIRED_RECORD_FIELDS <= record.keys():
+            return None
+        if record.get("format_version") != 1 or record.get("bucket") != self.bucket:
+            return None
+        object_key = record.get("object_key")
+        if (not isinstance(object_key, str) or not object_key.startswith(self.prefix + "/")
+                or any(part in {"", ".", ".."} for part in object_key.split("/"))
+                or "\\" in object_key or "%" in object_key
+                or not isinstance(record["quality_json"], dict)
+                or not isinstance(record["object_version"], str)
+                or not isinstance(record["checksum_sha256"], str)
+                or len(record["checksum_sha256"]) != 64):
+            return None
+        try:
+            _record_time(record)
+        except (TypeError, ValueError):
+            return None
+        return record
 
     def _download_verified(self, record: dict[str, Any]) -> bytes | None:
         path = f"/storage/v1/object/{quote(self.bucket, safe='')}/{quote(str(record['object_key']), safe='/')}"
@@ -235,3 +277,11 @@ def _safe_object_component(key: str) -> str:
     digest = hashlib.sha256(key.encode("utf-8")).hexdigest()[:16]
     readable = "".join(char if char.isalnum() else "-" for char in key).strip("-")[:48]
     return f"{readable or 'dataset'}-{digest}"
+
+
+def _recovery_meta(meta):
+    result = dict(meta)
+    result["status"] = "unavailable" if result.get("status") == "unavailable" else "stale"
+    result["notes"] = list(result.get("notes", [])) + [
+        "Latest stored artifact is unavailable or invalid; showing a verified earlier published version."]
+    return result

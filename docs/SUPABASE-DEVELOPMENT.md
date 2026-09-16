@@ -1,6 +1,6 @@
 # Supabase core development checkpoint
 
-Updated 2026-09-16. Implementation is approved. This is an opt-in foundation;
+Updated 2026-09-17. Implementation is approved. This is an opt-in foundation;
 production cutover is not complete and no hosted project has been changed.
 
 ## Implemented locally
@@ -18,6 +18,8 @@ production cutover is not complete and no hosted project has been changed.
 - Market metadata and private immutable Parquet/JSON objects use a separate server
   credential. Refresh leases fence expired writers; uploaded bytes are verified before
   publication. Universe publication updates the constituent registry atomically.
+  Published versions are retained; missing/corrupt current artifacts fall back to a
+  checksum-verified earlier version with stale status and original observation times.
 - Market credentials have no portfolio or team-admission privileges. Admission is an
   operator SQL action. Separate secret-key strings alone do not isolate `service_role`.
 - Quant functions retain existing outputs and now have typed result contracts and
@@ -92,7 +94,7 @@ real accounts or a hosted project for this fixture. No test keys belong in Git.
 - Browser sign-in, refresh, logout/cache behavior and session-expiry integration.
 - Broader relational profiles/holdings/transaction boundaries and migration/import
   tooling. Only scenario target positions are currently implemented.
-- Previous-version recovery and orphan-object collection with reader-safe retention;
+- Orphan-object collection with reader-safe retention;
   failed publications deliberately leave unreferenced immutable objects for now.
 - Exchange-aware freshness, cross-process negative backoff and complete provider
   throttling/concurrency scenarios. Current TTLs preserve baseline behavior.

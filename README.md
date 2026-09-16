@@ -30,12 +30,14 @@ and resumes the approved unfinished work when usage is available. Local checkout
 
 The new opt-in backend includes server-verified Supabase identity, current team
 admission checks, user-context portfolio RPCs with database RLS, normalized target
-positions, atomic revisions/retries, remote market artifacts and refresh leases.
+positions, atomic revisions/retries, remote market artifacts, refresh leases and
+verified earlier-version recovery when the latest file is unavailable.
 The constituent registry also validates direct portfolio RPC writes. Market credentials
 cannot administer membership or access portfolios. Quant outputs have explicit types.
 
 See [Supabase development](docs/SUPABASE-DEVELOPMENT.md) for setup, test commands and
-remaining work. The default demo remains runnable. Supabase browser login, real
+remaining work and [draft PR #4](https://github.com/X8xpandax8X/Quant_dashboard/pull/4)
+for the private implementation checkpoint. The default demo remains runnable. Supabase browser login, real
 Auth/Data API/Storage integration, broader holdings/transactions, orphan cleanup and
 backup/cutover are still pending. No hosted project or public deployment was changed.
 

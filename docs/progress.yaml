@@ -229,10 +229,10 @@
         "REQ-SUPA-B"
       ],
       "validation_evidence": [
-        "Remote adapters, checksum publication, lease fencing, canonical sectors; 15 data tests pass"
+        "Remote adapters, verified immutable artifacts, fencing, canonical sectors and retained-version recovery; 10 remote tests pass"
       ],
-      "blockers": "Live Storage integration, previous-version/orphan cleanup and calendar policies pending",
-      "next_action": "Complete retention/backoff and live integration"
+      "blockers": "Live Storage integration, orphan cleanup and calendar policies pending",
+      "next_action": "Complete orphan retention/backoff and live integration"
     },
     {
       "requirement_id": "REQ-SUPA-D",
@@ -273,7 +273,7 @@
         "REQ-SUPA-E"
       ],
       "validation_evidence": [
-        "93 Python tests pass; API contract unchanged; frontend9 tests/typecheck/build pass; portfolio4 browser flows pass; LPPLS34 pass; gateway1 pass"
+        "99 Python tests pass (2 environment-dependent skips); OpenAPI unchanged; frontend9 tests/typecheck/build pass; portfolio4 browser flows pass; LPPLS34 pass; gateway1 pass"
       ],
       "blockers": "Supabase browser login and real integration pending",
       "next_action": "Connect verified project and adapt browser authentication"
@@ -337,10 +337,18 @@
     "supabase_project_verified": false
   },
   "core_checkpoint": {
-    "state": "reviewed_local_implementation",
+    "state": "private_draft_pr_open",
     "independent_review": "Sol High: ship private checkpoint; real Supabase acceptance remains open",
     "migration": "supabase/migrations/20260916144520_core_foundation.sql",
-    "next_work": "Browser auth and remote integration; broader owned-state boundaries, retention and backoff",
-    "hosted_changes": false
+    "next_work": "Real Supabase integration and browser auth; broader owned-state boundaries, orphan cleanup and backoff",
+    "hosted_changes": false,
+    "branch": "feat/supabase-core-foundation",
+    "pull_request": "https://github.com/X8xpandax8X/Quant_dashboard/pull/4",
+    "foundation_commit": "66143b14c23c95007690084be0eb3e0ffb483fec",
+    "recovery_extension": "independently_reviewed; 45 embedded PostgreSQL checks and 10 remote adapter tests passed",
+    "migrations": [
+      "supabase/migrations/20260916144520_core_foundation.sql",
+      "supabase/migrations/20260916195011_market_version_recovery.sql"
+    ]
   }
 }

@@ -70,3 +70,20 @@ Quant worker implements `quant_engine.analytics`:
 - `portfolio_analysis(frames,weights_bps:dict[str,int],benchmark,risk_free)->dict` returns `{metrics,performance}`.
 
 Tests must use deterministic fixtures. No engine depends on app or frontend imports. Backend assembles metadata and sector exposure, validates current membership, and owns auth/persistence.
+
+## Opt-in Supabase transport (core checkpoint)
+
+With `QS_BACKEND=supabase`, protected endpoints require `Authorization: Bearer <user
+access token>`. FastAPI validates that token through the configured Supabase Auth
+server and checks Google admission, the email allowlist and current active membership.
+Legacy proxy identity headers do not authenticate this backend. Response JSON schemas
+and `/api/v1` routes remain unchanged.
+
+Writes additionally require the CSRF token from `/api/v1/auth/me` and exact configured
+Origin. User tokens are request-scoped; they are forwarded with a publishable API key
+to the invoker portfolio RPC. Neither API payloads nor callers assign an owner. The
+market-ingestion credential is isolated from portfolio requests and cannot change
+membership. The browser's Supabase login/session integration is still pending.
+
+Recovered historical market artifacts retain their observation/retrieval metadata
+and report `stale`; recovery never upgrades a previously unavailable value to fresh.

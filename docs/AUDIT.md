@@ -75,3 +75,23 @@ Auditor Sol High route verified. No model substitution or downstream agents.
 
 Outstanding: see SUPABASE-DEVELOPMENT.md for browser authentication, broader owned
 records, retention/backoff, backups/cutover, framework migration and full UI acceptance.
+
+### Published-version recovery addition — 2026-09-17
+
+CLI 2.117.0 generated `20260916195011_market_version_recovery.sql`. Publication
+now records immutable versions in the same transaction as the current pointer;
+direct pointer/version writes are guarded. A reader checks the current artifact,
+then at most three older candidates, verifying checksums and decoding metadata.
+Recovery preserves original timestamps and returns stale/unavailable status.
+
+The same independent Sol High reviewer accepted this bounded addition after repairs
+for malformed value metadata and Parquet decoding failures. Evidence: **45 embedded
+PostgreSQL checks** including a populated upgrade/backfill, duplicate-version rollback
+and privilege checks; **10 remote adapter tests** including missing/corrupt current
+objects, malformed older objects and timestamp preservation. No blocking finding
+remains within this bounded review. Orphan deletion is intentionally not implemented;
+real Supabase integration and the broader requirements above remain open.
+
+Final integrated Python rerun after recovery repairs: **99 passed, 2 skipped**.
+The optional gateway skip is covered by its separate passing run; live Supabase
+remains unrun. No new frontend or LPPLS changes were introduced by recovery.

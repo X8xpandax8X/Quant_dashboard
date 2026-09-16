@@ -488,7 +488,7 @@ def _history_meta(source: str, status: str, timeframe: str, interval: str, frame
 
 def _cached_meta(meta: dict[str, Any], timeframe: str, interval: str, frame: pd.DataFrame, status: str, notes: list[str] | None = None) -> dict[str, Any]:
     cached = dict(meta)
-    cached["status"] = "partial" if status == "fresh" and cached.get("status") == "partial" else status
+    cached["status"] = cached["status"] if status == "fresh" and cached.get("status") in {"partial", "stale"} else status
     cached["requested_window"] = timeframe
     cached["interval"] = cached.get("interval", interval)
     cached["sample_count"] = len(frame)
@@ -526,7 +526,7 @@ def _cached_value(value: dict[str, Any], status: str, extra_note: str | None = N
     meta = dict(result.get("meta", {}))
     # Do not reinterpret an unavailable cached failure as fresh data.
     previous=meta.get("status")
-    meta["status"] = previous if previous == "unavailable" or (previous == "partial" and status == "fresh") else status
+    meta["status"] = previous if previous == "unavailable" or (previous in {"partial", "stale"} and status == "fresh") else status
     if extra_note:
         meta["notes"] = list(meta.get("notes", [])) + [extra_note]
     result["meta"] = meta

@@ -13,7 +13,7 @@ from data_engine.supabase_cache import RemoteCacheError, SupabaseMarketCache
 
 @pytest.fixture
 def remote():
-    state = {'records': {}, 'objects': {}, 'events': [], 'publish': True, 'lease': True, 'corrupt': False, 'upload_fail': False}
+    state = {'records': {}, 'versions': {}, 'objects': {}, 'events': [], 'publish': True, 'lease': True, 'corrupt': False, 'upload_fail': False}
     def handle(request):
         state['events'].append((request.method, request.url.path))
         assert request.headers['apikey'] == 'market-test-only'
@@ -24,7 +24,10 @@ def remote():
             body = json.loads(request.content)
             if state['publish']:
                 state['records'][body['p_dataset_key']] = body['p_record']
+                state['versions'].setdefault(body['p_dataset_key'], []).insert(0,body['p_record'])
             return httpx.Response(200, json=state['publish'])
+        if path.endswith('market_data_versions'):
+            return httpx.Response(200,json=[{'record':r} for r in state['versions'].get(request.url.params['dataset_key'][3:],[])])
         if path.endswith('market_data_metadata'):
             record = state['records'].get(request.url.params['dataset_key'][3:])
             return httpx.Response(200,json=[{'record':record}] if record else [])
@@ -123,3 +126,56 @@ def test_universe_publication_normalizes_sector_contract(remote):
         cache.put_value('universe:sp500',payload)
     assert state['records']['universe:sp500']['constituents'] == [
         {'symbol':'BRK-B','name':'Berkshire','sector':'Financials'}]
+
+
+def test_corrupt_latest_value_recovers_verified_older_version_as_stale(remote):
+    cache, state = remote
+    key = 'fred:DGS10'
+    for rate, observed, retrieved in ((0.03, '2026-09-14', '2026-09-14T12:00:00Z'),
+                                      (0.04, '2026-09-15', '2026-09-15T12:00:00Z')):
+        with cache.refresh_lease(key):
+            cache.put_value(key,{'rate':rate,'meta':{'status':'fresh','as_of':observed,
+                                                   'retrieved_at':retrieved}})
+    current = state['records'][key]
+    path = '/storage/v1/object/market-data/' + current['object_key']
+    state['objects'][path] = b'damaged'
+    value, _ = cache.get_value(key)
+    assert value['rate'] == 0.03
+    assert value['meta']['status'] == 'stale'
+    assert value['meta']['as_of'] == '2026-09-14'
+    assert value['meta']['retrieved_at'] == '2026-09-14T12:00:00Z'
+    from data_engine.service import _cached_value
+    assert _cached_value(value,'fresh')['meta']['status'] == 'stale'
+    state['objects'].clear()
+    assert cache.get_value(key) is None
+
+
+def test_recovery_skips_checksum_valid_value_with_invalid_metadata(remote):
+    cache, state = remote
+    key = 'fred:DGS10'
+    for rate in (0.02, 0.03, 0.04):
+        with cache.refresh_lease(key):
+            cache.put_value(key, {'rate': rate, 'meta': {'status': 'fresh', 'as_of': '2026-09-15'}})
+    newest, middle, _ = state['versions'][key]
+    state['objects']['/storage/v1/object/market-data/' + newest['object_key']] = b'bad checksum'
+    malformed = b'{"rate":0.03,"meta":null}'
+    state['objects']['/storage/v1/object/market-data/' + middle['object_key']] = malformed
+    middle['checksum_sha256'] = hashlib.sha256(malformed).hexdigest()
+    value, _ = cache.get_value(key)
+    assert value['rate'] == 0.02
+    assert value['meta']['status'] == 'stale'
+
+
+def test_missing_latest_history_recovers_previous_without_fresh_label(remote):
+    cache, state = remote
+    key = 'history:MSFT:1Y:1d'
+    frame = pd.DataFrame({'close':[100.,101.],'volume':[5.,6.]},index=pd.date_range('2026-01-01',periods=2,tz='UTC'))
+    for price in (frame,frame*2):
+        with cache.refresh_lease(key):
+            cache.put_history(key,price,{'source':'fixture','status':'fresh'})
+    del state['objects']['/storage/v1/object/market-data/'+state['records'][key]['object_key']]
+    recovered = cache.get_history(key)
+    pd.testing.assert_frame_equal(recovered.frame,frame,check_freq=False)
+    assert recovered.meta['status'] == 'stale'
+    service = DataService(None,'research',cache=cache)
+    assert service.get_history('MSFT').meta['status'] == 'stale'
