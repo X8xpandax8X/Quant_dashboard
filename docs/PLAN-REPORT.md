@@ -1,99 +1,99 @@
-# Revised implementation plan — review checkpoint
+# Supabase architecture and implementation plan
 
-Date: 2026-09-16. Status: **awaiting review before framework implementation**.
+Date: 2026-09-16. **Planning update only; implementation awaits approval.**
 
-## Decision summary
+## Main decision
 
-Adopt Next.js/React + FastAPI in a monorepo, preserving the existing components,
-quantitative engine, providers, authentication and portfolio logic. The current
-application uses React/Vite; it has not been migrated. Production remains deterministic.
-Start with zero LLM endpoints; a single optional explanation endpoint can be evaluated
-later. Development agents help build the product but are not deployed services.
+Make Supabase Postgres the canonical relational backend, Supabase Storage the remote
+history store, and Supabase Auth with Google the identity authority. Data Engine,
+Quant Engine and Portfolio Service remain separate, coordinated by FastAPI /api/v1.
+Database row-level security is the final ownership boundary. Production AI remains
+future-only. Next.js is still the frontend target, but core backend parity comes first.
 
-The user selected **X8xpandax8X/Quant_dashboard** (private). GitHub connector access,
-push permission and an empty remote were verified. Uploading the existing application
-and revised requirements is authorized; migration and new application work remain
-paused. CLI authentication and the Documents checkout are not yet established.
-The uploaded checkpoint is available in [draft PR #1](https://github.com/X8xpandax8X/Quant_dashboard/pull/1);
-see [migration evidence](migration.md#verified-github-upload-checkpoint).
+This replaces the earlier SQLite/local-Parquet production storage and OAuth2 Proxy
+identity design. Existing source continues to run unchanged until a tested cutover.
+The pasted document's implementation checklist is future scope, not authorization to
+provision a Supabase project, run migrations or implement agents during this task.
 
-## Requirements reconciliation
+## Current code audit and preservation
 
-| Source difference | Consolidated decision |
-|---|---|
-| Update names repository Quant_stock | Latest user selection wins: Quant_dashboard; local folder can remain Quant_stock |
-| Update proposes docs/requirements.txt | Live user asks for one requirement.txt: keep it at root; no competing copy |
-| Original offers multiple UI stacks | Proposed target Next.js/React + FastAPI; preserve viable React/Vite work during migration |
-| Multi-agent terminology | Development roles only; production has no mandatory agent runtime |
-| Original ticker, sector names, missing-volume wording | Preserve original Sections 2–4 verbatim and apply previously approved corrections in normative Section 5 |
-| Uploaded checklist directs migration and implementation | Treat it as future requirements; live request requires this report first |
-
-Original Sections 2–4 and those in the update are identical. The merged specification
-retains them verbatim. The original is archived for provenance, not parallel maintenance.
-No dashboard or financial calculation has been removed.
-
-## Execution sequence after review
-
-1. **Establish canonical checkout.** Authenticate Git transport using the approved
-   GitHub account; inspect Documents parent/destination; clone the selected remote
-   to `/Users/pandamac/Documents/GitHub/Quant_stock`. Verify root, origin, default and
-   working branch, and select the saved project directly. Keep the Desktop source intact.
-2. **Move modules with parity checks.** Move existing API/data/quant into the target
-   structure, preserve public contracts and import/package boundaries, and introduce
-   explicit database lifecycle ownership. Keep mechanical moves separate from fixes.
-3. **Migrate frontend to Next.js.** Reuse tokens, React components, Plotly adapter,
-   generated API types and query behavior. Replace Vite entry/routing/build integration;
-   keep browser-only charts in client components and preserve URLs, private caching,
-   CSRF, gateway authentication and API origin behavior. No UI redesign is assumed.
-4. **Restore and complete verification.** Repair known contrast and small touch-target
-   findings; verify portfolio failure/revision/expiry flows. Complete type/build/tests,
-   contract checks, token and Premium audits, responsive browser flows and LPPLS checks.
-5. **Add CI and deployment parity.** Add bounded, minimally privileged deterministic
-   checks on pull requests/default-branch pushes. Update runnable web/API Compose,
-   health checks and backup/restore instructions; CI does not deploy.
-6. **Independent audit and handoff.** Audit mathematical, privacy, security and UI
-   behavior; fix blockers, report exact commit/test/CI evidence and remaining external
-   prerequisites. Deployment requires a separate authorized action and data-use rights.
-7. **Measure before adding AI.** Establish request/cache/error/latency baselines. Only
-   then evaluate an optional explanation endpoint. Specialist agents/frameworks require
-   an accepted evidence-based architecture decision; they are outside this migration.
-
-## Planned development team
-
-| Lane | Exact selected route | Bounded ownership |
+| Current evidence | Gap against target | Incremental treatment |
 |---|---|---|
-| Lead | GPT-6 Astra, xhigh | Architecture, auth, persistence, integration, docs |
-| Data | GPT-5.6 Terra, high | Provider normalization/cache in packages/data |
-| Quant | GPT-6 Astra, medium | Pure math in packages/quant |
-| Frontend | GPT-5.6 Terra, high | apps/web, responsive behavior and charts |
-| Auditor | GPT-5.6 Sol, high | Independent integrated review after owners finish |
+| data_engine/service.py providers, normalization, provenance and stale fallback | Constructs disk-based CacheStore; freshness partly fixed; in-process locks | Preserve providers, inject remote repositories/object store/central policies and DB refresh leases |
+| data_engine/cache.py SQLite + local immutable Parquet | Developer disk is authoritative | Supabase metadata + private versioned objects; no dual production truth |
+| quant_engine/analytics.py pure NumPy/Pandas math | Improve explicit input/output types and coverage where missing | Preserve formulas and fixtures; enforce no I/O imports or dependencies |
+| app/db.py owner-filtered SQLAlchemy SQLite, revision/idempotency | No database RLS; JSON target positions | Extract Portfolio Service, normalize targets, preserve atomic semantics under user-context RLS |
+| app/auth.py signed demo cookie or proxy-secret/Google-subject hash | Not Supabase JWT identity; existing owner IDs are not Supabase UUIDs | Verified identity mapping and Supabase Auth cutover, no guessed owner remapping |
+| app/api.py coordinates market/quant/private endpoints | Direct persistence setup and some domain logic in route module | Inject service interfaces, retain versioned response contracts |
+| frontend/ and LPPLS/ | Framework migration and UI verification unfinished | Preserve both; minimum auth/API compatibility now, Next.js later |
 
-Selections above are planned routes, not new observed launches. Native routing with
-exact model/effort and omission of unsupported agent_type was explicitly approved.
-Maximum concurrency is the lead plus three workers. Each worker gets acceptance
-criteria, dependencies and sole file ownership; no downstream spawning. Astral guides
-development coordination, Build Web Data Visualization guides financial evidence and
-chart semantics, and Frontend Design Premium guides shared UX/accessibility. Revisit
-existing approved concepts only when migration changes user-visible behavior.
+This was a targeted source audit for planning, not a full new independent security audit.
 
-## Evidence and unfinished work
+## Execution after approval
 
-The prior audit records 59 backend tests passed with one gateway skip; the lead
-separately passed the real Caddy gateway check. LPPLS had 34 passing tests. Frontend
-unit tests (9), typecheck and build passed during prior work. Four research browser
-flows passed, including refresh/zoom and portrait/landscape checks. These are historical
-observations, not a fresh verification of the uploaded checkpoint.
+| Phase | Deliverable | Exit evidence |
+|---|---|---|
+| A — audit and contracts | Verify canonical Git checkout; domain boundaries, schemas, identity/data migration inventory | Reviewed interfaces and no lost dashboard scope |
+| B — Supabase foundation | Select development environment; Auth/admission, schema, grants, RLS, private Storage, migration tooling | Repeatable clean setup; actual A/B/unauthenticated/unadmitted isolation tests |
+| C — Data Engine | Provider adapters, central freshness, remote metadata/Parquet, refresh leases and failure recovery | Missing/stale/throttled/duplicate data fixtures; concurrency and interrupted-publication tests |
+| D — Quant Engine | Typed pure functions for all retained metrics and explicit edge cases | Known numerical fixtures; identical input/output; no DB/network/auth dependencies |
+| E — Portfolio Service | Private CRUD, scenario weights, holdings/transaction boundaries, atomic revision/idempotency | Real RLS tests, parent-owner constraints, rollback/retry/expiry recovery |
+| F — FastAPI integration | Versioned APIs coordinate all domains; minimum browser auth adaptation; deterministic CI | Contract/API/security tests and existing dashboard parity |
+| G — AI placeholder | Document structured authorized analysis context and future evaluation gates | Core works with no LLM key, runtime or framework |
 
-The accessibility run reported correlation-cell contrast and a small clear-button
-hit area; calendar target sizing also needs review. Portfolio browser repairs lack a
-final confirmed passing run. Final Premium/token checks and the integrated independent
-UI audit remain open. Docker/real Google OAuth and production recovery were not tested.
-The prior browser retry was rejected by automatic approval review because usage was
-exhausted; no rejected command edits were applied. No CI or deployment success is claimed.
+After core parity, migrate the preserved React UI to Next.js, complete responsive/
+accessibility work and independent integrated audit. Do not introduce a simultaneous UI
+redesign. Sequence packages by dependencies rather than cosmetically moving every file.
 
-## Review requested
+## Non-negotiable design choices
 
-Approve the proposed Next.js migration, target structure, and phased execution above
-before application work resumes. The five-hour continuation automation remains paused
-so it cannot cross this review gate. GitHub upload is a reviewable checkpoint, not
-approval of the migration and not a completed-release claim.
+- User-scoped DB requests carry the validated user's JWT; a service key bypassing RLS
+  cannot serve as the normal Portfolio Service connection.
+- Keep explicit Google email admission, backed by protected active membership in the DB.
+- Preserve target weights in basis points separately from real quantities/costs/trades.
+  Do not manufacture a ledger from existing saved simulation weights.
+- Private immutable Storage objects plus transactional metadata publication; account
+  for object/DB partial failure, lease expiry, stale writers and orphan cleanup.
+- Keep original financial conventions, sample gates, metadata, nullable missing data,
+  saved drafts, revision conflicts, retry safety and private UI cache behavior.
+- Local-only cache/state becomes a baseline/test adapter. New production operation and
+  disaster recovery must work without the developer's disk.
+
+## Development lanes
+
+Lead: FastAPI, Portfolio Service, database/Auth/RLS, contracts and integration.
+Data: packages/data_engine. Quant: packages/quant_engine. Frontend: compatibility and
+later apps/web. Auditor: independent math/security/integration/UI verification after
+integration. The agreed exact routes remain Astra xhigh lead; Terra high data/frontend;
+Astra medium quant; Sol high auditor. No new workers were launched for this update.
+Maximum concurrency remains lead plus three; owners cannot spawn downstream agents.
+
+## Migration and acceptance risks
+
+Map old Google-subject hashes to verified Supabase user UUIDs explicitly; quarantine
+unmatched records. Do not upload local portfolio data as part of a GitHub sync. Export,
+backup, dry-run, row counts/checksums, ownership verification and a write-fenced cutover
+precede changing canonical storage. Rollback must reconcile writes made after cutover,
+not silently switch to a stale SQLite snapshot. Preserve the old workspace intact.
+
+Existing browser accessibility findings and the final integrated audit remain open.
+Prior backend/quant/LPPLS results are historical evidence only and do not validate
+Supabase. Core completion requires remote-persistence, RLS and Auth integration tests;
+full dashboard delivery additionally requires all UI acceptance checks.
+
+## Inputs needed at implementation time
+
+Select the intended Supabase development project (or authorize creation), region,
+Google OAuth callback/domain configuration, admission administrators, and environment
+secret delivery. Project tools were not exposed here; no project connection or policy
+success is claimed. These inputs do not block this architecture report.
+
+## Review package
+
+- [Architecture](architecture.md), [data model](data-model.md), [security](security.md)
+- [Roadmap](roadmap.md), [migration](migration.md), [progress](progress.yaml)
+- [Canonical requirements](../requirement.txt), [future AI scope](future-agent-runtime.md)
+
+The existing five-hour schedule reads the latest plan and remains limited to status
+checks until implementation approval. GitHub remains X8xpandax8X/Quant_dashboard;
+current folder is /Users/pandamac/Desktop/Quant_stock, with Documents migration pending.

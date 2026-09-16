@@ -1,5 +1,10 @@
 # Data and calculation methods
 
+> Baseline implementation reference. The proposed Supabase migration is documented in
+> [architecture](architecture.md) and [security](security.md); it is not implemented.
+> Existing API/calculation conventions remain unless explicitly superseded in root
+> `requirement.txt`. Local SQLite/proxy setup here describes the current baseline only.
+
 ## Sources and observation windows
 
 Demo mode is deterministic synthetic data with a fixed September 14, 2026 observation date. It never calls a provider. Its intraday sessions are illustrative and do not reproduce every global exchange calendar.

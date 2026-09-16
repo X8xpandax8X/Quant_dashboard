@@ -2,20 +2,25 @@
 
 React + FastAPI investment research application based on `requirement.txt`. The existing `LPPLS/` application is independent and must remain unchanged.
 
-## Requirements revision and review checkpoint — 2026-09-16
+## Supabase architecture revision — planning checkpoint, 2026-09-16
 
 The canonical specification is [requirement.txt](requirement.txt). Read the
 [revised plan report](docs/PLAN-REPORT.md) before continuing implementation.
 The selected private repository is [X8xpandax8X/Quant_dashboard](https://github.com/X8xpandax8X/Quant_dashboard).
 The current React/Vite application below is an in-progress baseline. The proposed
-Next.js monorepo migration has **not** been implemented. New application changes
-and the five-hour implementation automation are paused for plan review.
+Supabase backend and Next.js monorepo migration have **not** been implemented.
+The immediate priority is separate Data Engine, pure Quant Engine and Portfolio
+Service on Supabase Postgres/Storage/Auth, with database RLS and FastAPI integration.
+Next.js follows core parity; AI agents remain future-only. New application changes remain paused for plan review. The existing five-hour
+continuation schedule is active for status checks and resumes implementation once
+that plan is approved; see [Continuation schedule](docs/CONTINUATION.md).
 The baseline and revised documents are uploaded in [draft PR #1](https://github.com/X8xpandax8X/Quant_dashboard/pull/1).
-The PR is unmerged; local migration and CI remain pending.
+PR #1 is now merged; local migration and CI remain pending.
 
 - [Target architecture](docs/architecture.md)
 - [Roadmap and acceptance gates](docs/roadmap.md)
 - [Migration inventory and path mapping](docs/migration.md)
+- [Proposed data model](docs/data-model.md) and [security boundary](docs/security.md)
 - [Actual progress](docs/progress.yaml)
 - [Deferred production agents](docs/future-agent-runtime.md)
 
@@ -99,7 +104,7 @@ CADDY_BIN=/absolute/path/to/caddy .venv/bin/python -m pytest tests/test_gateway.
 
 Existing LPPLS checks remain independent. From `LPPLS/`, run `../.venv/bin/python -m pytest tests -q --import-mode=importlib -o pythonpath=. -o cache_dir=/tmp/quant-stock-lppls-pytest`. Its Plotly 5 test dependency is pinned in the lockfile; no LPPLS source changes are required.
 
-## Storage and deployment
+## Current baseline storage and deployment
 
 The API uses SQLite WAL for users and owner-scoped portfolios. Market data uses a separate SQLite cache index and atomic Parquet versions. Concurrent refreshes are deduplicated within the single application process. Provider failures retain the last valid observation with a stale/partial state. Fundamentals and the dated constituent list refresh daily; active intraday views poll every five minutes.
 

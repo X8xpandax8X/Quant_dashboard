@@ -24,9 +24,9 @@ Observed 2026-09-16.
 |---|---|---|
 | frontend/ | apps/web/ | Reuse components/tokens/query/tests; migrate Vite and React Router boundaries to Next.js |
 | app/ | apps/api/ | Preserve API/auth/private CRUD, define package imports |
-| data_engine/ | packages/data/ | Preserve providers/cache/assets and tests |
-| quant_engine/ | packages/quant/ | Preserve deterministic engine/fixtures and extension registry |
-| app/db.py + scripts/database.py | apps/api + database/ | Keep service interface; isolate schema/migration/lifecycle responsibilities |
+| data_engine/ | packages/data_engine/ | Preserve providers/cache/assets and tests |
+| quant_engine/ | packages/quant_engine/ | Preserve deterministic engine/fixtures and extension registry |
+| app/db.py + scripts/database.py | packages/portfolio_service + Supabase migrations | Preserve CRUD/revision/idempotency; migrate SQLite to Postgres with verified identity mapping |
 | tests/, docs/, scripts/ | same logical roles | Update paths/commands only with parity checks |
 | compose.yaml + Dockerfile + deploy/ | docker-compose.yml + service builds + deploy/ | Adapt to separate Next.js/web/API services after runnable builds |
 | LPPLS/ | LPPLS/ | Preserve source entirely, independent tests/runtime |
@@ -54,7 +54,7 @@ Any new remote changes must be reconciled without overwriting them.
 
 The selected private repository now contains the current project on
 `chore/requirements-and-project-baseline`. [Draft PR #1](https://github.com/X8xpandax8X/Quant_dashboard/pull/1)
-targets `main` and remains unmerged. Bootstrap commit:
+targeted `main`; it was subsequently merged at `2b30963ba239c7e27326d955b9a6b19772dd41e4`. Bootstrap commit:
 `bc45fae18f9d71de4434ccaa5194612e3cfe90e2`. Application/requirements baseline commit:
 `99c91ba5834680909f6f02e35210d9be971634eb`.
 
@@ -71,3 +71,33 @@ against the local manifest before the branch was updated. No force update was us
 CI has no configured workflow or reported checks for this baseline. This is not a
 CI pass. GitHub access/upload uses the authenticated connector; local Git transport
 and migration to Documents remain pending the plan review.
+
+## Supabase migration revision — planned, 2026-09-16
+
+The canonical backend target is now Supabase Postgres + private Storage + Supabase
+Auth. The existing SQLite/local cache and OAuth proxy are legacy baseline components.
+Immediate priority is core data/quant/portfolio/API/security; Next.js follows parity.
+No database, Storage, authentication or source-code migration occurred in this update.
+
+1. Select and verify development environment and project; separate dev/test/production.
+2. Generate/review one Supabase CLI migration history; test clean replay, grants,
+   policies and synthetic identities before introducing real records.
+3. Inventory actual legacy portfolios/users without committing payloads. Establish an
+   explicit reviewed mapping from legacy subject-derived owner IDs to Supabase UUIDs.
+   Preserve portfolio IDs/revisions/target weights; unmatched owners remain quarantined.
+4. Re-fetch or selectively import validated market history, preserving source/version/
+   units/adjustment/timestamps/checksums. Export legacy app state using a consistent backup.
+5. Dry-run imports into isolated development storage. Compare counts, owner references,
+   constraints and numerical fixtures. Verify orphan/missing-object detection.
+6. Fence old writes for cutover, take final backup, apply/import, verify ownership and
+   data integrity, switch repositories/auth together, then reopen writes. Never run two
+   independent canonical stores with untracked writes.
+7. Retain pre-cutover backup and manifests. If rolling back, first stop/reconcile new
+   writes and validate reverse mapping; never silently discard post-cutover changes.
+8. Exercise independent restore of Postgres plus referenced Storage artifacts and
+   document retention, credentials and operator steps before retiring old storage.
+
+`docs/DEPLOYMENT.md` and current SQLite backup commands remain baseline runbooks until
+implementation updates them; they are not Supabase recovery procedures. Future CLI
+configuration lives under supabase/ with generated migration filenames; database/
+holds model/policy documentation and seeds rather than a competing migration history.

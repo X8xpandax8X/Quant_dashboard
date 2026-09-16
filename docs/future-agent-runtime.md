@@ -23,3 +23,20 @@ parameters and user scope. Validate schema, sources and numbers in code.
 
 A future packages/agents/README.md can link this design. No framework dependency,
 service, supervisor loop, runtime router or paid API call is being introduced now.
+
+## Requested future analysis topology
+
+First candidate: an optional single AI Analyst consuming authorized, structured
+Data Engine + Quant Engine + Portfolio Service results. It must preserve data versions,
+method notes and user isolation, and degrade without blocking core responses.
+
+Only after evidence supports specialization: News Agent, Risk Agent and Fundamental
+Agent -> bounded Supervisor -> explanatory response. Candidate orchestration is
+OpenAI Agents SDK and/or LangGraph; CrewAI and equivalent frameworks are also outside
+current implementation. No candidate dependency, tool call or service is added now.
+
+Future routing: deterministic Python/SQL first; low-cost extraction; low/medium-cost
+summaries; evaluated reasoning for analysis; stronger synthesis only after objective
+validation fails and within budget. Required evidence includes news/fundamental workload
+separation, context pressure, parallelism, tools, cost/latency, retries/branching or human
+approval needs. Never send every request to the strongest model by default.
