@@ -1,0 +1,17 @@
+[project]
+name = "quant-stock"
+version = "1.0.0"
+description = "Private investment research workspace"
+requires-python = ">=3.12"
+dependencies = ["fastapi>=0.115,<1", "uvicorn[standard]>=0.30,<1", "pydantic>=2.10,<3", "pydantic-settings>=2.7,<3", "sqlalchemy>=2,<3", "alembic>=1.14,<2", "pandas>=2.2,<4", "numpy>=1.26,<3", "scipy>=1.14,<2", "pyarrow>=18", "yfinance>=0.2.54", "httpx>=0.28,<1", "itsdangerous>=2.2,<3", "lxml>=5", "beautifulsoup4>=4", "html5lib>=1.1"]
+
+[project.optional-dependencies]
+test = ["pytest>=8", "plotly>=5.9,<6"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "data_engine/tests", "quant_engine/tests"]
+pythonpath = ["."]
+addopts = "--import-mode=importlib"
+
+[tool.ruff]
+line-length = 100

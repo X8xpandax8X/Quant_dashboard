@@ -1,0 +1,192 @@
+{
+  "version": 1,
+  "updated": "2026-09-16",
+  "implementation_gate": "awaiting_plan_review",
+  "continuation_automation": "paused",
+  "canonical_requirement": "requirement.txt",
+  "remote": "https://github.com/X8xpandax8X/Quant_dashboard",
+  "source_workspace": "/Users/pandamac/Desktop/Quant_stock",
+  "planned_checkout": "/Users/pandamac/Documents/GitHub/Quant_stock",
+  "local_migration_complete": false,
+  "evidence_note": "Prior verification is historical; no fresh application tests in documentation/upload checkpoint.",
+  "tasks": [
+    {
+      "requirement_id": "REQ-DOC-01",
+      "phase": 0,
+      "status": "done",
+      "owner": "lead",
+      "dependencies": [],
+      "validation_evidence": [
+        "Merged requirement.txt; Sections 2\u20134 preserved verbatim; original archive"
+      ],
+      "blockers": "",
+      "next_action": "Publish reviewed plan report"
+    },
+    {
+      "requirement_id": "REQ-GIT-01",
+      "phase": 0,
+      "status": "in_progress",
+      "owner": "lead",
+      "dependencies": [
+        "REQ-DOC-01"
+      ],
+      "validation_evidence": [
+        "Private Quant_dashboard and connector push access verified; initially empty"
+      ],
+      "blockers": "Upload verification pending",
+      "next_action": "Upload reviewed baseline and verify remote branch"
+    },
+    {
+      "requirement_id": "REQ-MIG-01",
+      "phase": 1,
+      "status": "planned",
+      "owner": "lead",
+      "dependencies": [
+        "REQ-GIT-01"
+      ],
+      "validation_evidence": [
+        "Documents destination absent; source retained"
+      ],
+      "blockers": "Plan review; Git transport authentication",
+      "next_action": "Verify canonical checkout after approval"
+    },
+    {
+      "requirement_id": "REQ-WEB-01",
+      "phase": 1,
+      "status": "planned",
+      "owner": "frontend",
+      "dependencies": [
+        "REQ-MIG-01"
+      ],
+      "validation_evidence": [
+        "Current UI uses Vite/React, proposed Next.js preserves components"
+      ],
+      "blockers": "Plan review",
+      "next_action": "Migrate framework and preserve UI contracts"
+    },
+    {
+      "requirement_id": "REQ-DATA-01",
+      "phase": 1,
+      "status": "in_progress",
+      "owner": "data",
+      "dependencies": [
+        "REQ-MIG-01"
+      ],
+      "validation_evidence": [
+        "Existing Yahoo/FRED providers and cache; prior backend suite 59 passed/1 skipped"
+      ],
+      "blockers": "Package migration pending",
+      "next_action": "Preserve tests and move reviewed modules"
+    },
+    {
+      "requirement_id": "REQ-QUANT-01",
+      "phase": 1,
+      "status": "in_progress",
+      "owner": "quant",
+      "dependencies": [
+        "REQ-MIG-01"
+      ],
+      "validation_evidence": [
+        "Pure engine and 25 deterministic quant tests in prior suite"
+      ],
+      "blockers": "Package migration pending",
+      "next_action": "Run numerical parity after moves"
+    },
+    {
+      "requirement_id": "REQ-CI-01",
+      "phase": 1,
+      "status": "planned",
+      "owner": "lead",
+      "dependencies": [
+        "REQ-WEB-01",
+        "REQ-DATA-01",
+        "REQ-QUANT-01"
+      ],
+      "validation_evidence": [],
+      "blockers": "No CI established",
+      "next_action": "Add real locked lint/type/test/build/config checks"
+    },
+    {
+      "requirement_id": "REQ-UI-01",
+      "phase": 2,
+      "status": "in_progress",
+      "owner": "frontend",
+      "dependencies": [
+        "REQ-WEB-01"
+      ],
+      "validation_evidence": [
+        "All four pages exist; four research browser flows passed previously"
+      ],
+      "blockers": "Accessibility findings and final integrated audit",
+      "next_action": "Fix contrast/targets; verify all responsive flows"
+    },
+    {
+      "requirement_id": "REQ-PORT-01",
+      "phase": 2,
+      "status": "in_progress",
+      "owner": "lead",
+      "dependencies": [
+        "REQ-MIG-01"
+      ],
+      "validation_evidence": [
+        "Backend owner/CSRF/revision coverage; portfolio browser repairs exist"
+      ],
+      "blockers": "Final browser recovery suite unconfirmed",
+      "next_action": "Verify persistence, conflicts, retry, expiry"
+    },
+    {
+      "requirement_id": "REQ-AUDIT-01",
+      "phase": 2,
+      "status": "planned",
+      "owner": "auditor",
+      "dependencies": [
+        "REQ-CI-01",
+        "REQ-UI-01",
+        "REQ-PORT-01"
+      ],
+      "validation_evidence": [
+        "Prior backend independent audit available in AUDIT.md"
+      ],
+      "blockers": "Final integrated UI audit pending",
+      "next_action": "Independent review and blocker repairs"
+    },
+    {
+      "requirement_id": "REQ-TELEM-01",
+      "phase": 3,
+      "status": "planned",
+      "owner": "lead",
+      "dependencies": [
+        "REQ-AUDIT-01"
+      ],
+      "validation_evidence": [],
+      "blockers": "Core migration first",
+      "next_action": "Establish representative non-sensitive baseline"
+    },
+    {
+      "requirement_id": "REQ-AGENTS-01",
+      "phase": 4,
+      "status": "deferred",
+      "owner": "lead",
+      "dependencies": [
+        "REQ-TELEM-01"
+      ],
+      "validation_evidence": [
+        "future-agent-runtime.md design only"
+      ],
+      "blockers": "Accepted evidence-based ADR required",
+      "next_action": "Evaluate need; no runtime implementation"
+    },
+    {
+      "requirement_id": "REQ-FRAMEWORK-01",
+      "phase": 5,
+      "status": "deferred",
+      "owner": "lead",
+      "dependencies": [
+        "REQ-AGENTS-01"
+      ],
+      "validation_evidence": [],
+      "blockers": "Measured orchestration need and accepted ADR required",
+      "next_action": "Do not confuse this with Next.js framework adoption"
+    }
+  ]
+}

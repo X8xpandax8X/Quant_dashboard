@@ -1,0 +1,602 @@
+# QUANT_STOCK — INVESTMENT DASHBOARD SYSTEM REQUIREMENT SPECIFICATION
+# Project Version: 2.1 — Consolidated requirements and approved V1 conventions
+# Language: English
+# Source: User-uploaded requirement.txt
+# Development: Codex/Astra role-based development orchestration
+# MVP Production: Deterministic Python/quant logic + at most one optional LLM endpoint
+
+CONSOLIDATION STATUS — 2026-09-16
+The live user request authorizes requirements/documentation updates and uploading
+the current project to the selected GitHub repository. Framework migration, new CI,
+and application changes remain paused until the revised plan is reviewed. The
+checklist below describes future execution; it does not bypass that review gate.
+Sections 2–4 preserve the original source verbatim. Where that source conflicts
+with previously agreed V1 choices, Section 5 below is normative. The original is
+archived solely for provenance in docs/reference/requirement.original.txt.
+Repository: https://github.com/X8xpandax8X/Quant_dashboard (private; access verified).
+Current source workspace: /Users/pandamac/Desktop/Quant_stock (not yet migrated).
+Proposed canonical checkout: /Users/pandamac/Documents/GitHub/Quant_stock.
+
+================================================================================
+SECTION 1: AUTHORITATIVE ARCHITECTURE & CODEX EXECUTION INSTRUCTIONS
+================================================================================
+
+1.1 PURPOSE, PRECEDENCE, AND PRESERVATION
+This document instructs a subsequent Codex implementation session. Creating this
+document does not itself create a GitHub repository, migrate code, or deploy an app.
+
+Replace the original Section 1 and its top-level architecture metadata with this
+section. Sections 2–4 below retain the original dashboard requirements and formulas
+verbatim. No dashboard, chart, input, asset class, metric, or formula is removed.
+The architecture changes supersede only the original bootstrap order, ambiguous
+multi-agent runtime implication, alternative application stacks, and flat code layout.
+Any implementation phases are delivery sequencing, not permission to drop scope.
+
+Use the existing private repository X8xpandax8X/Quant_dashboard, selected by the user
+on 2026-09-16. Quant_stock remains the local project folder name. After migration,
+the repository and its verified Documents checkout will be the source of truth.
+Keep this root requirement.txt as the SINGLE authoritative specification, as directly
+requested by the user. Do not maintain a second docs/requirements.txt copy.
+Preserve the source requirement.txt as docs/reference/requirement.original.txt when
+available, without overwriting an existing file without diff review.
+
+1.2 DEVELOPMENT ORCHESTRATION IS NOT PRODUCTION ORCHESTRATION
+Codex/Astra acts as the development lead: interpret requirements, plan modules,
+assign bounded development tasks, integrate changes, run checks, and report evidence.
+AGENTS.md defines development responsibilities only:
+- Lead Architect: architecture, API contracts, boundaries, dependencies, integration.
+- Data & Quant Pipeline: ingestion, caching, CAPM, statistics, volume profiles,
+  portfolio calculations, and deterministic numerical tests.
+- UI/UX Frontend: all four dashboards, responsive layouts, charts, inputs, tooltips,
+  navigation, accessibility, and loading/error/empty states.
+- Master Auditor & Debugger: independently review implementation, numerical logic,
+  edge cases, integration, test results, and the final delivery report.
+
+Use available development sub-agents for independent bounded work when supported.
+If unavailable, carry out the roles sequentially and record that limitation. Do not
+claim that independent review occurred unless it did. Assign file ownership to avoid
+simultaneous edits. Development role names do not require deployed services, API
+model calls, a runtime supervisor, or one production model per role.
+Development tool/model choices do not determine production API model availability,
+credentials, pricing, or billing. Never assume a Codex model label is an API model ID.
+
+1.3 MVP APPLICATION ARCHITECTURE
+Default stack for a new repository:
+- apps/web: Next.js / React with TypeScript and suitable financial chart libraries.
+- apps/api: FastAPI with Python; validates inputs and exposes data/quant endpoints.
+- packages/quant: deterministic Python with Pandas, NumPy, and SciPy as appropriate.
+- packages/data: yfinance/FRED adapters and SQLite/Parquet caching.
+- database: schemas, migrations, seeds, and database/cache lifecycle documentation.
+- Optional PostgreSQL for application state if justified; do not remove the required
+  SQLite/Parquet market-data cache merely because PostgreSQL is introduced.
+
+Choose supported compatible runtime/dependency versions at implementation time;
+record and lock them. Preserve existing viable code and assess migration before
+replacing a working stack. The original Python 3.10+ baseline is a minimum, not a
+requirement to pin an obsolete runtime. Map legacy data_engine to packages/data,
+quant_engine to packages/quant, UI components to apps/web, and API entrypoint to
+apps/api. Do not create redundant legacy directories just to mirror old wording.
+
+MVP request path:
+Browser -> FastAPI -> data/cache + deterministic quant functions -> dashboard
+Optional explanation: validated results -> one LLM endpoint -> validated text
+
+All returns, statistics, correlations, CAPM outputs, portfolio analytics, and data
+validation run in deterministic application code. An LLM may explain already
+computed results; it must not be the authoritative calculator or invent missing data.
+The core dashboards must work without an LLM key or when the optional endpoint fails.
+Initially permit zero or one configured production LLM endpoint/model. Do not add
+specialist runtime agents, model cascades, multi-model routers, supervisor loops,
+Agents SDK, LangGraph, or equivalent frameworks for the MVP.
+Keep any optional single-endpoint adapter in apps/api, server-side and feature-gated.
+Never send API credentials to the browser or commit them. Use example environment
+variables without values and runtime secrets supplied through the deployment setup.
+
+1.4 TELEMETRY-GATED FUTURE PRODUCTION AGENTS
+Collect request category, latency, failures/timeouts, fallback outcomes, cache hits,
+and quantitative validation results. For optional LLM calls also record model/version,
+input/output tokens, estimated cost, retries, and evaluation outcome. Avoid recording
+secrets or unnecessary user portfolio details. Record estimation assumptions for cost.
+
+Roadmap:
+Phase 1 — Foundation: migrate/verify repository, bootstrap docs/CI, data and quant.
+Phase 2 — MVP: deliver all four dashboards with deterministic calculations; optionally
+  add one endpoint for explanation and collect workload telemetry.
+Phase 3 — Evidence review: identify repeated task categories, latency/cost bottlenecks,
+  and quality failures using representative requests and a documented baseline.
+Phase 4 — Conditional specialization: propose specialist agents and model routing
+  only where evaluations demonstrate benefit relative to the simple baseline.
+Phase 5 — Conditional framework: choose an orchestration framework only if actual
+  branching, durable state, recovery, bounded retries, parallelism, or approval needs
+  justify it; then optimize routing using measured quality, cost, and latency.
+
+Before Phase 4 or 5 implementation, document an architecture decision with baseline,
+sample coverage, acceptance thresholds, cost/latency budget, measured benefit,
+maintenance implications, rollout conditions, and rollback plan. Reaching deployment
+alone is not evidence that multi-agent runtime is necessary. Keep expansion deferred
+until the decision is accepted through project review.
+
+1.5 FUTURE COST-EFFICIENT MODEL ROUTING — DESIGN ONLY FOR MVP
+- Tier 0: deterministic Python, database queries, validation, and caching first.
+- Tier 1: lowest-cost capable model for extraction, classification, formatting, or
+  simple summaries when ordinary code cannot meet the task requirements.
+- Tier 2: a model evaluated for routine qualitative analysis and synthesis.
+- Tier 3: a stronger reasoning model only for demonstrated complex synthesis or
+  unresolved contradictions that lower tiers cannot handle reliably.
+- Route by evaluated task category and difficulty; do not call a strong supervisor
+  on every request. Do not use model self-confidence as the sole escalation signal.
+- Define per-request and aggregate spend limits, input/output token limits, timeouts,
+  concurrency limits, maximum retries, escalation depth, and circuit breakers.
+- Escalate only after objective validation fails and within the remaining budget.
+  Stop with a clear partial/unavailable result if the budget is exhausted.
+- Reuse cached results with keys including data timestamp, model/prompt version,
+  relevant parameters, and user isolation where required; invalidate stale results.
+- Reduce context to relevant evidence; batch non-urgent work where appropriate.
+- Validate output schema, source references, and numeric consistency in code.
+  Another LLM is not a substitute for numerical tests or source evidence.
+- Compare task quality, latency, and total cost including retries before changing
+  model routes. Keep model IDs and pricing assumptions configurable and verified at
+  implementation time; this document makes no fixed price or model availability claim.
+
+1.6 CANONICAL REPOSITORY MIGRATION
+Stop treating the current chat/project-generated workspace as the canonical code
+location. Do not build a second authoritative copy in that workspace. Retain it as
+a read-only reference after the migration inventory; do not delete it.
+
+Preferred checkout: $HOME/Documents/GitHub/Quant_stock
+If the user already has an intended Quant_stock repository elsewhere under Documents,
+use that verified checkout instead of creating a duplicate. Record its absolute path.
+The GitHub owner and remote URL must come from the user's instruction or verified
+account/repository context; never invent an owner or repoint an unrelated origin.
+A GitHub repository stores the project; a GitHub Projects planning board is optional
+and is not a replacement for a repository. No board is required by this specification.
+
+Inspect the destination and any parent Git repository before creating folders or
+initializing Git. Avoid accidentally placing the project inside an unrelated repo.
+Handle the actual state:
+A. Existing intended remote, destination absent: clone it into the canonical path.
+B. Existing intended checkout: verify root, working tree, branches, and origin; reuse it.
+C. No remote and empty/nonexistent destination: create a repository only if explicitly authorized under
+   the verified owner, private by default unless the user specifies otherwise, then
+   clone; alternatively initialize locally and create/attach the matching remote.
+D. Destination contains non-Git files: inventory and review before adopting that
+   directory; never replace contents with a fresh scaffold blindly.
+E. Name collision or wrong origin: inspect ownership/history and resolve the exact
+   destination before writing; do not delete the collision or silently change origin.
+
+If authentication, owner identity, access, or filesystem permission is missing,
+report the exact blocker and request only the missing input. Do not claim migration
+complete until the intended local root and remote are verified. Never put credentials
+in remote URLs, terminal reports, source files, or documentation.
+
+Open/select this checkout as the Codex project and use local execution directly in
+the saved checkout. Do not default future work to an isolated worktree or generated
+chat folder for this project. If the current task cannot switch execution location,
+continue in a task attached to the verified checkout and report the handoff explicitly.
+Repository guidance must repeat this path rule for future sessions.
+
+1.7 REQUIRED CLEAN PROJECT STRUCTURE
+Bootstrap missing paths; merge with existing structure after reviewing differences.
+
+Quant_stock/
+  apps/
+    web/                      # Frontend, dashboard components, web tests
+    api/                      # FastAPI, API contracts, optional single LLM adapter
+  packages/
+    quant/                    # Deterministic math and portfolio engine
+    agents/
+      README.md               # Future production design only; no active runtime
+    data/                     # Providers, normalization, caching
+  database/                   # Schemas, migrations, seeds, persistence notes
+  tests/                      # Shared fixtures, numerical and integration tests
+  docs/
+    # Canonical specification is ../requirement.txt
+    reference/requirement.original.txt
+    architecture.md
+    roadmap.md
+    progress.yaml
+    future-agent-runtime.md
+    migration.md
+  .github/
+    workflows/
+      ci.yml
+  requirement.txt
+  README.md
+  AGENTS.md
+  docker-compose.yml
+  .gitignore
+  .env.example
+  # Dependency manifests, lockfiles, and tool configuration as appropriate
+
+Do not make nested Git repositories inside apps or packages. Track intentionally
+empty directories with a useful README or .gitkeep. packages/agents contains only
+future responsibilities, candidate interfaces, evaluation gates, and routing notes
+at MVP; it must not start services or make model calls. Do not add a framework
+dependency merely to populate this folder.
+
+README.md must cover architecture, layout, stack, prerequisites, installation,
+development commands, configuration, caching, tests, build/start commands, and status.
+AGENTS.md must define the four development roles, canonical root, allowed ownership,
+review process, implementation/test commands, Git guardrails, and completion criteria.
+docs/architecture.md must separate development workflow, MVP runtime, and explicitly
+future runtime, explain data contracts/storage, and map legacy module names.
+docs/roadmap.md must include all original functional scope and the telemetry gates.
+docs/migration.md must record source/destination inventory, reviewed conflicts, file
+mapping, canonical absolute path, verified origin, branch, and migration outcome.
+docs/progress.yaml must track actual state with requirement IDs, phase, task status,
+owner role, dependencies, validation evidence, blockers, and next action. Use statuses
+such as planned/in_progress/blocked/done/deferred; never mark scaffolding as a working
+feature or future agent architecture as implemented.
+docker-compose.yml must describe runnable MVP services, ports, environment inputs,
+health checks, and persistent storage. Include web and API once runnable; add a DB
+service only for the chosen storage architecture. Do not include agent services.
+
+1.8 GITHUB ACTIONS CI SCAFFOLDING
+Create .github/workflows/ci.yml for pull requests and pushes to the repository's
+verified default branch, with optional manual execution. CI is software validation;
+it is not the production AI orchestration engine.
+
+Required checks as runnable modules are introduced:
+- Web: locked dependency installation, lint, TypeScript checks, meaningful tests,
+  and production build.
+- Python/API/data/quant: locked installation, lint, relevant type checks, deterministic
+  unit and integration tests, plus package/import/build validation as appropriate.
+- Repository: validate workflow syntax, progress YAML, and Compose configuration.
+- Integration: API health/smoke checks and critical dashboard data contracts.
+
+Select current supported action/runtime versions during implementation and pin
+dependencies. Give workflows minimum permissions (normally contents: read), bound
+job duration, and avoid unnecessary secrets. Do not deploy automatically from CI.
+Use deterministic fixtures or mocks for market providers and the optional LLM;
+ordinary CI must not require paid model calls, real portfolio data, or live markets.
+CI must fail on real lint/test/build failures, not hide them with success fallbacks.
+If only scaffolding exists, explicitly report unavailable checks as not implemented
+and validate the scaffold that does exist. Add active checks with the module they
+validate; never describe skipped checks as passed or use empty tests to imply coverage.
+
+1.9 CODEX EXECUTION CHECKLIST — FOLLOW THIS ORDER
+[ ] 1. Read this entire specification and applicable repository instructions. Inventory
+       the old workspace and intended destination; record content worth migrating.
+[ ] 2. Resolve GitHub owner/URL, target absolute path, authentication, and name conflicts.
+       Inspect parent repository boundaries and existing local/remote content.
+[ ] 3. Clone/reuse X8xpandax8X/Quant_dashboard into Quant_stock using Section 1.6. For a truly empty new local
+       repository, initialize Git and attach the verified origin; do not reinitialize
+       an unrelated repo. Review the new repository's visibility before publishing data.
+[ ] 4. Verify the root with git rev-parse --show-toplevel, git status --short --branch,
+       git remote -v, and git remote get-url origin. Read git ls-remote origin to
+       confirm access and discover remote branches. Redact credential-bearing output.
+[ ] 5. Fetch existing remote refs without discarding local changes. Inspect the default
+       branch and history. If dirty, inventory changes and isolate your work; never
+       auto-stash, reset, or commit unrelated user changes. Resolve blocking conflicts.
+[ ] 6. Create a feature branch, e.g. chore/quant-stock-bootstrap, from the verified
+       baseline; use a fresh descriptive branch if that name already has other work.
+       For a new empty repository, establish a minimal reviewed initial commit/default
+       branch before branching, following repository policy. Do not invent old history.
+[ ] 7. Select the canonical checkout for all subsequent tools. Add docs and AGENTS.md,
+       then scaffold the required paths, manifests, CI, and Compose setup. Review every
+       collision before altering existing files. Migrate only reviewed relevant files;
+       exclude .git metadata, secrets, caches, dependencies, and generated clutter.
+[ ] 8. Implement data contracts/cache and deterministic quant functions first; implement
+       API and dashboards incrementally. Maintain traceability to every Section 2–4
+       requirement. Add at most one optional explanation endpoint after core behavior.
+[ ] 9. Run numerical fixtures, API/integration tests, lint/type checks, web build, and
+       relevant visual/interaction checks. Validate missing data, holidays, empty
+       ranges, invalid weights, and zero-denominator cases. Fix failures and record
+       actual results, including any checks that could not run.
+[ ] 10. Have the auditor role review diffs, math, data semantics, dependency changes,
+        secrets, and requirement coverage. Update architecture/roadmap/progress.
+[ ] 11. Inspect git diff and stage only intended paths. Review the staged diff; make
+        small coherent commits for scaffold, data/quant, API, and dashboard increments.
+        Do not defer all changes into one opaque final commit.
+[ ] 12. Verify origin and branch again, then push the feature branch with an explicit
+        upstream (git push -u origin <verified-feature-branch>). Follow repository
+        review rules; do not force-push, bypass protection, or auto-merge into main.
+[ ] 13. Check remote branch/commit and CI outcomes. Report canonical path, remote,
+        branch, commit IDs, coverage, test results, remaining blockers, and next steps.
+        If push/CI is blocked or pending, say so; local success is not remote success.
+
+Commands are illustrative and require values established by inspection. Use the
+existing remote URL if valid; git remote add origin <verified-url> is only for a
+repository without origin. No blind git remote set-url operation is authorized.
+
+1.10 NON-DESTRUCTIVE DEVELOPMENT GUARDRAILS
+- Do not delete or overwrite existing repository content without reviewing the diff
+  and impact. Preserve unrelated user changes and pre-existing behavior.
+- Make additive changes where practical. Review migrations and document intentional
+  replacements; obtain explicit authorization for destructive or irreversible changes
+  not already authorized by the user.
+- No blanket cleanup, force push, hard reset, history rewriting, destructive database
+  migration, repository deletion, or origin replacement as a shortcut.
+- Keep the prior workspace intact. Do not copy its entire directory blindly or create
+  competing canonical repositories. Do not commit API keys, .env files, private data,
+  market cache files, or generated dependencies/build outputs.
+- Commit incrementally with accurate messages and validation evidence. Never claim
+  implementation, tests, push, CI success, or deployment that has not actually occurred.
+- Keep functional/calculation changes separate from architecture migration where
+  possible so reviewers can identify unintended changes.
+
+1.11 PRESERVED FINANCIAL REQUIREMENTS: IMPLEMENTATION REVIEW NOTES
+The following notes clarify verification; they do not rewrite the original formulas.
+Document units, return horizon, price adjustment, annualization, risk-free conversion,
+benchmark alignment, covariance estimation, and missing-data behavior consistently.
+Do not silently correct source tickers, sector labels, or formula interpretations.
+Validate provider symbol mappings (including the source's Nikkei identifier) before
+relying on them; record any reviewed mapping correction while retaining the intended
+index and the original requirement text. Label delayed/stale data with timestamps
+rather than implying guaranteed real-time provider availability.
+Where a derivation is underspecified (CAPM target-price horizon, expected market
+return estimator, beta, or volume-profile binning/value-area algorithm), record the
+proposed convention and tests for review before treating it as final. Preserve the
+original CAPM zone labels while explaining the assumptions behind the display.
+Zero-filling missing volume applies only when semantically justified; do not turn
+missing prices or fundamentals into fabricated zeros. Handle insufficient samples
+and undefined ratios explicitly. These are application validation requirements,
+not new investment advice or changes to the financial models.
+
+1.12 COMPLETION CRITERIA
+Migration/bootstrap is complete only when the canonical Git root/origin are verified,
+required structure/docs exist, changes are reviewed and committed, and push/CI state
+is reported accurately. Dashboard delivery is complete only when all original
+Section 2–4 features are implemented and validated or explicitly listed as unfinished.
+MVP must have no mandatory production agent runtime and must remain usable without
+LLM access. Future agent placeholders are intentional deferred design, not defects.
+
+Environment references supplied by the update (not independently rechecked in this consolidation):
+https://learn.chatgpt.com/docs/environments/local-environment
+https://learn.chatgpt.com/docs/environments/git-worktrees
+The direct-checkout policy above is the user's project requirement.
+
+
+================================================================================
+SECTION 2: GENERAL UI/UX & NAVIGATION ARCHITECTURE
+================================================================================
+
+2.1 NAVIGATION & LAYOUT
+- Left Sidebar Navigation: Persistent collapsible sidebar allowing seamless switching between main dashboards.
+- Sub-Tab Segmentation: To prevent cognitive overload and dense clutter, individual dashboards may be split into 2 visual sub-tabs when necessary.
+- Color Palette & Theme: Dark mode financial terminal theme (deep slate background, high contrast greens for positive returns, vibrant reds/oranges for negative returns, crisp typography).
+
+2.2 SYSTEM EXTENSIBILITY HOOKS (FUTURE PROOFING)
+- The core data model and routing must support:
+  * LPPLS (Log-Periodic Power Law Singularity) bubble detection model integration slot.
+  * Graph Theory Sector Correlation Network visualization module slot.
+  * Expansion of historical data window from 1 Year (V1 default) to 3 Years (V2).
+
+================================================================================
+SECTION 3: DASHBOARD FUNCTIONAL REQUIREMENTS
+================================================================================
+
+--------------------------------------------------------------------------------
+DASHBOARD 1: GLOBAL EQUITIES & MARKET OVERVIEW
+--------------------------------------------------------------------------------
+Goal: Provide real-time high-level tracking of global benchmarks and key asset classes.
+
+Assets Tracked:
+- S&P 500 Index (`^GSPC`)
+- NASDAQ 100 Index (`^NDX`)
+- VIX Volatility Gauge (`^VIX`)
+- Nikkei 225 (`^N235`)
+- KOSPI 200 (`^KS200`)
+- SET100 / SET Index (`^SET100` / `^SET.BK`)
+- Bitcoin (`BTC-USD`)
+
+Features & Visualizations:
+1. Candlestick Index Cards:
+   - Interactive Candlestick chart showing latest price movements.
+   - Real-time intraday percentage change indicator (% shift with green/red status light).
+2. Timeframe Selector Widget:
+   - Toggle buttons: 1D (Default), 5D, 1M, 1Y.
+3. Dedicated VIX Volatility Gauge:
+   - Semi-circular radial gauge dial showing current implied volatility level with zone risk indicators (Low, Normal, Elevated, Extreme).
+
+--------------------------------------------------------------------------------
+DASHBOARD 2: INDIVIDUAL STOCK QUANTITATIVE & TECHNICAL ANALYSIS
+--------------------------------------------------------------------------------
+Goal: Deep-dive quantitative evaluation of individual S&P 500 stocks.
+
+Inputs & Controls:
+- Stock Search Bar / Dynamic Dropdown: Search & select any constituent of S&P 500.
+- Timeframe Selector: 1D, 5D, 1M, 1Y (Default 1Y).
+
+Visual Components:
+1. Price & Return Performance Chart:
+   - Candlestick or line chart displaying price action over selected timeframe along with cumulative Return percentage:
+     $$\text{Return (\%)} = \left( \frac{P_{\text{current}} - P_{\text{start}}}{P_{\text{start}}} \right) \times 100$$
+
+2. Return Frequency Histogram & Quantitative Metrics:
+   - X-axis: Daily Return Percentage buckets ($+$ and $-$ returns).
+   - Y-axis: Frequency count of trading days.
+   - Statistical Summary Cards:
+     * Expected Mean Daily Return: $\mu = \frac{1}{N} \sum_{t=1}^{N} R_t$
+     * Historical Volatility ($\sigma$): Standard Deviation $\sigma = \sqrt{\frac{1}{N-1} \sum_{t=1}^{N} (R_t - \mu)^2}$
+     * Win Rate / Positive Return Probability (%): 
+       $$P(R > 0) = \left( \frac{\text{Count}(R_t > 0)}{N} \right) \times 100$$
+
+3. Volume Profile & Dynamic Key Levels Side-Panel:
+   - Real-time display of current price.
+   - Volume Profile calculation metrics:
+     * Point of Control (POC): Price level with highest traded volume.
+     * Value Area High (VAH): Upper boundary of 70% value volume range.
+     * Value Area Low (VAL): Lower boundary of 70% value volume range.
+
+4. GitHub-Style Daily Return Calendar Heatmap:
+   - Grid matrix (Months vs Days of Week) modeling daily return intensity.
+   - Color grading: Dark green (High positive return) to dark red (High negative return), neutral dark grey for flat days. Placed adjacent to return histogram.
+
+5. Multi-Stock Return Comparison & Correlation Matrix:
+   - Multi-select input to add peer comparison stocks.
+   - Comparative return overlay chart.
+   - Pairwise Pearson Correlation Coefficient matrix table:
+     $$\rho_{X,Y} = \frac{\sum (X_i - \bar{X})(Y_i - \bar{Y})}{\sqrt{\sum (X_i - \bar{X})^2 \sum (Y_i - \bar{Y})^2}}$$
+
+6. CAPM & Security Market Line (SML) Valuation Zone Chart:
+   - Plot Security Market Line (SML) using formula:
+     $$E(R_i) = R_f + \beta_i \left( E(R_m) - R_f \right)$$
+     (where $R_f$ is US 10Y Treasury yield and $E(R_m)$ is benchmark expected return).
+   - Position target stock on graph ($X = \beta_i$, $Y = \text{Actual/Expected Return}$).
+   - Dynamic expected target price output based on CAPM expected rate of return.
+   - Visual Zone Annotations: Explicitly label plot regions as "Underpriced / Alpha > 0" (above SML) and "Overpriced / Alpha < 0" (below SML).
+
+--------------------------------------------------------------------------------
+DASHBOARD 3: FINANCIAL FUNDAMENTALS & MARKET VALUATION
+--------------------------------------------------------------------------------
+Goal: Fundamental statement analysis and institutional analyst sentiment.
+
+Key Metric Header Cards:
+- Current Stock Price, Market Capitalization, P/E Ratio, P/BV Ratio, Trailing EPS, Beta ($\beta$), 6-Month Sharpe Ratio:
+  $$SR = \frac{R_p - R_f}{\sigma_p}$$
+- CAPM Derived Target Price.
+
+Visual Components:
+1. Revenue & Earnings Trend + Estimates:
+   - Quarterly Bar/Line chart displaying historical Revenue & Earnings per Share (EPS).
+   - Dynamic 1-Quarter Forward Consensus Estimate overlay.
+   - Growth indicators badge: QoQ (Quarter-over-Quarter) % and YoY (Year-over-Year) % growth.
+
+2. Interactive Income Statement Sankey Diagram:
+   - Flow diagram mapping: Total Revenue $\rightarrow$ Gross Profit & Cost of Goods Sold (COGS) $\rightarrow$ Operating Income & Opex $\rightarrow$ Net Income & Taxes.
+
+3. Profitability & Margin Trend Lines:
+   - Multi-line trend chart showing Gross Margin %, Operating Margin %, and Net Profit Margin % across quarterly periods, with QoQ & YoY delta metrics.
+
+4. Comprehensive Financial Statements Data Tables:
+   - Tabbed financial views:
+     Tab A: Valuation Ratios
+     Tab B: Profitability & Income Statement
+     Tab C: Balance Sheet & Cash Flow Summary
+
+5. Institutional Analyst Consensus Breakdown:
+   - Recommendation breakdown pie/bar graphic (Buy %, Hold %, Sell % proportions).
+   - Target price consensus distribution metrics (Lowest target, Mean target, Highest target price across research institutions).
+
+--------------------------------------------------------------------------------
+DASHBOARD 4: ASSET ALLOCATION & PORTFOLIO SIMULATOR
+--------------------------------------------------------------------------------
+Goal: Interactive portfolio construction and benchmark comparison.
+
+Interactive Inputs:
+- Stock picker: Select any stocks from the dataset.
+- Weight allocation (%): Interactive sliders/inputs to set target portfolio weights ($\sum w_i = 100\%$).
+
+Visual Components:
+1. Sector Allocation Donut Chart (Left Side):
+   - Aggregated portfolio exposure grouped into the 11 Standard S&P 500 GICS Sectors:
+     1. Technology
+     2. Financial Services
+     3. Industrials
+     4. Communication Services
+     5. Healthcare
+     6. Consumer Cyclical
+     7. Energy
+     8. Consumer Defensive
+     9. Basic Materials
+     10. Real Estate
+     11. Utilities
+   - Hover behavior: Hovering mouse over a sector arc segment expands a dynamic tooltip revealing the individual stock breakdown and weighting inside that specific sector.
+
+2. Portfolio Analytics Performance Card (Right Side):
+   - Calculated over a 1-Year historical lookback window:
+     * Expected Portfolio Return: $E(R_p) = \sum w_i E(R_i)$
+     * Portfolio Volatility ($\sigma_p$): 
+       $$\sigma_p = \sqrt{\mathbf{w}^T \mathbf{\Sigma} \mathbf{w}}$$
+     * Portfolio Sharpe Ratio ($SR_p$)
+     * Portfolio Beta relative to S&P 500 Benchmark ($\beta_p$):
+       $$\beta_p = \sum w_i \beta_i$$
+
+================================================================================
+SECTION 4: TECHNICAL DATA ENGINE & INFRASTRUCTURE
+================================================================================
+
+4.1 DATA INGESTION & CACHING
+- Primary Data Source: Open-source Yahoo Finance API (`yfinance`) and FRED (Federal Reserve Economic Data for risk-free rate $R_f$).
+- Cache Persistence: Implement dynamic local SQLite database / Parquet storage layer to store historical price series and fundamental ratios, avoiding repetitive API throttling while ensuring snappy application rendering.
+
+4.2 ERROR HANDLING & DEBUG PROTOCOL
+- Missing data fallback strategies (e.g., zero-fill missing volume bars, handle non-trading holidays gracefully).
+- Master Auditor Agent must execute validation checks on math functions prior to final deployment report output.
+
+================================================================================
+SECTION 5: RETAINED V1 DECISIONS AND ACCEPTANCE CONTRACT (NORMATIVE)
+================================================================================
+
+5.1 PRODUCT, UI, AND PRIVACY
+- Small private team; Google sign-in through OAuth2 Proxy with an explicit email
+  allowlist. Protect browser and API routes; FastAPI is not directly exposed.
+- Enforce verified server identity and owner filtering for every portfolio operation;
+  strip spoofable gateway headers, protect writes with CSRF and origin checks.
+- Private create/open/rename/save/delete; timestamps, revision conflicts with reload
+  or save-as-copy, retry-safe creation, delete confirmation, and preserved drafts.
+  Clear private frontend caches on logout; never log credentials or holdings.
+- Long-only S&P 500 equities, no duplicate symbols or negative weights. Store integer
+  basis points. Require exactly 10,000 for simulation; allow incomplete saved drafts.
+- Balanced dark desktop/mobile design uses DESIGN.md and UX-CONTRACT.md. Keep the
+  existing concepts and shared tokens; assess migration before redesigning screens.
+- IBM Plex Sans/Mono; slate #0B1220/#142033, text #E7EEF7, interaction #7CAEFF,
+  positive #3DD6A0, negative #FF7B72. One canonical runtime token source.
+- React controls application state; a shared lazy Plotly adapter owns chart geometry.
+  Mount active/visible charts only. Supply accessible tables and text summaries.
+- Context shows symbol, observed time, selected window, currency, and quality state.
+  URL preserves symbol, timeframe, peers, tabs, and table page, never portfolio data.
+- Loading, empty, unavailable, partial, stale, offline, and recoverable-error states;
+  retain last valid charts, zoom and selections on refresh. Reserve loading space.
+- Keyboard/touch/focus alternatives, mobile drawers, portrait/landscape layouts,
+  WCAG 2.2 AA, reduced motion, redundant gain/loss labels. Exports include units,
+  source/timestamps and method notes. Sector breakdown remains available without hover.
+
+5.2 PROVIDERS, UNITS, AND STORAGE
+- Correct the source's Nikkei typo ^N235 to ^N225; use SET Index ^SET.BK by default.
+  Report provider unavailability rather than silently substituting a different index.
+- Maintain dated S&P 500 membership with provenance and last-valid fallback. Map
+  provider aliases to canonical GICS sectors (e.g. Technology -> Information Technology,
+  Financial Services -> Financials, Healthcare -> Health Care, Consumer Cyclical ->
+  Consumer Discretionary, Consumer Defensive -> Consumer Staples, Basic Materials ->
+  Materials). Preserve the intended eleven-sector scope.
+- Yahoo/FRED are best effort, not guaranteed real-time. Request 5-minute bars for 1D,
+  30-minute for 5D, daily for 1M/1Y. Label lower-resolution fallbacks explicitly.
+- Refresh active intraday views every five minutes, fundamentals/membership daily;
+  pause hidden browser polling. Separate SQLite cache index and Parquet histories;
+  atomic replacement and deduplicated refreshes. SQLite WAL for users/portfolios.
+- Version API endpoints and generate TypeScript contracts from OpenAPI. Analytical
+  responses include source, observation/retrieval times, unit/currency, requested and
+  actual windows, samples and quality. Missing values remain null with an explanation.
+- No fabricated volume: missing volume is unavailable/partial, not zero trading.
+  No forward-filled prices. Distinguish missing earnings/estimates from zero.
+- Versioned migrations and manual backup/restore. Single persistent-host Compose;
+  PostgreSQL only after a separate justified decision. No mandatory LLM service.
+
+5.3 QUANTITATIVE CONVENTIONS
+- Split-adjusted, dividend-excluding daily price returns; S&P 500 price-index benchmark.
+- Trailing year for distribution/correlation/beta/CAPM/portfolio risk; 126 trading
+  observations for six-month Sharpe. Chart selections do not change analysis windows.
+- Sample standard deviation/covariance, 252-session annualization, aligned overlapping
+  returns without forward fill; report sample counts. Suppress beta, CAPM, correlation
+  and portfolio risk below 60 aligned returns; undefined ratios are unavailable.
+- Beta = covariance(stock, benchmark) / benchmark variance. Expected market return
+  is 252 times historical mean daily return. Latest FRED DGS10 / 100 is annual Rf.
+  CAPM return = Rf + beta * (expected market return - Rf). Scenario price = current
+  price * (1 + CAPM return), a one-year research scenario, not a forecast guarantee.
+  Show historical alpha; retain original valuation-zone names as model heuristics.
+- Portfolio uses constant target weights with daily rebalancing, no fees/taxes;
+  covariance-based annual volatility, weighted beta, annualized daily-excess-return
+  Sharpe and compounded performance. Daily risk-free conversion: (1+Rf)^(1/252)-1.
+- Volume profile is an OHLCV approximation: allocate available bar volume by typical
+  price (high+low+close)/3 to 50 equal-width buckets; expand contiguously from POC
+  until at least 70% of volume is included. Conserve observed volume; never invent it.
+- Fundamentals request eight historical quarters and available next-quarter estimates;
+  source-short histories are partial. Revenue/EPS have aligned separate unit panels.
+  Negative/unreconciled financial flows use a truthful signed waterfall or table.
+
+5.4 VERIFICATION AND DELIVERY
+- Deterministic fixtures for returns, annualization, CAPM, covariance, Sharpe,
+  correlation and volume conservation; splits, missing history/volume, zero variance,
+  negative earnings, stale cache, throttling and mixed exchange calendars.
+- Test Google allowlist, unauthenticated access, spoofed headers, cross-owner access,
+  CSRF, save conflicts, expiry, CRUD persistence and failure recovery.
+- Complete flows across all dashboards, desktop/phone/landscape and keyboard;
+  backend tests, frontend lint/types/tests/build, OpenAPI contract checks, Premium
+  strict audit, token validation and unchanged LPPLS regression tests.
+- Independent audit must have no unresolved blocking findings. Report incomplete
+  checks honestly. Current implementation is an in-progress checkpoint, not V1 done.
+- Handoff includes runnable app, setup/data methods, deployment configuration,
+  backup/restore and evidence-based audit. Shared deployment is a separate action
+  gated on confirmed data-use rights. No deployment is authorized by this upload.
