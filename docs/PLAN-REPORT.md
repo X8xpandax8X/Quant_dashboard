@@ -14,7 +14,7 @@ The user selected **X8xpandax8X/Quant_dashboard** (private). GitHub connector ac
 push permission and an empty remote were verified. Uploading the existing application
 and revised requirements is authorized; migration and new application work remain
 paused. CLI authentication and the Documents checkout are not yet established.
-The uploaded checkpoint is available in [draft PR #1](https://github.com/X8xpandax8X/Quant_dashboard/pull/1);
+The uploaded checkpoint was merged through [PR #1](https://github.com/X8xpandax8X/Quant_dashboard/pull/1);
 see [migration evidence](migration.md#verified-github-upload-checkpoint).
 
 ## Requirements reconciliation
@@ -94,6 +94,6 @@ exhausted; no rejected command edits were applied. No CI or deployment success i
 ## Review requested
 
 Approve the proposed Next.js migration, target structure, and phased execution above
-before application work resumes. The five-hour continuation automation remains paused
-so it cannot cross this review gate. GitHub upload is a reviewable checkpoint, not
+before application work resumes. The five-hour continuation automation is active for status checks and explicitly
+preserves this implementation review gate; see [Continuation schedule](CONTINUATION.md). GitHub upload is a reviewable checkpoint, not
 approval of the migration and not a completed-release claim.

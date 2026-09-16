@@ -2,7 +2,7 @@
   "version": 1,
   "updated": "2026-09-16",
   "implementation_gate": "awaiting_plan_review",
-  "continuation_automation": "paused",
+  "continuation_automation": "active_status_checks_implementation_gated",
   "canonical_requirement": "requirement.txt",
   "remote": "https://github.com/X8xpandax8X/Quant_dashboard",
   "source_workspace": "/Users/pandamac/Desktop/Quant_stock",
@@ -34,10 +34,11 @@
         "Private Quant_dashboard and connector push access verified; initially empty",
         "111-file uploaded baseline 99c91ba5834680909f6f02e35210d9be971634eb",
         "Local/remote Git tree match: 0b4852606dd24627460b03abe73378ff75400d59",
-        "Draft PR #1 verified on selected repository; no merge or CI workflow"
+        "Draft PR #1 verified on selected repository; no merge or CI workflow",
+        "PR #1 merged at 2b30963ba239c7e27326d955b9a6b19772dd41e4; verified during schedule update"
       ],
       "blockers": "",
-      "next_action": "Review draft PR #1 and migration plan; canonical local checkout remains a separate pending task"
+      "next_action": "Review the migration plan; establish the canonical local checkout after approval"
     },
     {
       "requirement_id": "REQ-MIG-01",
@@ -196,6 +197,20 @@
     "branch": "chore/requirements-and-project-baseline",
     "baseline_commit": "99c91ba5834680909f6f02e35210d9be971634eb",
     "pull_request": "https://github.com/X8xpandax8X/Quant_dashboard/pull/1",
-    "ci": "not_configured"
+    "ci": "not_configured",
+    "pull_request_state": "merged",
+    "merge_commit": "2b30963ba239c7e27326d955b9a6b19772dd41e4"
+  },
+  "continuation": {
+    "name": "Resume investment dashboard",
+    "automation_id": "daily-brief",
+    "kind": "heartbeat",
+    "interval_hours": 5,
+    "status": "ACTIVE",
+    "implementation_gate": "awaiting_plan_review",
+    "current_local_folder": "/Users/pandamac/Desktop/Quant_stock",
+    "repository": "X8xpandax8X/Quant_dashboard",
+    "migration_pending": true,
+    "instructions": "docs/CONTINUATION.md"
   }
 }

@@ -8,10 +8,11 @@ The canonical specification is [requirement.txt](requirement.txt). Read the
 [revised plan report](docs/PLAN-REPORT.md) before continuing implementation.
 The selected private repository is [X8xpandax8X/Quant_dashboard](https://github.com/X8xpandax8X/Quant_dashboard).
 The current React/Vite application below is an in-progress baseline. The proposed
-Next.js monorepo migration has **not** been implemented. New application changes
-and the five-hour implementation automation are paused for plan review.
+Next.js monorepo migration has **not** been implemented. New application changes remain paused for plan review. The existing five-hour
+continuation schedule is active for status checks and resumes implementation once
+that plan is approved; see [Continuation schedule](docs/CONTINUATION.md).
 The baseline and revised documents are uploaded in [draft PR #1](https://github.com/X8xpandax8X/Quant_dashboard/pull/1).
-The PR is unmerged; local migration and CI remain pending.
+PR #1 is now merged; local migration and CI remain pending.
 
 - [Target architecture](docs/architecture.md)
 - [Roadmap and acceptance gates](docs/roadmap.md)

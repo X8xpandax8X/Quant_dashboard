@@ -5,8 +5,10 @@
 The user requested documentation and plan review before framework implementation.
 The subsequent request authorizes uploading the existing project and revised docs
 to the verified private repository `X8xpandax8X/Quant_dashboard`. It does not approve
-Next.js migration, new application features, CI setup, or deployment. Keep the
-five-hour implementation automation paused until that plan is approved.
+Next.js migration, new application features, CI setup, or deployment. The existing
+five-hour schedule is active for status checks; implementation remains gated on
+plan approval. Follow `docs/CONTINUATION.md` and the latest user instructions.
+After approval and available usage, resume authorized work without another prompt.
 
 `requirement.txt` at the repository root is the sole canonical specification;
 `docs/reference/requirement.original.txt` is an immutable provenance archive.
